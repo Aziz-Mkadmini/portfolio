@@ -104,7 +104,7 @@ export const projects: Project[] = [
       "Clear separation of concerns: scalable evolution path for both frontend and API",
       "Production-grade system design for onboarding + billing + admin workflows",
     ],
-    demoUrl: "#contact",
+    demoUrl: "https://nail-scan-pro.vercel.app",
     imageSrc: "/nailscan-pro/demo-resultat.png",
     imageAlt: "NailScan Pro demo and product interface preview",
     images: [
