@@ -25,6 +25,52 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "kaizen",
+    name: "Kaizen Kyoto Capital",
+    type: "Systematic Crypto Trading SaaS",
+    icon: "rocket",
+    summary:
+      "Full-stack SaaS for systematic crypto trading: public marketing site, Paddle subscriptions (16 plans), client dashboard with live signals, performance reporting, mandatory risk framework, and admin back-office.",
+    problem:
+      "Launching a trading signals product requires more than a landing page — subscribers need gated access, verified performance, billing lifecycle, and operator tooling without security gaps.",
+    impact:
+      "Delivered an end-to-end commercial platform: visitors can subscribe via Paddle, clients receive tier-gated signals after completing the 1% risk framework, and admins manage users, revenue, and billing from a dedicated console.",
+    solution:
+      "Built with Next.js 14, Prisma + Neon, NextAuth (email + Google), Paddle webhooks, Upstash rate limiting, 2FA for admins, equity-curve performance sync, SEO (sitemap, Learn hub, JSON-LD), and 43 automated tests with CI.",
+    stack: [
+      "Next.js (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL (Neon)",
+      "NextAuth.js",
+      "Paddle Billing",
+      "Upstash Redis",
+      "Nodemailer (SMTP)",
+      "Recharts",
+      "Framer Motion",
+    ],
+    highlights: [
+      "16 Paddle price IDs — 8 trading + 8 investment packages (monthly & annual)",
+      "Client dashboard: signals, performance report, risk framework gate, subscription management",
+      "Admin: KPIs, users, subscriptions, revenue analytics, Paddle sync & audit log",
+      "2FA for admins, GDPR export/delete, webhook signature verification, security score 84/100",
+      "Performance equity curve synced across homepage, /performance, and client dashboard",
+    ],
+    outcomes: [
+      "Production SaaS at kaisen-trading.vercel.app — ready for kaizenkyoto.capital domain",
+      "Monetization live: checkout, webhooks, and automatic plan activation after payment",
+      "SEO-ready: dedicated performance page, Learn articles, FAQ schema, sitemap",
+      "Documented deployment, Paddle setup, and security audit for client handoff",
+    ],
+    demoUrl: "https://kaisen-trading.vercel.app/",
+    /** Set in `.env.local`: `NEXT_PUBLIC_KAIZEN_GITHUB_URL` — leave unset to hide the button */
+    repoUrl: process.env.NEXT_PUBLIC_KAIZEN_GITHUB_URL?.trim() || undefined,
+    imageSrc: "/kaizen/kaizen-kyoto-capital-full.png",
+    imageAlt:
+      "Kaizen Kyoto Capital — full-page screenshot of the systematic crypto trading platform",
+  },
+  {
     slug: "shopify-press-on-nails-scan",
     name: "Press-On Nails Shopify Store",
     type: "Shopify E-commerce + Scan",
@@ -111,58 +157,6 @@ export const projects: Project[] = [
       { src: "/nailscan-pro/demo-resultat.png", alt: "NailScan demo and result screen" },
       { src: "/nailscan-pro/integration-button.png", alt: "NailScan integration button screen" },
       { src: "/nailscan-pro/pricing.png", alt: "NailScan pricing screen" },
-    ],
-  },
-  {
-    slug: "kaizen",
-    name: "Kaizen",
-    type: "Trading Analytics SaaS",
-    icon: "rocket",
-    summary:
-      "A premium trading analytics platform built as an end-to-end SaaS: landing + auth, role-based admin, Paddle billing lifecycle, dashboards, and production-ready engineering practices.",
-    problem:
-      "A premium analytics product needs more than features: secure sessions, consistent billing flows, and admin visibility without operational ambiguity.",
-    impact:
-      "Delivered a complete system that operators can run: dashboards for users, admin KPIs and analytics, and a documented architecture for maintainability.",
-    solution:
-      "Built with Next.js + Prisma + Neon, NextAuth role-based access (USER/ADMIN/SUPERADMIN), Paddle subscriptions/webhooks, transactional emails, and resilient route protection.",
-    stack: [
-      "Next.js (App Router)",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL (Neon)",
-      "NextAuth.js",
-      "Paddle Billing",
-      "Nodemailer (SMTP)",
-      "Recharts",
-      "Three.js (hero visuals)",
-      "Framer Motion",
-    ],
-    highlights: [
-      "Paddle checkout + webhook lifecycle (created/updated/paused/canceled/completed)",
-      "NextAuth RBAC with USER/ADMIN/SUPERADMIN + middleware route protection",
-      "Admin KPIs + charts (Recharts) for operator-grade visibility",
-      "Transactional email system (welcome, reset, payment confirmation, cancellation)",
-      "SessionStorage price caching for faster pricing UX",
-    ],
-    outcomes: [
-      "Operators can manage users, roles, and billing with clear admin dashboards",
-      "A maintainable architecture that shortens iteration time for new features",
-      "Investor-ready product foundations: auth + billing + analytics + documentation",
-    ],
-    demoUrl: "#contact",
-    /** Set in `.env.local`: `NEXT_PUBLIC_KAIZEN_GITHUB_URL` — leave unset to hide the button */
-    repoUrl: process.env.NEXT_PUBLIC_KAIZEN_GITHUB_URL?.trim() || undefined,
-    imageSrc: "/kaizen/landing-premium.png",
-    imageAlt: "Kaizen trading analytics SaaS dashboard preview",
-    images: [
-      { src: "/kaizen/landing-premium.png", alt: "Kaizen landing page" },
-      { src: "/kaizen/dashboard.png", alt: "Kaizen dashboard" },
-      { src: "/kaizen/billing.png", alt: "Kaizen billing page" },
-      { src: "/kaizen/card-pricing.png", alt: "Kaizen pricing cards" },
-      { src: "/kaizen/sign-in.png", alt: "Kaizen sign in page" },
-      { src: "/kaizen/sign-up.png", alt: "Kaizen sign up page" },
     ],
   },
 ];
