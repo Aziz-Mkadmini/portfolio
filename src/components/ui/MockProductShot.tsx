@@ -1,6 +1,6 @@
 "use client";
 
-import { Orbit, Rocket, Boxes, type LucideIcon } from "lucide-react";
+import { Orbit, Rocket, Boxes, Sparkles, type LucideIcon } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ProjectIcon } from "@/lib/projects";
 
@@ -8,6 +8,7 @@ const projectIcons: Record<ProjectIcon, LucideIcon> = {
   orbit: Orbit,
   rocket: Rocket,
   boxes: Boxes,
+  sparkles: Sparkles,
 };
 
 type Tone = "blue" | "violet" | "slate";

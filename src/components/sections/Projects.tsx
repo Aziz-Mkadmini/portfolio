@@ -36,6 +36,7 @@ const projectIcons: Record<ProjectIcon, LucideIcon> = {
   orbit: Orbit,
   rocket: Rocket,
   boxes: Boxes,
+  sparkles: Sparkles,
 };
 
 const tone = ["violet", "slate", "violet"] as const;
@@ -241,6 +242,22 @@ export function Projects() {
                       ) : (
                         <MockProductShot label={p.name} icon={p.icon} tone={tone[i % 3]} />
                       )}
+                      {p.videoSrc ? (
+                        <div className="glass-panel overflow-hidden rounded-2xl">
+                          <p className="border-b border-white/10 px-3 py-2 text-xs text-zinc-500">
+                            {p.videoLabel ?? "Product video"}
+                          </p>
+                          <video
+                            className="aspect-[9/16] max-h-[520px] w-full bg-zinc-950 object-contain sm:max-h-[640px]"
+                            controls
+                            playsInline
+                            preload="metadata"
+                            poster={p.imageSrc}
+                          >
+                            <source src={p.videoSrc} type="video/mp4" />
+                          </video>
+                        </div>
+                      ) : null}
                       <p className="text-[11px] leading-relaxed text-zinc-600">
                         Best used with real screenshots, Loom walkthroughs, and architecture diagrams
                         to show implementation depth and technical decision-making.

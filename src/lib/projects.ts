@@ -1,4 +1,4 @@
-export type ProjectIcon = "orbit" | "rocket" | "boxes";
+export type ProjectIcon = "orbit" | "rocket" | "boxes" | "sparkles";
 
 export type Project = {
   slug: string;
@@ -21,6 +21,9 @@ export type Project = {
   imageSrc?: string;
   imageAlt: string;
   images?: { src: string; alt: string }[];
+  /** Optional product demo video (e.g. invitation walkthrough) */
+  videoSrc?: string;
+  videoLabel?: string;
 };
 
 export const projects: Project[] = [
@@ -58,17 +61,57 @@ export const projects: Project[] = [
       "Performance equity curve synced across homepage, /performance, and client dashboard",
     ],
     outcomes: [
-      "Production SaaS at kaisen-trading.vercel.app — ready for kaizenkyoto.capital domain",
+      "Live production at kaizenkyotocapital.com — full SaaS ready for clients",
       "Monetization live: checkout, webhooks, and automatic plan activation after payment",
       "SEO-ready: dedicated performance page, Learn articles, FAQ schema, sitemap",
       "Documented deployment, Paddle setup, and security audit for client handoff",
     ],
-    demoUrl: "https://kaisen-trading.vercel.app/",
+    demoUrl: "https://kaizenkyotocapital.com/",
     /** Set in `.env.local`: `NEXT_PUBLIC_KAIZEN_GITHUB_URL` — leave unset to hide the button */
     repoUrl: process.env.NEXT_PUBLIC_KAIZEN_GITHUB_URL?.trim() || undefined,
     imageSrc: "/kaizen/kaizen-kyoto-capital-full.png",
     imageAlt:
       "Kaizen Kyoto Capital — full-page screenshot of the systematic crypto trading platform",
+  },
+  {
+    slug: "istetdaa",
+    name: "Istetdaa",
+    type: "Premium Digital Invitations",
+    icon: "sparkles",
+    summary:
+      "Luxury digital invitation platform (استدعاء) for weddings, birthdays, and parties — mobile-first templates, interactive demos, multilingual FR/EN/AR, and WhatsApp ordering.",
+    problem:
+      "Couples and hosts need elegant shareable invitations without complex checkout friction, while still showcasing RSVP, countdown, location, and dress-code details on mobile.",
+    impact:
+      "A conversion-focused catalog where guests experience a live phone demo, clients pick a template, and orders are completed simply via WhatsApp — no card checkout on the site.",
+    solution:
+      "Built a multilingual marketing + product site with interactive invitation demos (envelope open, music, animations), template catalog by category, and a WhatsApp-first order flow.",
+    stack: [
+      "Next.js (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "i18n (FR / EN / AR)",
+      "WhatsApp commerce",
+      "Figma → mobile-first UI",
+    ],
+    highlights: [
+      "Interactive live demos: envelope open, ambient music, entrance animations",
+      "Catalog of wedding / birthday / party / custom templates with pricing",
+      "Guest features: RSVP, countdown, Google Maps location, dress code",
+      "WhatsApp order path — no on-site card checkout",
+      "Multilingual experience (French, English, Arabic)",
+    ],
+    outcomes: [
+      "Production live at istetdaa.vercel.app with Collection 2026 templates",
+      "Premium brand presence (burgundy / cream / gold) aligned with luxury invitations",
+      "Clear path from discovery → demo → WhatsApp order",
+    ],
+    demoUrl: "https://istetdaa.vercel.app/en",
+    imageSrc: "/istetdaa/promo.png",
+    imageAlt: "Istetdaa — luxury digital wedding invitation promotional creative",
+    videoSrc: "/istetdaa/wedding-invitation.mp4",
+    videoLabel: "Example wedding invitation video",
   },
   {
     slug: "shopify-press-on-nails-scan",
