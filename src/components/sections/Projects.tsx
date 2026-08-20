@@ -252,7 +252,6 @@ export function Projects() {
                             controls
                             playsInline
                             preload="metadata"
-                            poster={p.imageSrc}
                           >
                             <source src={p.videoSrc} type="video/mp4" />
                           </video>
