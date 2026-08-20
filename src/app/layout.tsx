@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/app/json-ld";
+import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 
 const sans = Manrope({
   subsets: ["latin"],
@@ -34,7 +35,8 @@ export const metadata: Metadata = {
   applicationName: site.name,
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "fr_FR",
+    alternateLocale: ["en_US"],
     siteName: site.name,
     title: `${site.name} — ${site.title}`,
     description: site.tagline,
@@ -54,15 +56,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable}`}>
+    <html lang="fr" className={`${sans.variable} ${display.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body>
-        <JsonLd />
-        <Navbar />
-        <main className="relative min-h-dvh overflow-x-clip">{children}</main>
-        <Footer />
+        <LocaleProvider>
+          <JsonLd />
+          <Navbar />
+          <main className="relative min-h-dvh overflow-x-clip">{children}</main>
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

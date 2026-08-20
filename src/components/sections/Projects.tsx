@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Boxes,
   CircleDot,
@@ -31,6 +33,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { MockProductShot } from "@/components/ui/MockProductShot";
 import { FadeIn, Stagger, StaggerItem } from "@/components/Motion";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 
 const projectIcons: Record<ProjectIcon, LucideIcon> = {
   orbit: Orbit,
@@ -62,15 +65,17 @@ function getStackIcon(stackLabel: string) {
 }
 
 export function Projects() {
+  const { t } = useLocale();
+
   return (
     <section id="projects" className="border-t border-white/10 py-24 sm:py-28">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <SectionHeading
-              kicker="Featured work"
-              title="Case studies that combine visual quality, technical depth, and business impact"
-              description="Selected projects where I owned product direction, system architecture, and execution from concept to production-ready delivery."
+              kicker={t.projects.kicker}
+              title={t.projects.title}
+              description={t.projects.description}
             />
           </div>
           <FadeIn>
@@ -80,7 +85,7 @@ export function Projects() {
               external={site.bookCall.startsWith("http")}
               className="w-full sm:w-auto"
             >
-              Discuss a similar build
+              {t.projects.discuss}
             </Button>
           </FadeIn>
         </div>
@@ -88,6 +93,15 @@ export function Projects() {
         <Stagger className="mt-14 space-y-16 sm:mt-20 sm:space-y-20">
           {projects.map((p, i) => {
             const TypeIcon = projectIcons[p.icon];
+            const copy = t.projectFields[p.slug];
+            const type = copy?.type ?? p.type;
+            const summary = copy?.summary ?? p.summary;
+            const problem = copy?.problem ?? p.problem;
+            const impact = copy?.impact ?? p.impact;
+            const solution = copy?.solution ?? p.solution;
+            const highlights = copy?.highlights ?? p.highlights;
+            const outcomes = copy?.outcomes ?? p.outcomes;
+            const videoLabel = copy?.videoLabel ?? p.videoLabel;
             return (
               <StaggerItem key={p.slug}>
                 <article
@@ -99,56 +113,56 @@ export function Projects() {
                     <div className="flex items-center gap-2 text-xs text-zinc-500">
                       <p className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-medium text-zinc-300">
                         <TypeIcon className="h-3.5 w-3.5 text-sky-300/80" />
-                        {p.type}
+                        {type}
                       </p>
                       <span className="text-zinc-600">·</span>
-                      <span>Case study</span>
+                      <span>{t.projects.caseStudy}</span>
                     </div>
                     <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-white">
                       {p.name}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">{p.summary}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">{summary}</p>
 
                     <div className="mt-6 space-y-4">
                       <div className="glass-panel hover-lift rounded-2xl p-4">
                         <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          Problem
+                          {t.projects.problem}
                         </p>
-                        <p className="mt-2 text-sm leading-relaxed text-zinc-300">{p.problem}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-zinc-300">{problem}</p>
                       </div>
                       <div className="hover-lift rounded-2xl border border-white/10 bg-gradient-to-b from-sky-500/10 to-zinc-950/10 p-4">
                         <p className="text-xs font-semibold uppercase tracking-wide text-sky-200/60">
-                          Business impact
+                          {t.projects.impact}
                         </p>
-                        <p className="mt-2 text-sm leading-relaxed text-zinc-200">{p.impact}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-zinc-200">{impact}</p>
                       </div>
                       <div className="glass-panel hover-lift rounded-2xl p-4">
                         <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          Solution
+                          {t.projects.solution}
                         </p>
-                        <p className="mt-2 text-sm leading-relaxed text-zinc-300">{p.solution}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-zinc-300">{solution}</p>
                       </div>
                     </div>
 
                     <div className="mt-5">
                       <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                        Stack
+                        {t.projects.stack}
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
-                        {p.stack.map((t) => (
+                        {p.stack.map((stackItem) => (
                           <span
-                            key={t}
+                            key={stackItem}
                             className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-1 text-xs text-zinc-200"
                           >
                             {(() => {
-                              const Icon = getStackIcon(t);
+                              const Icon = getStackIcon(stackItem);
                               return Icon ? (
                                 <Icon className="h-3.5 w-3.5 text-sky-300/95" />
                               ) : (
                                 <CircleDot className="h-3.5 w-3.5 text-sky-300/80" />
                               );
                             })()}
-                            {t}
+                            {stackItem}
                           </span>
                         ))}
                       </div>
@@ -163,8 +177,8 @@ export function Projects() {
                       >
                         <Sparkles className="h-4 w-4" />
                         {p.demoUrl && p.demoUrl !== "#contact" && p.demoUrl.startsWith("http")
-                          ? "Live demo"
-                          : "Request demo / details"}
+                          ? t.projects.liveDemo
+                          : t.projects.requestDemo}
                         <ExternalLink className="h-4 w-4 opacity-80" />
                       </Button>
                       {p.repoUrl ? (
@@ -181,17 +195,17 @@ export function Projects() {
                       ) : null}
                       <Button href="#contact" variant="ghost" className="w-full min-[400px]:w-auto">
                         <Target className="h-4 w-4" />
-                        Talk about this project
+                        {t.projects.talkAbout}
                       </Button>
                     </div>
 
-                    {p.highlights?.length ? (
+                    {highlights?.length ? (
                       <div className="glass-panel hover-lift mt-5 rounded-2xl p-4">
                         <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          Engineering highlights
+                          {t.projects.highlights}
                         </p>
                         <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-                          {p.highlights.map((h) => (
+                          {highlights.map((h) => (
                             <li key={h} className="flex gap-2">
                               <span className="text-sky-400/70">·</span>
                               <span>{h}</span>
@@ -201,13 +215,13 @@ export function Projects() {
                       </div>
                     ) : null}
 
-                    {p.outcomes?.length ? (
+                    {outcomes?.length ? (
                       <div className="hover-lift mt-4 rounded-2xl border border-white/10 bg-gradient-to-b from-sky-500/10 to-zinc-950/10 p-4">
                         <p className="text-xs font-semibold uppercase tracking-wide text-sky-200/60">
-                          Outcomes
+                          {t.projects.outcomes}
                         </p>
                         <ul className="mt-3 space-y-2 text-sm text-zinc-200">
-                          {p.outcomes.map((o) => (
+                          {outcomes.map((o) => (
                             <li key={o} className="flex gap-2">
                               <span className="text-sky-400/70">·</span>
                               <span>{o}</span>
@@ -220,7 +234,7 @@ export function Projects() {
 
                   <div className="lg:col-span-7">
                     <div className="space-y-3">
-                      <p className="text-xs text-zinc-500">Product preview</p>
+                      <p className="text-xs text-zinc-500">{t.projects.preview}</p>
                       {p.imageSrc ? (
                         <a
                           href={p.imageSrc}
@@ -245,7 +259,7 @@ export function Projects() {
                       {p.videoSrc ? (
                         <div className="glass-panel overflow-hidden rounded-2xl">
                           <p className="border-b border-white/10 px-3 py-2 text-xs text-zinc-500">
-                            {p.videoLabel ?? "Product video"}
+                            {videoLabel ?? t.projects.videoFallback}
                           </p>
                           <video
                             className="aspect-[9/16] max-h-[520px] w-full bg-zinc-950 object-contain sm:max-h-[640px]"
@@ -258,8 +272,7 @@ export function Projects() {
                         </div>
                       ) : null}
                       <p className="text-[11px] leading-relaxed text-zinc-600">
-                        Best used with real screenshots, Loom walkthroughs, and architecture diagrams
-                        to show implementation depth and technical decision-making.
+                        {t.projects.previewHint}
                       </p>
                       {p.images?.length ? (
                         <>
@@ -287,7 +300,7 @@ export function Projects() {
                           {p.images.length > 4 ? (
                             <details className="group mt-3">
                               <summary className="inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-zinc-200 transition hover:border-white/15 hover:bg-white/10">
-                                <span>Voir plus</span>
+                                <span>{t.projects.seeMore}</span>
                                 <span className="text-zinc-400">(+{p.images.length - 4})</span>
                               </summary>
                               <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">

@@ -6,9 +6,11 @@ import { ArrowUpRight, Calendar, Download, FolderKanban, Github, Linkedin } from
 import { site } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/Button";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 
 export function Hero() {
   const r = useReducedMotion();
+  const { t } = useLocale();
   const hasResume = /^(https?:\/\/|\/)/.test(site.resume);
 
   return (
@@ -39,7 +41,7 @@ export function Hero() {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="neon-text text-xs font-semibold uppercase tracking-[0.2em] text-sky-300/95"
             >
-              Software Engineer • AI Engineer
+              {t.hero.kicker}
             </motion.p>
             <motion.h1
               initial={r ? false : { opacity: 0, y: 10 }}
@@ -47,11 +49,11 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
               className="mt-4 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl text-balance"
             >
-              I build scalable software,{" "}
+              {t.hero.titleBefore}{" "}
               <span className="bg-gradient-to-r from-sky-200 via-blue-200 to-indigo-200 bg-clip-text text-transparent">
-                AI-enabled products and digital systems
-              </span>
-              that move ideas from concept to production.
+                {t.hero.titleHighlight}
+              </span>{" "}
+              {t.hero.titleAfter}
             </motion.h1>
             <motion.p
               initial={r ? false : { opacity: 0, y: 10 }}
@@ -59,8 +61,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-zinc-300 sm:text-lg"
             >
-              I work with founders and teams to build robust web products, AI features, and
-              internal tools with clear architecture and maintainable code.
+              {t.hero.body}
             </motion.p>
 
             <motion.div
@@ -71,7 +72,7 @@ export function Hero() {
             >
               <Button href="#projects" variant="primary" className="w-full min-[420px]:w-auto">
                 <FolderKanban className="h-4 w-4" />
-                View portfolio
+                {t.hero.viewPortfolio}
               </Button>
               <Button
                 href={hasResume ? site.resume : site.resumeRequestMailto}
@@ -80,7 +81,7 @@ export function Hero() {
                 external={hasResume}
               >
                 <Download className="h-4 w-4" />
-                {hasResume ? "Download resume" : "Request resume"}
+                {hasResume ? t.hero.downloadResume : t.hero.requestResume}
               </Button>
               <Button
                 href={site.bookCall}
@@ -89,7 +90,7 @@ export function Hero() {
                 external={site.bookCall.startsWith("http")}
               >
                 <Calendar className="h-4 w-4" />
-                Book a call
+                {t.hero.bookCall}
                 <ArrowUpRight className="h-4 w-4 opacity-80" />
               </Button>
             </motion.div>
@@ -115,7 +116,7 @@ export function Hero() {
                 className="w-full min-[420px]:w-auto"
               >
                 <Download className="h-4 w-4" />
-                {hasResume ? "Resume" : "Request resume"}
+                {hasResume ? t.nav.resume : t.nav.requestResume}
               </Button>
             </motion.div>
           </div>
@@ -150,22 +151,18 @@ export function Hero() {
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-xs text-zinc-500">Core positioning</p>
-                    <p className="mt-1 font-medium text-zinc-100">Clear execution from scope to delivery</p>
+                    <p className="text-xs text-zinc-500">{t.hero.sideKicker}</p>
+                    <p className="mt-1 font-medium text-zinc-100">{t.hero.sideTitle}</p>
                   </div>
                   <div className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[10px] font-medium text-zinc-300">
-                    Product / AI / Systems
+                    {t.hero.sideChip}
                   </div>
                 </div>
                 <ul className="mt-5 space-y-3 text-sm text-zinc-300">
-                  {[
-                    "Build maintainable systems from MVP to production",
-                    "Ship AI workflows with reliability, cost, and quality in mind",
-                    "Connect product, data, and operations in one practical stack",
-                  ].map((t) => (
-                    <li key={t} className="flex gap-2">
+                  {t.hero.sideBullets.map((item) => (
+                    <li key={item} className="flex gap-2">
                       <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-sky-400/60" />
-                      <span className="leading-relaxed text-zinc-200/90">{t}</span>
+                      <span className="leading-relaxed text-zinc-200/90">{item}</span>
                     </li>
                   ))}
                 </ul>

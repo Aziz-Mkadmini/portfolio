@@ -7,18 +7,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/Container";
-
-const nav = [
-  { label: "Work", href: "/projects" },
-  { label: "Services", href: "/#services" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Contact", href: "/#contact" },
-] as const;
+import { useLocale } from "@/lib/i18n/LocaleProvider";
+import type { Locale } from "@/lib/i18n/messages";
 
 export function Navbar() {
+  const { t, locale, setLocale } = useLocale();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const hasResume = /^(https?:\/\/|\/)/.test(site.resume);
+
+  const nav = [
+    { label: t.nav.work, href: "/projects" },
+    { label: t.nav.services, href: "/#services" },
+    { label: t.nav.experience, href: "/#experience" },
+    { label: t.nav.contact, href: "/#contact" },
+  ] as const;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -27,12 +30,37 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function LanguageToggle({ compact = false }: { compact?: boolean }) {
+    return (
+      <div
+        className={`inline-flex items-center rounded-xl border border-white/10 bg-white/5 p-0.5 ${
+          compact ? "w-full justify-center" : ""
+        }`}
+        role="group"
+        aria-label="Language"
+      >
+        {(["fr", "en"] as Locale[]).map((code) => (
+          <button
+            key={code}
+            type="button"
+            onClick={() => setLocale(code)}
+            className={`rounded-lg px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition ${
+              locale === code
+                ? "bg-sky-500/20 text-sky-100"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
+            {code}
+          </button>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "pt-2"
-          : "pt-0"
+        scrolled ? "pt-2" : "pt-0"
       }`}
     >
       <Container>
@@ -45,7 +73,7 @@ export function Navbar() {
             <span className="neon-text text-sm font-semibold tracking-tight text-white/95">
               Mohamed Aziz Mkadmini
             </span>
-            <span className="text-xs text-zinc-400">Software Engineer & AI Product Builder</span>
+            <span className="text-xs text-zinc-400">{t.nav.role}</span>
           </Link>
 
           <nav className="hidden items-center gap-1 rounded-2xl border border-white/10 bg-white/[0.03] p-1 md:flex">
@@ -63,6 +91,7 @@ export function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-2 md:flex">
+            <LanguageToggle />
             <Button
               href={hasResume ? site.resume : site.resumeRequestMailto}
               external={hasResume}
@@ -70,13 +99,13 @@ export function Navbar() {
               className="!px-3"
             >
               <Download className="h-4 w-4" />
-              {hasResume ? "Resume" : "Request resume"}
+              {hasResume ? t.nav.resume : t.nav.requestResume}
             </Button>
             <Button href={site.github} external variant="ghost" className="!px-3">
               GitHub
             </Button>
             <Button href={site.bookCall} variant="primary" className="!px-4">
-              Book a call
+              {t.nav.bookCall}
             </Button>
           </div>
 
@@ -113,19 +142,20 @@ export function Navbar() {
                 </a>
               ))}
               <div className="mt-2 flex flex-col gap-2">
+                <LanguageToggle compact />
                 <Button
                   href={hasResume ? site.resume : site.resumeRequestMailto}
                   external={hasResume}
                   variant="secondary"
                 >
                   <Download className="h-4 w-4" />
-                  {hasResume ? "Download resume" : "Request resume"}
+                  {hasResume ? t.hero.downloadResume : t.hero.requestResume}
                 </Button>
                 <Button href={site.github} external variant="secondary">
                   GitHub
                 </Button>
                 <Button href={site.bookCall} variant="primary">
-                  Book a call
+                  {t.nav.bookCall}
                 </Button>
               </div>
             </div>

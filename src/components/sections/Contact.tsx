@@ -1,23 +1,27 @@
+"use client";
+
 import { site } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeIn, Stagger, StaggerItem } from "@/components/Motion";
 import { Download, Github, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 
 export function Contact() {
+  const { t } = useLocale();
   const hasResume = /^(https?:\/\/|\/)/.test(site.resume);
   const resumeHref = hasResume ? site.resume : site.resumeRequestMailto;
-  const resumeLabel = hasResume ? "Resume" : "Request resume";
+  const resumeLabel = hasResume ? t.nav.resume : t.nav.requestResume;
   const hasWhatsapp = site.whatsapp.startsWith("http");
 
   const links = [
-    { label: "LinkedIn", href: site.linkedin, icon: Linkedin, hint: "Professional background" },
-    { label: "GitHub", href: site.github, icon: Github, hint: "Code & projects" },
+    { label: "LinkedIn", href: site.linkedin, icon: Linkedin, hint: t.contact.linkedinHint },
+    { label: "GitHub", href: site.github, icon: Github, hint: t.contact.githubHint },
     {
       label: resumeLabel,
       href: resumeHref,
       icon: Download,
-      hint: hasResume ? "Download CV" : "Send me a note first",
+      hint: hasResume ? t.contact.resumeHint : t.contact.requestResumeHint,
     },
     {
       label: "Email",
@@ -26,7 +30,14 @@ export function Contact() {
       hint: site.email,
     },
     ...(hasWhatsapp
-      ? [{ label: "WhatsApp Business", href: site.whatsapp, icon: MessageCircle, hint: "Fast async chat" }]
+      ? [
+          {
+            label: t.contact.whatsapp,
+            href: site.whatsapp,
+            icon: MessageCircle,
+            hint: t.contact.whatsappHint,
+          },
+        ]
       : []),
   ];
 
@@ -36,15 +47,12 @@ export function Contact() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
-              Contact
+              {t.contact.kicker}
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl text-balance">
-              Let’s design and ship something exceptional.
+              {t.contact.title}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-zinc-400">
-              Share your goals, constraints, and timeline. I will answer with a clear plan,
-              architecture direction, and concrete next steps.
-            </p>
+            <p className="mt-4 text-base leading-relaxed text-zinc-400">{t.contact.description}</p>
             <Stagger className="mt-6 space-y-2" staggerChildren={0.08}>
               {links.map((l) => (
                 <StaggerItem key={l.label}>
@@ -63,7 +71,7 @@ export function Contact() {
                         <p className="text-xs text-zinc-500">{l.hint}</p>
                       </div>
                     </div>
-                    <span className="self-center text-xs text-zinc-500">Open</span>
+                    <span className="self-center text-xs text-zinc-500">{t.contact.open}</span>
                   </a>
                 </StaggerItem>
               ))}
@@ -71,11 +79,10 @@ export function Contact() {
             <div className="glass-panel mt-4 rounded-2xl border-dashed p-4 text-xs text-zinc-500">
               <p className="inline-flex items-center gap-2 text-zinc-300">
                 <Phone className="h-3.5 w-3.5 text-zinc-400" />
-                Prefer a call first?
+                {t.contact.preferCall}
               </p>
               <p className="mt-1">
-                Use <span className="text-zinc-300">Book a call</span> in the nav — it keeps
-                scheduling lightweight.
+                {t.contact.bookACall} {t.contact.preferCallBody}
               </p>
             </div>
           </div>
