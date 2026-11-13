@@ -164,22 +164,22 @@ const en: Dict = {
     role: "Software Engineer & AI Product Builder",
   },
   hero: {
-    kicker: "Software Engineer • AI Engineer",
-    titleBefore: "I build scalable software,",
-    titleHighlight: "AI-enabled products and digital systems",
-    titleAfter: "that move ideas from concept to production.",
-    body: "I work with founders and teams to build robust web products, AI features, and internal tools with clear architecture and maintainable code.",
+    kicker: "Freelance Full-Stack & AI Engineer • Available now",
+    titleBefore: "Your website, SaaS or AI tool,",
+    titleHighlight: "designed, built and live",
+    titleAfter: "in weeks, not months.",
+    body: "I turn ideas into products people pay for: premium websites, SaaS platforms with payments, and AI automations that save your team hours every week. One engineer, from first sketch to production.",
     viewPortfolio: "View portfolio",
     downloadResume: "Download resume",
     requestResume: "Request resume",
     bookCall: "Book a call",
-    sideKicker: "Core positioning",
-    sideTitle: "Clear execution from scope to delivery",
-    sideChip: "Product / AI / Systems",
+    sideKicker: "Why clients work with me",
+    sideTitle: "Shipped products, not slide decks",
+    sideChip: "Reply < 24h",
     sideBullets: [
-      "Build maintainable systems from MVP to production",
-      "Ship AI workflows with reliability, cost, and quality in mind",
-      "Connect product, data, and operations in one practical stack",
+      "SaaS live in production with Paddle payments, 2FA and 43 automated tests",
+      "Premium 3D / motion redesigns that make brands look international",
+      "AI features (GPT-4o, Whisper, automations) wired into real workflows",
     ],
   },
   about: {
@@ -213,8 +213,7 @@ const en: Dict = {
     highlights: "Engineering highlights",
     outcomes: "Outcomes",
     preview: "Product preview",
-    previewHint:
-      "Best used with real screenshots, Loom walkthroughs, and architecture diagrams to show implementation depth and technical decision-making.",
+    previewHint: "",
     seeMore: "See more",
     videoFallback: "Product video",
   },
@@ -411,7 +410,87 @@ const en: Dict = {
     rights: "All rights reserved.",
   },
   projectFields: {
-    kaizen: {
+    "n8n-ai-agents": {
+      type: "AI Automation • n8n Agents",
+      summary:
+        "What if no lead ever waited for a call back? Two AI agents built in n8n for a solar & heat-pump installer: one qualifies quote requests, the other answers support tickets, 24/7.",
+      problem:
+        "Quote requests and after-sales tickets were sorted by hand: hot leads waited, answers were inconsistent and nothing was tracked.",
+      impact:
+        "Each request is scored (hot / cold), summarised and answered with a personalised email in seconds; risky cases are escalated to a human and everything is logged in SQL.",
+      solution:
+        "n8n workflows with webhooks, RAG over the company knowledge base (pgvector embeddings), local LLM via Ollama or OpenAI, business rules that override the model when needed, PostgreSQL and Docker Compose.",
+      highlights: [
+        "Sales agent: lead scoring, AI summary, personalised email and call-back scheduling",
+        "Support agent: answers error codes from the knowledge base, escalates safety issues and refunds",
+        "Business rules always win over the LLM (e.g. tenants are never pushed as hot leads)",
+        "Workflows versioned in Git, full execution log, website chat bubble included",
+      ],
+      outcomes: [
+        "Instant answers to every lead, day and night",
+        "A reusable agent blueprint for any SME: installers, agencies, clinics, e-commerce",
+      ],
+    },
+    "medassist-ai": {
+      type: "AI SaaS for Medical Practices",
+      summary:
+        "An AI assistant for doctors and clinics: online booking, a 24/7 patient chatbot, voice notes transcribed by AI, billing and analytics, in FR / EN / AR.",
+      problem:
+        "Medical practices lose hours every day on phone calls, appointment juggling, reminders and paperwork.",
+      impact:
+        "Patients get answers and book on their own 24/7; doctors dictate notes instead of typing and see their practice activity at a glance.",
+      solution:
+        "React + Vite SaaS on Supabase (Auth + PostgreSQL), Paddle subscriptions with automatic plan activation via webhooks, Resend emails, GPT-4o chatbot and Whisper voice notes, deployed on Vercel.",
+      highlights: [
+        "Fully automated onboarding: sign-up, 4-step setup, payment, welcome email",
+        "Patient chatbot with triage and embeddable website widget",
+        "Voice notes transcribed with Whisper, reminders and analytics dashboard",
+      ],
+      outcomes: [
+        "Self-serve SaaS: zero manual work to onboard a new practice",
+        "Trilingual product ready for French-speaking and MENA markets",
+      ],
+    },
+    "oppenheim-3d": {
+      type: "Luxury Real-Estate Website Redesign (concept)",
+      summary:
+        "What if a website sold the house before the first viewing? An immersive, scroll-driven 3D redesign concept for The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubai).",
+      problem:
+        "Luxury buyers decide in seconds, yet the current site (ogroup.com) reads like a brochure: one big photo, a menu and a contact form. Nothing makes a $10M+ listing feel special online.",
+      impact:
+        "A site that feels like a private showing: visitors walk through the property from morning arrival to the house lit at night, stay longer and land on a clear \"Book a tour\" action.",
+      solution:
+        "Cinematic scroll-driven 3D walkthrough (10 scenes), glass navigation, refined luxury typography, featured-residences grid with city filters, 3D-tour badges and favorites, fully responsive.",
+      highlights: [
+        "Before / after: current homepage vs. immersive redesign",
+        "Scroll-driven scenes with a live progress HUD (01/10, time of day)",
+        "Listings with city filters, 3D-tour badges, favorites and instant tour booking",
+      ],
+      outcomes: [
+        "A premium digital experience matching a $5.3B brokerage brand",
+        "Clear conversion path: every section leads to \"Book a tour\"",
+      ],
+    },
+    "falak-cosmetic": {
+      type: "Cosmetics Brand & E-commerce Redesign",
+      summary:
+        "From a cluttered local shop to an international-looking beauty brand: full brand and website redesign for Falak Cosmetic, a Tunisian natural cosmetics label, keeping its real products and packaging.",
+      problem:
+        "The current site (falakcosmetic.tn) looks like a generic template: crowded header, loud colors and small product photos that don't match the quality of the products.",
+      impact:
+        "A soft pink \"skin & light\" identity that feels premium and girly, puts the products first and gives the brand the image it needs to sell beyond Tunisia.",
+      solution:
+        "New visual identity, hero with model + product, scroll-driven texture stories (water, drop, softness), six collections with real product photos, bilingual FR/AR touches, fast and responsive.",
+      highlights: [
+        "Before / after: current shop vs. new brand experience",
+        "Macro texture storytelling inspired by luxury skincare campaigns",
+        "Collections grid built on the brand's real products and packaging",
+      ],
+      outcomes: [
+        "Live redesign: falak-refonte.netlify.app",
+        "A brand image ready for international e-commerce and social ads",
+      ],
+    },    kaizen: {
       type: "Systematic Crypto Trading SaaS",
       summary:
         "Full-stack SaaS for systematic crypto trading: public marketing site, Paddle subscriptions (16 plans), client dashboard with live signals, performance reporting, mandatory risk framework, and admin back-office.",
@@ -518,22 +597,22 @@ const fr: Dict = {
     role: "Ingénieur logiciel & produit IA",
   },
   hero: {
-    kicker: "Ingénieur logiciel • Ingénieur IA",
-    titleBefore: "Je construis des logiciels scalables,",
-    titleHighlight: "des produits IA et des systèmes numériques",
-    titleAfter: "qui passent de l’idée à la production.",
-    body: "J’accompagne fondateurs et équipes pour créer des produits web robustes, des fonctionnalités IA et des outils internes avec une architecture claire et un code maintenable.",
+    kicker: "Développeur Full-Stack & IA freelance • Disponible",
+    titleBefore: "Votre site, SaaS ou outil IA,",
+    titleHighlight: "conçu, développé et en ligne",
+    titleAfter: "en quelques semaines, pas en quelques mois.",
+    body: "Je transforme vos idées en produits qui rapportent : sites premium, plateformes SaaS avec paiement en ligne et automatisations IA qui font gagner des heures à votre équipe chaque semaine. Un seul interlocuteur, de la maquette à la mise en production.",
     viewPortfolio: "Voir le portfolio",
     downloadResume: "Télécharger le CV",
     requestResume: "Demander le CV",
     bookCall: "Réserver un appel",
-    sideKicker: "Positionnement",
-    sideTitle: "Exécution claire du cadrage à la livraison",
-    sideChip: "Produit / IA / Systèmes",
+    sideKicker: "Pourquoi travailler avec moi",
+    sideTitle: "Des produits livrés, pas des promesses",
+    sideChip: "Réponse < 24 h",
     sideBullets: [
-      "Construire des systèmes maintenables du MVP à la production",
-      "Livrer des workflows IA avec fiabilité, coût et qualité",
-      "Relier produit, data et opérations dans une stack pragmatique",
+      "SaaS en production avec paiements Paddle, 2FA et 43 tests automatisés",
+      "Refontes premium 3D / motion qui donnent une image internationale",
+      "Fonctions IA (GPT-4o, Whisper, automatisations) intégrées au quotidien",
     ],
   },
   about: {
@@ -567,8 +646,7 @@ const fr: Dict = {
     highlights: "Points techniques",
     outcomes: "Résultats",
     preview: "Aperçu produit",
-    previewHint:
-      "Idéal avec captures réelles, walkthroughs Loom et diagrammes d’architecture pour montrer la profondeur d’implémentation.",
+    previewHint: "",
     seeMore: "Voir plus",
     videoFallback: "Vidéo produit",
   },
@@ -765,7 +843,87 @@ const fr: Dict = {
     rights: "Tous droits réservés.",
   },
   projectFields: {
-    kaizen: {
+    "n8n-ai-agents": {
+      type: "Automatisation IA • Agents n8n",
+      summary:
+        "Et si plus aucun prospect n'attendait qu'on le rappelle ? Deux agents IA construits dans n8n pour un installateur solaire et pompes à chaleur : l'un qualifie les demandes de devis, l'autre répond au SAV, 24 h/24.",
+      problem:
+        "Les demandes de devis et les tickets SAV étaient triés à la main : les prospects chauds attendaient, les réponses variaient et rien n'était suivi.",
+      impact:
+        "Chaque demande est notée (chaud / froid), résumée et reçoit un email personnalisé en quelques secondes ; les cas sensibles partent chez un humain et tout est enregistré en SQL.",
+      solution:
+        "Workflows n8n avec webhooks, RAG sur la base de connaissances de l'entreprise (embeddings pgvector), LLM local via Ollama ou OpenAI, règles métier qui priment sur le modèle, PostgreSQL et Docker Compose.",
+      highlights: [
+        "Agent commercial : scoring du lead, résumé IA, email personnalisé et rappel planifié",
+        "Agent SAV : répond aux codes erreur depuis la base, escalade la sécurité et les remboursements",
+        "Les règles métier gagnent toujours sur le LLM (ex. un locataire n'est jamais classé chaud)",
+        "Workflows versionnés dans Git, journal d'exécution complet, bulle de chat pour le site",
+      ],
+      outcomes: [
+        "Une réponse immédiate à chaque prospect, jour et nuit",
+        "Un modèle d'agent réutilisable pour toute PME : artisans, agences, cabinets, e-commerce",
+      ],
+    },
+    "medassist-ai": {
+      type: "SaaS IA pour cabinets médicaux",
+      summary:
+        "Un assistant IA pour médecins et cabinets : prise de rendez-vous en ligne, chatbot patient 24/7, notes vocales transcrites par IA, facturation et statistiques, en FR / EN / AR.",
+      problem:
+        "Les cabinets perdent des heures chaque jour au téléphone, à jongler avec les rendez-vous, les rappels et la paperasse.",
+      impact:
+        "Les patients obtiennent des réponses et réservent seuls 24/7 ; le médecin dicte ses notes au lieu de les taper et suit l'activité du cabinet d'un coup d'œil.",
+      solution:
+        "SaaS React + Vite sur Supabase (Auth + PostgreSQL), abonnements Paddle activés automatiquement par webhooks, emails Resend, chatbot GPT-4o et notes vocales Whisper, déployé sur Vercel.",
+      highlights: [
+        "Onboarding 100 % automatique : inscription, configuration en 4 étapes, paiement, email de bienvenue",
+        "Chatbot patient avec triage et widget intégrable sur le site du cabinet",
+        "Notes vocales transcrites par Whisper, rappels et tableau de bord statistiques",
+      ],
+      outcomes: [
+        "SaaS en libre-service : aucune action manuelle pour ajouter un cabinet",
+        "Produit trilingue prêt pour les marchés francophones et MENA",
+      ],
+    },
+    "oppenheim-3d": {
+      type: "Refonte site immobilier de luxe (concept)",
+      summary:
+        "Et si votre site vendait la maison avant la première visite ? Concept de refonte 3D immersive pilotée par le scroll pour The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubaï).",
+      problem:
+        "Les acheteurs de luxe décident en quelques secondes, mais le site actuel (ogroup.com) ressemble à une brochure : une grande photo, un menu, un formulaire. Rien ne met en valeur un bien à 10 M$.",
+      impact:
+        "A site that feels like a private showing: visitors walk through the property from morning arrival to the house lit at night, stay longer and land on a clear \"Book a tour\" action.",
+      solution:
+        "Visite 3D cinématique au scroll (10 scènes), navigation en verre, typographie luxe, grille de propriétés avec filtres par ville, badges visite 3D et favoris, 100 % responsive.",
+      highlights: [
+        "Avant / après : page d'accueil actuelle vs refonte immersive",
+        "Scènes pilotées par le scroll avec indicateur de progression (01/10, heure de la journée)",
+        "Annonces avec filtres par ville, badges visite 3D, favoris et réservation de visite",
+      ],
+      outcomes: [
+        "Une expérience digitale à la hauteur d'une agence à 5,3 Md$ de ventes",
+        "Clear conversion path: every section leads to \"Book a tour\"",
+      ],
+    },
+    "falak-cosmetic": {
+      type: "Refonte marque & e-commerce cosmétique",
+      summary:
+        "D'une boutique locale chargée à une marque beauté à l'allure internationale : refonte complète de la marque et du site de Falak Cosmetic (cosmétique naturelle tunisienne), en gardant ses vrais produits et emballages.",
+      problem:
+        "Le site actuel (falakcosmetic.tn) ressemble à un template générique : en-tête chargé, couleurs criardes et petites photos qui ne reflètent pas la qualité des produits.",
+      impact:
+        "A soft pink \"skin & light\" identity that feels premium and girly, puts the products first and gives the brand the image it needs to sell beyond Tunisia.",
+      solution:
+        "Nouvelle identité visuelle, hero avec mannequin + produit, histoires de textures au scroll (l'eau, la goutte, la douceur), six collections avec les vraies photos produits, touches FR/AR, rapide et responsive.",
+      highlights: [
+        "Avant / après : boutique actuelle vs nouvelle expérience de marque",
+        "Storytelling macro des textures inspiré des campagnes skincare de luxe",
+        "Grille de collections construite avec les vrais produits de la marque",
+      ],
+      outcomes: [
+        "Refonte en ligne : falak-refonte.netlify.app",
+        "Une image de marque prête pour l'e-commerce international et la pub sur les réseaux",
+      ],
+    },    kaizen: {
       type: "SaaS trading crypto systématique",
       summary:
         "SaaS full-stack pour le trading crypto systématique : site marketing, abonnements Paddle (16 formules), dashboard client avec signaux live, reporting performance, cadre de risque obligatoire et back-office admin.",

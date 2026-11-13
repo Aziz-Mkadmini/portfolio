@@ -21,9 +21,9 @@ export const site = {
   linkedin:
     process.env.NEXT_PUBLIC_LINKEDIN_URL ??
     "https://www.linkedin.com/in/mohamed-aziz-mkadmini-84b274221",
-  github: process.env.NEXT_PUBLIC_GITHUB_URL ?? "https://github.com/Azizmkadmini",
+  github: process.env.NEXT_PUBLIC_GITHUB_URL ?? "https://github.com/Aziz-Mkadmini",
   /** Include country code, e.g. +216XXXXXXXX */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/21627346662",
   /** Optional Calendly, Cal.com, or TidyCal */
   bookCall: process.env.NEXT_PUBLIC_BOOK_CALL_URL ?? "#contact",
   /** Public resume or CV URL */

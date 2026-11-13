@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight, Calendar, Download, FolderKanban, Github, Linkedin } from "lucide-react";
+import { ArrowUpRight, Calendar, Download, FolderKanban, Github, Linkedin, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/Button";
@@ -109,14 +109,9 @@ export function Hero() {
                 <Github className="h-4 w-4" />
                 GitHub
               </Button>
-              <Button
-                href={hasResume ? site.resume : site.resumeRequestMailto}
-                external={hasResume}
-                variant="ghost"
-                className="w-full min-[420px]:w-auto"
-              >
-                <Download className="h-4 w-4" />
-                {hasResume ? t.nav.resume : t.nav.requestResume}
+              <Button href={site.whatsapp} external variant="ghost" className="w-full min-[420px]:w-auto">
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp
               </Button>
             </motion.div>
           </div>

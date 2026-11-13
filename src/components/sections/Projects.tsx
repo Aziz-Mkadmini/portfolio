@@ -271,9 +271,11 @@ export function Projects() {
                           </video>
                         </div>
                       ) : null}
-                      <p className="text-[11px] leading-relaxed text-zinc-600">
-                        {t.projects.previewHint}
-                      </p>
+                      {t.projects.previewHint ? (
+                        <p className="text-[11px] leading-relaxed text-zinc-600">
+                          {t.projects.previewHint}
+                        </p>
+                      ) : null}
                       {p.images?.length ? (
                         <>
                           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
