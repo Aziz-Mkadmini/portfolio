@@ -17,6 +17,10 @@ html {
   scroll-padding-top: 68px;
 }
 
+html.lenis {
+  scroll-behavior: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

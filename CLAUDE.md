@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Personal portfolio site for Mohamed Aziz Mkadmini (live at https://mohamedazizmkadmini.vercel.app/). Next.js 15 App Router, React 19, TypeScript, Tailwind CSS 3, Framer Motion. No database, no auth — the only server code is the contact form endpoint.
+Personal portfolio site for Mohamed Aziz Mkadmini (live at https://mohamedazizmkadmini.vercel.app/). Next.js 15 App Router, React 19, TypeScript, Tailwind CSS 3, Framer Motion, one react-three-fiber scene, Lenis. No database, no auth — the only server code is the contact form endpoint.
 
 ## Commands
 
@@ -35,9 +35,14 @@ There are no locale routes. `LocaleProvider` (`src/lib/i18n/LocaleProvider.tsx`)
 
 ### Pages
 
-- `/` (`src/app/page.tsx`) stacks the section components from `src/components/sections/` in order.
+- `/` (`src/app/page.tsx`) stacks the sections from `src/components/sections/` in order: Hero, TechMarquee, Projects, Services, Process, Experience, Contact. Everything below the marquee is loaded with `next/dynamic` (still server-rendered) so it hydrates in separate chunks.
 - `/projects` reuses the same `Projects` and `Contact` sections; there are no per-project routes — each case study is rendered inline by `Projects.tsx`.
 - Navigation uses hash links to section ids (`/#services`, `#contact`, …), so keep section `id`s stable.
+- Strings added by the redesign (CTAs, process steps, key figures, service timelines) live under `t.studio` in `messages.ts`. `t.studio.services.delays` is index-aligned with `t.services.items`. Prices show `t.studio.services.onQuote` until real amounts are provided.
+
+### 3D hero — one canvas only
+
+`components/three/HeroVisual.tsx` owns the only WebGL canvas on the site; do not add another. It renders an inline SVG orb first, then loads `HeroScene.tsx` (`next/dynamic`, `ssr: false`) on the first user interaction or 4 s after load. three.js is never fetched when WebGL is missing or `prefers-reduced-motion` is set, and the canvas `frameloop` switches to `"never"` when the hero is off-screen or the tab is hidden. Lighting is generated with drei `Lightformer`s — no external HDRI, which the CSP would also block. This deferral is what keeps mobile Lighthouse performance around 85; mounting the canvas eagerly dropped it to 58.
 
 ### Contact form
 
@@ -45,14 +50,17 @@ There are no locale routes. `LocaleProvider` (`src/lib/i18n/LocaleProvider.tsx`)
 
 ### Styling and motion
 
-- Dark theme only. Colors are RGB-triplet CSS variables in `src/app/globals.css` (`--surface`, `--accent`, …) exposed as Tailwind colors (`bg-surface`, `text-accent`) in `tailwind.config.ts`. Fonts are Manrope (`font-sans`) and Sora (`font-display`) via `next/font`.
-- Use the wrappers in `src/components/Motion.tsx` (`FadeIn`, `Stagger`, `StaggerItem`) for scroll animations; they already honor `prefers-reduced-motion`.
-- `Projects.tsx` maps stack labels to brand icons by keyword (`stackIconByKeyword`); add an entry there when a new technology should show an icon.
+- Dark theme only, with a single amber accent — no other hue. Colors are RGB-triplet CSS variables in `src/app/globals.css` exposed as Tailwind colors: `surface`, `surface-raised`, `ink` (text), `muted` (secondary text), `line` (hairline borders), `accent`. Fonts are Inter (`font-sans`) and Bricolage Grotesque (`font-display`) via `next/font`. Layout is editorial: hairlines and type rather than boxed cards; `.label` is the small uppercase caption style.
+- `src/components/Motion.tsx`: `FadeIn`, `Stagger`, `StaggerItem` (scroll reveals), `RevealWords` (word-by-word titles, CSS-driven so the hero `<h1>` paints before hydration), `Counter` (count-up numbers). All honor `prefers-reduced-motion`. `SectionHeading` already uses `RevealWords`.
+- `SmoothScroll.tsx` loads Lenis only for mouse/trackpad devices; touch devices use native scrolling. `Cursor.tsx` (custom cursor) likewise only mounts for a fine pointer and adds `html.has-cursor`.
+- `ui/BeforeAfter.tsx` expects the stacked 1680x1614 sheets in `public/redesigns/*-before-after.jpg` (before on top, after below) and crops the same file twice; a new sheet must use the same layout. Which projects use it is set by `beforeAfterSlugs` in `Projects.tsx`.
+- `Projects.tsx` maps stack labels to brand icons by keyword (`stackIconByKeyword`); add an entry there when a new technology should show an icon. Gallery images and the video inside a case study are only rendered once its `<details>` is opened.
 
 ### Assets and security headers
 
 - Served assets live in `public/<project>/`. The root-level `kaizen/`, `shopify/`, `Nailsscan pro/` folders, `imageprofil.png` and the CV PDF are original source captures, not referenced by the site.
-- `next.config.ts` sets a strict CSP (`default-src 'self'`, `media-src 'self'`, `form-action 'self'`) and only allows `images.unsplash.com` for remote `next/image`. Embedding third-party scripts, iframes, videos or fonts requires updating the CSP there.
+- `next.config.ts` sets a strict CSP (`default-src 'self'`, `media-src 'self'`, `form-action 'self'`) and only allows `images.unsplash.com` for remote `next/image`. Embedding third-party scripts, iframes, videos or fonts requires updating the CSP there. `'unsafe-eval'` is added in development only, because `next dev` cannot hydrate without it.
+- `next build` and `next dev` share `.next`: stop the dev server before running a build.
 
 ## Misleading docs
 
