@@ -137,10 +137,103 @@ type Dict = {
     requestResume: string;
     rights: string;
   };
+  /** Strings added with the studio redesign (hero CTAs, marquee, process, stats, sliders). */
+  studio: {
+    viewProjects: string;
+    whatsappCta: string;
+    /** Short label for the navbar and the floating mobile button. */
+    contactCta: string;
+    /** Pre-filled WhatsApp message. */
+    whatsappPrefill: string;
+    whatsappAbout: string;
+    askDemo: string;
+    scroll: string;
+    marquee: string;
+    caseToggle: string;
+    filters: { label: string; all: string; automation: string; fullstack: string };
+    gallery: string;
+    before: string;
+    after: string;
+    dragHint: string;
+    /** "What I do for you": the two pillars of the offer, shown under the hero. */
+    pillars: {
+      kicker: string;
+      title: string;
+      description: string;
+      benefitsLabel: string;
+      examplesLabel: string;
+      proofLabel: string;
+      cards: Array<{
+        /** Matches `Project.pillars` in src/lib/projects.ts. */
+        key: "automation" | "fullstack";
+        title: string;
+        promise: string;
+        benefits: string[];
+        /** Typical use cases. Examples, not past clients. */
+        examples: string;
+        proofSlug: string;
+        proofName: string;
+        proofText: string;
+        cta: string;
+        prefill: string;
+      }>;
+    };
+    /** The offers, grouped by pillar. Prices stay "on quote" until real amounts are provided. */
+    offers: {
+      title: string;
+      description: string;
+      deliverablesLabel: string;
+      priceNote: string;
+      families: Array<{
+        key: "automation" | "fullstack";
+        title: string;
+        intro: string;
+        items: Array<{ title: string; benefit: string; deliverables: string[]; delay: string }>;
+      }>;
+    };
+    /** Client-facing "Why me" block; the full résumé sits behind `backgroundToggle`. */
+    why: {
+      kicker: string;
+      title: string;
+      description: string;
+      points: Array<{ title: string; body: string }>;
+      backgroundToggle: string;
+    };
+    services: {
+      from: string;
+      onQuote: string;
+      delayLabel: string;
+      /** One indicative timeline per entry of `services.items`, same order. */
+      delays: string[];
+      cta: string;
+    };
+    process: {
+      kicker: string;
+      title: string;
+      description: string;
+      steps: Array<{ title: string; body: string; when: string }>;
+    };
+    stats: {
+      kicker: string;
+      items: Array<{
+        value: number;
+        prefix?: string;
+        suffix?: string;
+        label: string;
+        /** Where the figure comes from (project or employer). */
+        source: string;
+      }>;
+    };
+    aboutKicker: string;
+    credsKicker: string;
+    contactOr: string;
+  };
   projectFields: Record<
     string,
     {
       type: string;
+      /** Two to four short facts shown as chips under the project title. */
+      proof?: string[];
       summary: string;
       problem: string;
       impact: string;
@@ -161,14 +254,14 @@ const en: Dict = {
     resume: "Resume",
     requestResume: "Request resume",
     bookCall: "Book a call",
-    role: "Software Engineer & AI Product Builder",
+    role: "Full-Stack & AI Automation Developer",
   },
   hero: {
-    kicker: "Freelance Full-Stack & AI Engineer • Available now",
-    titleBefore: "Your website, SaaS or AI tool,",
-    titleHighlight: "designed, built and live",
-    titleAfter: "in weeks, not months.",
-    body: "I turn ideas into products people pay for: premium websites, SaaS platforms with payments, and AI automations that save your team hours every week. One engineer, from first sketch to production.",
+    kicker: "Freelance Full-Stack & AI Automation Developer • Available",
+    titleBefore: "I automate your business",
+    titleHighlight: "and build your websites & SaaS,",
+    titleAfter: "from idea to launch.",
+    body: "AI agents and n8n workflows that answer your customers and qualify your leads in seconds. Websites and SaaS delivered with payments, customer accounts and a dashboard. One person to talk to, start to finish.",
     viewPortfolio: "View portfolio",
     downloadResume: "Download resume",
     requestResume: "Request resume",
@@ -177,9 +270,9 @@ const en: Dict = {
     sideTitle: "Shipped products, not slide decks",
     sideChip: "Reply < 24h",
     sideBullets: [
-      "SaaS live in production with Paddle payments, 2FA and 43 automated tests",
-      "Premium 3D / motion redesigns that make brands look international",
-      "AI features (GPT-4o, Whisper, automations) wired into real workflows",
+      "Your customer requests answered in seconds, day and night",
+      "A SaaS live in production with online payments and customer accounts",
+      "Premium redesigns that give your brand an international look",
     ],
   },
   about: {
@@ -204,7 +297,7 @@ const en: Dict = {
     discuss: "Discuss a similar build",
     caseStudy: "Case study",
     problem: "Problem",
-    impact: "Business impact",
+    impact: "Result",
     solution: "Solution",
     stack: "Stack",
     liveDemo: "Live demo",
@@ -303,21 +396,28 @@ const en: Dict = {
     professional: "Professional experience",
     education: "Education & training",
     professionalItems: [
-      "Software Engineering Intern — APRILIUM (2024): contributed to production web features, code quality, and delivery workflows.",
-      "AI and automation project work (2023-2026): built scalable software, AI-backed tools, and business process systems.",
+      "Freelance Full-Stack & AI Developer (06/2025 – present): design and production launch of web products, APIs and SaaS — Kaizen Kyoto Capital, NailScan Pro, MedAssist AI.",
+      "Data Science & AI Intern — Poulina Group Holding (02/2025 – 05/2025): ETL flows automated with SSIS (-40% processing time), ML models above 80% accuracy, Power BI dashboards (-50% reporting time).",
+      "Software Development Intern — Société Tunisienne de Banque (10/2023 – 11/2023): archive management web app with Clean Architecture (Angular, .NET, PostgreSQL).",
+      "Full-Stack Development Intern — APRILIUM (01/2023 – 02/2023): school management app (React, TypeScript, NestJS, SQL Server).",
+      "Full-Stack Development Intern — AZZEDDA (02/2022 – 05/2022): e-commerce app (Angular, Spring Boot, MongoDB).",
     ],
     educationItems: [
-      "Computer science engineering track with hands-on software architecture, data systems, and full-stack implementation.",
-      "Continuous learning through practical projects, technical certifications, and applied product work.",
+      "Engineering degree in Computer Engineering — Université Centrale, Tunis (2022 – 2025).",
+      "Applied bachelor's degree in Information Technology — ISET Zaghouan (2019 – 2022).",
     ],
     creds: [
       {
-        title: "APRILIUM Internship",
-        body: "Industry internship with real delivery expectations, collaborative development, and production-focused engineering practices.",
+        title: "ISTQB Foundation",
+        body: "Software testing certification: a testing and quality foundation that strengthens reliability across architecture, implementation, and release flow.",
       },
       {
-        title: "ISTQB Certification Path",
-        body: "Testing and quality assurance foundation that strengthens reliability mindset across architecture, implementation, and release flow.",
+        title: "NASA Space Apps Challenge",
+        body: "Took part in the international hackathon with an AI project.",
+      },
+      {
+        title: "Full Stack Angular / Spring Boot",
+        body: "Full-stack development certification covering Angular and Spring Boot.",
       },
     ],
     achievements: "Achievements",
@@ -329,7 +429,7 @@ const en: Dict = {
     availability: "Availability",
     availabilityBody: "Open to freelance, consulting, and full-time opportunities — remote-first.",
     timeline: "Timeline snapshot",
-    timelineBody: "2023-2026: software and AI product builds. 2024: APRILIUM internship.",
+    timelineBody: "2022 – 2023: internships at AZZEDDA, APRILIUM and STB. 2025: final-year internship at Poulina Group Holding, then freelance since June 2025.",
     resumeNote: "Resume available for recruiters and partners",
   },
   social: {
@@ -398,8 +498,8 @@ const en: Dict = {
     asyncNote: "Prefer async first? Use LinkedIn, GitHub, or email in the contact section.",
   },
   footer: {
-    role: "Software Engineer & AI Product Builder",
-    body: "I design and build scalable products, AI-enabled features, and business systems with a focus on reliability and maintainability.",
+    role: "Full-Stack & AI Automation Developer",
+    body: "I automate repetitive work with AI agents and n8n workflows, and I build websites and SaaS from idea to launch.",
     navigate: "Navigate",
     engagement: "Engagement",
     featuredWork: "Featured work",
@@ -409,9 +509,263 @@ const en: Dict = {
     requestResume: "Request resume",
     rights: "All rights reserved.",
   },
+  studio: {
+    viewProjects: "View my work",
+    whatsappCta: "Message me on WhatsApp",
+    contactCta: "Contact me",
+    whatsappPrefill: "Hello Mohamed, I have a project I would like to discuss.",
+    whatsappAbout: "Hello Mohamed, I would like to know more about this project:",
+    askDemo: "Ask for a demo",
+    scroll: "Scroll",
+    marquee: "Technologies I ship to production",
+    caseToggle: "Read the full case study",
+    filters: {
+      label: "Filter projects",
+      all: "All",
+      automation: "Automation",
+      fullstack: "Websites & SaaS",
+    },
+    gallery: "Screens",
+    before: "Before",
+    after: "After",
+    dragHint: "Drag to compare",
+    pillars: {
+      kicker: "What I do for you",
+      title: "Two ways to move your business forward",
+      description:
+        "Automate what wastes your team's time, or build the product your customers will use. Often both.",
+      benefitsLabel: "What you get",
+      examplesLabel: "Typical use cases",
+      proofLabel: "Proof",
+      cards: [
+        {
+          key: "automation",
+          title: "Automation",
+          promise:
+            "I automate your company's repetitive tasks: customer requests get an answer in seconds, leads are qualified, and your data moves on its own.",
+          benefits: [
+            "Every customer request answered in seconds, around the clock",
+            "Leads scored and sorted before your first call",
+            "Your tools connected to each other: no more copy-paste or forgotten follow-ups",
+          ],
+          examples: "Real-estate agencies, tradespeople, practices, e-commerce, recruitment",
+          proofSlug: "n8n-ai-agents",
+          proofName: "Lumina Énergie",
+          proofText:
+            "Two AI agents that qualify quote requests and answer support tickets for a solar installer.",
+          cta: "Automate my business",
+          prefill: "Hello Mohamed, I would like to automate part of my business.",
+        },
+        {
+          key: "fullstack",
+          title: "Websites & SaaS",
+          promise:
+            "I design and launch your website or SaaS, with payments, customer accounts and the dashboard.",
+          benefits: [
+            "A website or platform that is live, not a mockup",
+            "Online payments, customer accounts and a dashboard included",
+            "A premium design that is fast on mobile and ready for Google",
+          ],
+          examples: "Showcase sites, redesigns, SaaS MVPs, dashboards",
+          proofSlug: "kaizen",
+          proofName: "Kaizen Kyoto Capital",
+          proofText:
+            "A SaaS in production with online subscriptions, a customer area and an admin back-office.",
+          cta: "Launch my website or SaaS",
+          prefill: "Hello Mohamed, I would like to launch a website or a SaaS.",
+        },
+      ],
+    },
+    offers: {
+      title: "Clear offers, each with a deliverable and a timeline",
+      description:
+        "Tell me what you need: you get a costed quote within 24 hours, before any commitment.",
+      deliverablesLabel: "What you receive",
+      priceNote: "Price on quote, sent within 24 hours",
+      families: [
+        {
+          key: "automation",
+          title: "Automation",
+          intro: "AI agents and n8n workflows that take the repetitive work off your team.",
+          items: [
+            {
+              title: "AI agent that answers your customers",
+              benefit:
+                "Your customers get an accurate answer in seconds, at any hour, based on your own documents.",
+              deliverables: [
+                "Agent connected to your website or mailbox",
+                "Answers grounded in your documents and your rules",
+                "Handover to a human for sensitive cases",
+              ],
+              delay: "1 to 2 weeks",
+            },
+            {
+              title: "Lead qualification",
+              benefit:
+                "Every request is scored, summarised and filed before your first call.",
+              deliverables: [
+                "Connected form or entry point",
+                "Hot / cold score and automatic summary",
+                "Personalised email and call-back scheduling",
+              ],
+              delay: "1 to 2 weeks",
+            },
+            {
+              title: "n8n workflows",
+              benefit:
+                "Repetitive tasks run on their own: follow-ups, reporting, data syncing.",
+              deliverables: [
+                "Map of your repetitive tasks",
+                "Documented, versioned n8n workflows",
+                "Execution log and alerts when something fails",
+              ],
+              delay: "3 to 10 days",
+            },
+            {
+              title: "API integrations",
+              benefit: "Your tools finally talk to each other: payments, CRM, forms, databases.",
+              deliverables: [
+                "Connection between the tools you already use",
+                "Automatic retries when a call fails",
+                "Clear documentation for your team",
+              ],
+              delay: "3 to 10 days",
+            },
+          ],
+        },
+        {
+          key: "fullstack",
+          title: "Websites & SaaS",
+          intro: "From the showcase site to the complete platform, designed, built and launched.",
+          items: [
+            {
+              title: "Premium showcase website",
+              benefit: "A fast, elegant site that builds trust and makes people contact you.",
+              deliverables: [
+                "Custom, mobile-first design",
+                "SEO, performance and contact form",
+                "Launch and domain setup",
+              ],
+              delay: "2 to 3 weeks",
+            },
+            {
+              title: "Redesign",
+              benefit: "Your current site, rethought to match the level you really work at.",
+              deliverables: [
+                "Audit of the existing site and before / after mockup",
+                "New visual identity and animations",
+                "Migration of your content",
+              ],
+              delay: "2 to 4 weeks",
+            },
+            {
+              title: "SaaS MVP",
+              benefit: "Your idea becomes a product customers can pay for.",
+              deliverables: [
+                "Customer accounts and online payment",
+                "Customer dashboard and admin back-office",
+                "Automated tests and production launch",
+              ],
+              delay: "4 to 8 weeks",
+            },
+            {
+              title: "Dashboard",
+              benefit: "Your key numbers in one place, up to date and readable at a glance.",
+              deliverables: [
+                "Indicators defined with you",
+                "Role-based access",
+                "Data refreshed automatically",
+              ],
+              delay: "2 to 3 weeks",
+            },
+          ],
+        },
+      ],
+    },
+    why: {
+      kicker: "Why me",
+      title: "One person to talk to, from the first call to launch",
+      description:
+        "No account manager, no subcontracting chain: the person you talk to is the one who builds.",
+      points: [
+        { title: "Reply within 24 hours", body: "On WhatsApp or by email, weekdays included in your time zone." },
+        { title: "You see the progress", body: "A preview link at each stage, so you can adjust as we go." },
+        { title: "French, English, Arabic", body: "Based in Tunis (UTC+1), working remotely with clients abroad." },
+      ],
+      backgroundToggle: "Background, education and certifications",
+    },
+    services: {
+      from: "From",
+      onQuote: "On quote",
+      delayLabel: "Timeline",
+      delays: [
+        "4 to 8 weeks",
+        "2 to 4 weeks",
+        "1 to 2 weeks",
+        "3 to 10 days",
+        "2 to 3 weeks",
+        "2 to 4 weeks",
+        "1 to 3 weeks",
+      ],
+      cta: "Get a quote",
+    },
+    process: {
+      kicker: "Process",
+      title: "Four steps, no surprises",
+      description:
+        "You always know where the project stands, what comes next and what it costs.",
+      steps: [
+        {
+          title: "Free call",
+          body: "30 minutes, no commitment, to understand your need, constraints and budget. You leave with a clear scope and a quote.",
+          when: "Day 1",
+        },
+        {
+          title: "Audit / mockup",
+          body: "For an automation, I map your current process. For a website or SaaS, I design the key screens. You approve before anything is built.",
+          when: "Week 1",
+        },
+        {
+          title: "Development",
+          body: "Built in stages with a preview link: you follow progress and adjust as we go.",
+          when: "Following weeks",
+        },
+        {
+          title: "Launch + follow-up",
+          body: "Deployment, testing and handover with documentation. I stay available after go-live for adjustments.",
+          when: "Final week",
+        },
+      ],
+    },
+    stats: {
+      kicker: "Key figures",
+      items: [
+        { value: 43, label: "automated tests with CI", source: "Kaizen Kyoto Capital" },
+        {
+          value: 40,
+          prefix: "-",
+          suffix: "%",
+          label: "ETL processing time, automated with SSIS",
+          source: "Poulina Group Holding",
+        },
+        {
+          value: 50,
+          prefix: "-",
+          suffix: "%",
+          label: "reporting time with Power BI dashboards",
+          source: "Poulina Group Holding",
+        },
+        { value: 84, suffix: "/100", label: "security score", source: "Kaizen Kyoto Capital" },
+      ],
+    },
+    aboutKicker: "About",
+    credsKicker: "Certifications & credentials",
+    contactOr: "or write to me directly",
+  },
   projectFields: {
     "n8n-ai-agents": {
       type: "AI Automation • n8n Agents",
+      proof: ["Answers in seconds", "Leads scored hot / cold", "24/7"],
       summary:
         "What if no lead ever waited for a call back? Two AI agents built in n8n for a solar & heat-pump installer: one qualifies quote requests, the other answers support tickets, 24/7.",
       problem:
@@ -433,6 +787,7 @@ const en: Dict = {
     },
     "medassist-ai": {
       type: "AI SaaS for Medical Practices",
+      proof: ["Online booking 24/7", "Patient chatbot", "FR / EN / AR"],
       summary:
         "An AI assistant for doctors and clinics: online booking, a 24/7 patient chatbot, voice notes transcribed by AI, billing and analytics, in FR / EN / AR.",
       problem:
@@ -453,6 +808,7 @@ const en: Dict = {
     },
     "oppenheim-3d": {
       type: "Luxury Real-Estate Website Redesign (concept)",
+      proof: ["Redesign concept", "Scroll-driven 3D tour"],
       summary:
         "What if a website sold the house before the first viewing? An immersive, scroll-driven 3D redesign concept for The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubai).",
       problem:
@@ -473,6 +829,7 @@ const en: Dict = {
     },
     "falak-cosmetic": {
       type: "Cosmetics Brand & E-commerce Redesign",
+      proof: ["Redesign live", "New brand identity"],
       summary:
         "From a cluttered local shop to an international-looking beauty brand: full brand and website redesign for Falak Cosmetic, a Tunisian natural cosmetics label, keeping its real products and packaging.",
       problem:
@@ -492,12 +849,13 @@ const en: Dict = {
       ],
     },    kaizen: {
       type: "Systematic Crypto Trading SaaS",
+      proof: ["Live in production", "Online payments", "43 automated tests", "Security 84/100"],
       summary:
-        "Full-stack SaaS for systematic crypto trading: public marketing site, Paddle subscriptions (16 plans), client dashboard with live signals, performance reporting, mandatory risk framework, and admin back-office.",
+        "A complete subscription platform for a crypto trading signals service: visitors subscribe online, get their client area, and the team runs everything from an admin back-office.",
       problem:
-        "Launching a trading signals product requires more than a landing page — subscribers need gated access, verified performance, billing lifecycle, and operator tooling without security gaps.",
+        "Selling trading signals takes far more than a landing page: you need to collect subscriptions, reserve content for paying clients and prove performance, with no security gaps.",
       impact:
-        "Delivered an end-to-end commercial platform: visitors can subscribe via Paddle, clients receive tier-gated signals after completing the 1% risk framework, and admins manage users, revenue, and billing from a dedicated console.",
+        "A commercial product live in production: online payment, automatic plan activation, a client area with signals and performance reports, and a back-office to track users and revenue.",
       solution:
         "Built with Next.js 14, Prisma + Neon, NextAuth (email + Google), Paddle webhooks, Upstash rate limiting, 2FA for admins, equity-curve performance sync, SEO (sitemap, Learn hub, JSON-LD), and 43 automated tests with CI.",
       highlights: [
@@ -516,6 +874,7 @@ const en: Dict = {
     },
     istetdaa: {
       type: "Premium Digital Invitations",
+      proof: ["Live", "Order via WhatsApp", "FR / EN / AR"],
       summary:
         "Luxury digital invitation platform (استدعاء) for weddings, birthdays, and parties — mobile-first templates, interactive demos, multilingual FR/EN/AR, and WhatsApp ordering.",
       problem:
@@ -540,6 +899,7 @@ const en: Dict = {
     },
     "shopify-press-on-nails-scan": {
       type: "Shopify E-commerce + Scan",
+      proof: ["Shopify store", "Scan-guided sizing"],
       summary:
         "A Shopify storefront for press-on nails with a custom order flow and scan-assisted sizing implementation to improve purchase confidence.",
       problem:
@@ -562,12 +922,13 @@ const en: Dict = {
     },
     "nailscan-pro": {
       type: "Shopify SaaS",
+      proof: ["SaaS for Shopify", "Camera scan", "Online subscriptions"],
       summary:
-        "A Shopify nail sizing SaaS with camera-based demo flow, search/proxy integration to a dedicated scan API, and production-grade user/auth + subscription foundations.",
+        "A tool for Shopify press-on nail stores: the customer scans her hand with her phone camera and gets her size, no measuring.",
       problem:
-        "Teams needed a reliable way to convert camera scans into a usable sizing flow inside Shopify, while keeping the frontend and scan API decoupled.",
+        "Picking the right press-on nail size online is hard: customers hesitate, get it wrong and send orders back.",
       impact:
-        "A structured end-to-end architecture that supports iteration: clear frontend demo UX, a proxy layer to the scan API, and a consistent product foundation for users and billing.",
+        "A working camera demo and the base of a sellable SaaS: user accounts, online subscriptions and a separate scan service that is easy to evolve.",
       solution:
         "Implemented a Next.js SaaS frontend with authentication, subscription setup, and a `/demo` camera experience that forwards scan requests to a separate FastAPI service.",
       highlights: [
@@ -594,14 +955,14 @@ const fr: Dict = {
     resume: "CV",
     requestResume: "Demander le CV",
     bookCall: "Réserver un appel",
-    role: "Ingénieur logiciel & produit IA",
+    role: "Développeur Full-Stack & Automatisation IA",
   },
   hero: {
-    kicker: "Développeur Full-Stack & IA freelance • Disponible",
-    titleBefore: "Votre site, SaaS ou outil IA,",
-    titleHighlight: "conçu, développé et en ligne",
-    titleAfter: "en quelques semaines, pas en quelques mois.",
-    body: "Je transforme vos idées en produits qui rapportent : sites premium, plateformes SaaS avec paiement en ligne et automatisations IA qui font gagner des heures à votre équipe chaque semaine. Un seul interlocuteur, de la maquette à la mise en production.",
+    kicker: "Développeur Full-Stack & Automatisation IA • Freelance • Disponible",
+    titleBefore: "J’automatise votre business",
+    titleHighlight: "et je développe vos sites & SaaS,",
+    titleAfter: "de l’idée à la mise en ligne.",
+    body: "Des agents IA et des workflows n8n qui répondent à vos clients et qualifient vos prospects en quelques secondes. Des sites et des SaaS livrés avec le paiement, les comptes clients et le tableau de bord. Un seul interlocuteur, du début à la fin.",
     viewPortfolio: "Voir le portfolio",
     downloadResume: "Télécharger le CV",
     requestResume: "Demander le CV",
@@ -610,9 +971,9 @@ const fr: Dict = {
     sideTitle: "Des produits livrés, pas des promesses",
     sideChip: "Réponse < 24 h",
     sideBullets: [
-      "SaaS en production avec paiements Paddle, 2FA et 43 tests automatisés",
-      "Refontes premium 3D / motion qui donnent une image internationale",
-      "Fonctions IA (GPT-4o, Whisper, automatisations) intégrées au quotidien",
+      "Vos demandes clients reçoivent une réponse en quelques secondes, jour et nuit",
+      "Un SaaS en production avec paiement en ligne et comptes clients",
+      "Des refontes premium qui donnent à votre marque une image internationale",
     ],
   },
   about: {
@@ -637,7 +998,7 @@ const fr: Dict = {
     discuss: "Discuter d’un projet similaire",
     caseStudy: "Étude de cas",
     problem: "Problème",
-    impact: "Impact business",
+    impact: "Résultat",
     solution: "Solution",
     stack: "Stack",
     liveDemo: "Démo live",
@@ -736,21 +1097,28 @@ const fr: Dict = {
     professional: "Expérience professionnelle",
     education: "Formation",
     professionalItems: [
-      "Stagiaire ingénierie logicielle — APRILIUM (2024) : contributions features web en production, qualité de code et process de livraison.",
-      "Projets IA et automatisation (2023-2026) : logiciels scalables, outils IA et systèmes de processus métier.",
+      "Développeur Full-Stack & solutions IA, freelance (06/2025 – aujourd’hui) : conception et mise en production de produits web, APIs et SaaS — Kaizen Kyoto Capital, NailScan Pro, MedAssist AI.",
+      "Stagiaire Data Science & IA — Poulina Group Holding (02/2025 – 05/2025) : flux ETL automatisés via SSIS (-40 % de temps de traitement), modèles ML à plus de 80 % de précision, dashboards Power BI (-50 % de temps de reporting).",
+      "Stagiaire Développement Logiciel — Société Tunisienne de Banque (10/2023 – 11/2023) : application web de gestion d’archivage en Clean Architecture (Angular, .NET, PostgreSQL).",
+      "Stagiaire Développement Full-Stack — APRILIUM (01/2023 – 02/2023) : application de gestion scolaire (React, TypeScript, NestJS, SQL Server).",
+      "Stagiaire Développement Full-Stack — AZZEDDA (02/2022 – 05/2022) : application e-commerce (Angular, Spring Boot, MongoDB).",
     ],
     educationItems: [
-      "Parcours ingénierie informatique avec architecture logicielle, systèmes de données et full-stack appliqué.",
-      "Apprentissage continu via projets concrets, certifications techniques et travail produit.",
+      "Diplôme d’ingénieur en génie informatique — Université Centrale, Tunis (2022 – 2025).",
+      "Licence appliquée en technologies de l’informatique — ISET Zaghouan (2019 – 2022).",
     ],
     creds: [
       {
-        title: "Stage APRILIUM",
-        body: "Stage en conditions réelles : attentes de livraison, développement collaboratif et pratiques d’ingénierie orientées production.",
+        title: "ISTQB Foundation",
+        body: "Certification en test logiciel : des fondations test & qualité qui renforcent la fiabilité sur l’architecture, l’implémentation et le flux de release.",
       },
       {
-        title: "Parcours certification ISTQB",
-        body: "Fondations test & qualité qui renforcent la fiabilité sur l’architecture, l’implémentation et le flux de release.",
+        title: "NASA Space Apps Challenge",
+        body: "Participation au hackathon international avec un projet IA.",
+      },
+      {
+        title: "Full Stack Angular / Spring Boot",
+        body: "Certification en développement full-stack Angular et Spring Boot.",
       },
     ],
     achievements: "Réalisations",
@@ -762,7 +1130,7 @@ const fr: Dict = {
     availability: "Disponibilité",
     availabilityBody: "Ouvert au freelance, au consulting et aux postes full-time — remote-first.",
     timeline: "Aperçu chronologique",
-    timelineBody: "2023-2026 : builds logiciel et produit IA. 2024 : stage APRILIUM.",
+    timelineBody: "2022 – 2023 : stages chez AZZEDDA, APRILIUM et STB. 2025 : stage de fin d’études chez Poulina Group Holding, puis freelance depuis juin 2025.",
     resumeNote: "CV disponible pour recruteurs et partenaires",
   },
   social: {
@@ -831,8 +1199,8 @@ const fr: Dict = {
     asyncNote: "Préférez l’async ? Utilisez LinkedIn, GitHub ou l’email dans la section contact.",
   },
   footer: {
-    role: "Ingénieur logiciel & produit IA",
-    body: "Je conçois et construis des produits scalables, des features IA et des systèmes métier axés fiabilité et maintenabilité.",
+    role: "Développeur Full-Stack & Automatisation IA",
+    body: "J’automatise les tâches répétitives avec des agents IA et des workflows n8n, et je développe des sites et des SaaS, de l’idée à la mise en ligne.",
     navigate: "Navigation",
     engagement: "Engagement",
     featuredWork: "Travaux sélectionnés",
@@ -842,9 +1210,264 @@ const fr: Dict = {
     requestResume: "Demander le CV",
     rights: "Tous droits réservés.",
   },
+  studio: {
+    viewProjects: "Voir mes projets",
+    whatsappCta: "Me contacter sur WhatsApp",
+    contactCta: "Me contacter",
+    whatsappPrefill: "Bonjour Mohamed, j’ai un projet dont j’aimerais discuter.",
+    whatsappAbout: "Bonjour Mohamed, j’aimerais en savoir plus sur ce projet :",
+    askDemo: "Demander une démo",
+    scroll: "Défiler",
+    marquee: "Les technologies que je mets en production",
+    caseToggle: "Voir l’étude de cas complète",
+    filters: {
+      label: "Filtrer les projets",
+      all: "Tous",
+      automation: "Automatisation",
+      fullstack: "Sites & SaaS",
+    },
+    gallery: "Captures",
+    before: "Avant",
+    after: "Après",
+    dragHint: "Glissez pour comparer",
+    pillars: {
+      kicker: "Ce que je fais pour vous",
+      title: "Deux façons de faire avancer votre entreprise",
+      description:
+        "Automatiser ce qui fait perdre du temps à votre équipe, ou construire le produit que vos clients utiliseront. Souvent les deux.",
+      benefitsLabel: "Ce que vous obtenez",
+      examplesLabel: "Cas d’usage typiques",
+      proofLabel: "La preuve",
+      cards: [
+        {
+          key: "automation",
+          title: "Automatisation",
+          promise:
+            "J’automatise les tâches répétitives de votre entreprise : vos demandes clients reçoivent une réponse en quelques secondes, vos leads sont qualifiés, vos données circulent toutes seules.",
+          benefits: [
+            "Une réponse à chaque demande client en quelques secondes, 24 h/24",
+            "Des prospects notés et triés avant même votre premier appel",
+            "Vos outils reliés entre eux : fini les copier-coller et les oublis",
+          ],
+          examples: "Agences immobilières, artisans, cabinets, e-commerce, recrutement",
+          proofSlug: "n8n-ai-agents",
+          proofName: "Lumina Énergie",
+          proofText:
+            "Deux agents IA qui qualifient les demandes de devis et répondent au SAV pour un installateur solaire.",
+          cta: "Automatiser mon activité",
+          prefill: "Bonjour Mohamed, j’aimerais automatiser une partie de mon activité.",
+        },
+        {
+          key: "fullstack",
+          title: "Sites & SaaS",
+          promise:
+            "Je conçois et mets en ligne votre site ou votre SaaS, avec le paiement, les comptes clients et le tableau de bord.",
+          benefits: [
+            "Un site ou une plateforme réellement en ligne, pas une maquette",
+            "Paiement en ligne, comptes clients et tableau de bord inclus",
+            "Un design premium, rapide sur mobile et prêt pour Google",
+          ],
+          examples: "Sites vitrines, refontes, SaaS MVP, tableaux de bord",
+          proofSlug: "kaizen",
+          proofName: "Kaizen Kyoto Capital",
+          proofText:
+            "Un SaaS en production avec abonnements en ligne, espace client et back-office.",
+          cta: "Lancer mon site ou mon SaaS",
+          prefill: "Bonjour Mohamed, j’aimerais lancer un site ou un SaaS.",
+        },
+      ],
+    },
+    offers: {
+      title: "Des offres claires, chacune avec un livrable et un délai",
+      description:
+        "Dites-moi votre besoin : vous recevez un devis chiffré sous 24 h, avant tout engagement.",
+      deliverablesLabel: "Ce que vous recevez",
+      priceNote: "Prix sur devis, envoyé sous 24 h",
+      families: [
+        {
+          key: "automation",
+          title: "Automatisation",
+          intro: "Des agents IA et des workflows n8n qui déchargent votre équipe du répétitif.",
+          items: [
+            {
+              title: "Agent IA de réponse aux clients",
+              benefit:
+                "Vos clients reçoivent une réponse précise en quelques secondes, à toute heure, à partir de vos propres documents.",
+              deliverables: [
+                "Agent branché sur votre site ou votre boîte mail",
+                "Réponses fondées sur vos documents et vos règles",
+                "Passage à un humain pour les cas sensibles",
+              ],
+              delay: "1 à 2 semaines",
+            },
+            {
+              title: "Qualification de leads",
+              benefit:
+                "Chaque demande est notée, résumée et classée avant votre premier appel.",
+              deliverables: [
+                "Formulaire ou point d’entrée connecté",
+                "Score chaud / froid et résumé automatique",
+                "Email personnalisé et prise de rappel",
+              ],
+              delay: "1 à 2 semaines",
+            },
+            {
+              title: "Workflows n8n",
+              benefit:
+                "Les tâches répétitives s’exécutent toutes seules : relances, reporting, synchronisation des données.",
+              deliverables: [
+                "Cartographie de vos tâches répétitives",
+                "Workflows n8n documentés et versionnés",
+                "Journal d’exécution et alertes en cas d’erreur",
+              ],
+              delay: "3 à 10 jours",
+            },
+            {
+              title: "Intégrations API",
+              benefit:
+                "Vos outils se parlent enfin : paiement, CRM, formulaires, bases de données.",
+              deliverables: [
+                "Connexion entre vos outils existants",
+                "Reprises automatiques en cas d’échec",
+                "Documentation claire pour votre équipe",
+              ],
+              delay: "3 à 10 jours",
+            },
+          ],
+        },
+        {
+          key: "fullstack",
+          title: "Sites & SaaS",
+          intro: "Du site vitrine à la plateforme complète, conçu, développé et mis en ligne.",
+          items: [
+            {
+              title: "Site vitrine premium",
+              benefit: "Un site rapide et élégant qui donne confiance et pousse à vous contacter.",
+              deliverables: [
+                "Design sur mesure, pensé d’abord pour le mobile",
+                "SEO, performance et formulaire de contact",
+                "Mise en ligne et nom de domaine",
+              ],
+              delay: "2 à 3 semaines",
+            },
+            {
+              title: "Refonte",
+              benefit: "Votre site actuel, repensé pour être à la hauteur de votre vrai niveau.",
+              deliverables: [
+                "Audit de l’existant et maquette avant / après",
+                "Nouvelle identité visuelle et animations",
+                "Reprise de vos contenus",
+              ],
+              delay: "2 à 4 semaines",
+            },
+            {
+              title: "SaaS MVP",
+              benefit: "Votre idée devient un produit que des clients peuvent payer.",
+              deliverables: [
+                "Comptes clients et paiement en ligne",
+                "Tableau de bord client et back-office",
+                "Tests automatisés et mise en production",
+              ],
+              delay: "4 à 8 semaines",
+            },
+            {
+              title: "Tableau de bord",
+              benefit: "Vos chiffres clés au même endroit, à jour et lisibles d’un coup d’œil.",
+              deliverables: [
+                "Indicateurs définis avec vous",
+                "Accès par rôle",
+                "Données mises à jour automatiquement",
+              ],
+              delay: "2 à 3 semaines",
+            },
+          ],
+        },
+      ],
+    },
+    why: {
+      kicker: "Pourquoi moi",
+      title: "Un seul interlocuteur, du premier appel à la mise en ligne",
+      description:
+        "Pas de chef de projet intermédiaire ni de sous-traitance : la personne à qui vous parlez est celle qui construit.",
+      points: [
+        { title: "Réponse sous 24 h", body: "Sur WhatsApp ou par email, en semaine, sur votre fuseau horaire." },
+        { title: "Vous voyez l’avancement", body: "Un lien de prévisualisation à chaque étape, pour ajuster au fil de l’eau." },
+        { title: "Français, anglais, arabe", body: "Basé à Tunis (UTC+1), je travaille à distance avec des clients à l’étranger." },
+      ],
+      backgroundToggle: "Parcours, formation et certifications",
+    },
+    services: {
+      from: "À partir de",
+      onQuote: "Sur devis",
+      delayLabel: "Délai",
+      delays: [
+        "4 à 8 semaines",
+        "2 à 4 semaines",
+        "1 à 2 semaines",
+        "3 à 10 jours",
+        "2 à 3 semaines",
+        "2 à 4 semaines",
+        "1 à 3 semaines",
+      ],
+      cta: "Demander un devis",
+    },
+    process: {
+      kicker: "Process",
+      title: "Quatre étapes, aucune surprise",
+      description:
+        "Vous savez à tout moment où en est le projet, ce qui vient ensuite et ce que ça coûte.",
+      steps: [
+        {
+          title: "Appel gratuit",
+          body: "30 minutes, sans engagement, pour comprendre votre besoin, vos contraintes et votre budget. Vous repartez avec un périmètre clair et un devis.",
+          when: "Jour 1",
+        },
+        {
+          title: "Audit / maquette",
+          body: "Pour une automatisation, je cartographie votre fonctionnement actuel. Pour un site ou un SaaS, je dessine les écrans clés. Vous validez avant toute construction.",
+          when: "Semaine 1",
+        },
+        {
+          title: "Développement",
+          body: "Construction par étapes avec un lien de prévisualisation : vous suivez l’avancement et ajustez au fil de l’eau.",
+          when: "Semaines suivantes",
+        },
+        {
+          title: "Mise en ligne + suivi",
+          body: "Déploiement, tests et passation avec documentation. Je reste disponible après le lancement pour les ajustements.",
+          when: "Dernière semaine",
+        },
+      ],
+    },
+    stats: {
+      kicker: "Chiffres clés",
+      items: [
+        { value: 43, label: "tests automatisés avec CI", source: "Kaizen Kyoto Capital" },
+        {
+          value: 40,
+          prefix: "-",
+          suffix: " %",
+          label: "de temps de traitement ETL, automatisé via SSIS",
+          source: "Poulina Group Holding",
+        },
+        {
+          value: 50,
+          prefix: "-",
+          suffix: " %",
+          label: "de temps de reporting avec des dashboards Power BI",
+          source: "Poulina Group Holding",
+        },
+        { value: 84, suffix: "/100", label: "score sécurité", source: "Kaizen Kyoto Capital" },
+      ],
+    },
+    aboutKicker: "À propos",
+    credsKicker: "Certifications & références",
+    contactOr: "ou écrivez-moi directement",
+  },
   projectFields: {
     "n8n-ai-agents": {
       type: "Automatisation IA • Agents n8n",
+      proof: ["Réponse en quelques secondes", "Prospects notés chaud / froid", "24 h/24"],
       summary:
         "Et si plus aucun prospect n'attendait qu'on le rappelle ? Deux agents IA construits dans n8n pour un installateur solaire et pompes à chaleur : l'un qualifie les demandes de devis, l'autre répond au SAV, 24 h/24.",
       problem:
@@ -866,6 +1489,7 @@ const fr: Dict = {
     },
     "medassist-ai": {
       type: "SaaS IA pour cabinets médicaux",
+      proof: ["Rendez-vous en ligne 24/7", "Chatbot patient", "FR / EN / AR"],
       summary:
         "Un assistant IA pour médecins et cabinets : prise de rendez-vous en ligne, chatbot patient 24/7, notes vocales transcrites par IA, facturation et statistiques, en FR / EN / AR.",
       problem:
@@ -886,12 +1510,13 @@ const fr: Dict = {
     },
     "oppenheim-3d": {
       type: "Refonte site immobilier de luxe (concept)",
+      proof: ["Concept de refonte", "Visite 3D au scroll"],
       summary:
         "Et si votre site vendait la maison avant la première visite ? Concept de refonte 3D immersive pilotée par le scroll pour The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubaï).",
       problem:
         "Les acheteurs de luxe décident en quelques secondes, mais le site actuel (ogroup.com) ressemble à une brochure : une grande photo, un menu, un formulaire. Rien ne met en valeur un bien à 10 M$.",
       impact:
-        "A site that feels like a private showing: visitors walk through the property from morning arrival to the house lit at night, stay longer and land on a clear \"Book a tour\" action.",
+        "Un site qui se vit comme une visite privée : le visiteur parcourt la propriété de l’arrivée au petit matin jusqu’à la maison illuminée le soir, reste plus longtemps et arrive sur une action claire, « Réserver une visite ».",
       solution:
         "Visite 3D cinématique au scroll (10 scènes), navigation en verre, typographie luxe, grille de propriétés avec filtres par ville, badges visite 3D et favoris, 100 % responsive.",
       highlights: [
@@ -906,12 +1531,13 @@ const fr: Dict = {
     },
     "falak-cosmetic": {
       type: "Refonte marque & e-commerce cosmétique",
+      proof: ["Refonte en ligne", "Nouvelle identité de marque"],
       summary:
         "D'une boutique locale chargée à une marque beauté à l'allure internationale : refonte complète de la marque et du site de Falak Cosmetic (cosmétique naturelle tunisienne), en gardant ses vrais produits et emballages.",
       problem:
         "Le site actuel (falakcosmetic.tn) ressemble à un template générique : en-tête chargé, couleurs criardes et petites photos qui ne reflètent pas la qualité des produits.",
       impact:
-        "A soft pink \"skin & light\" identity that feels premium and girly, puts the products first and gives the brand the image it needs to sell beyond Tunisia.",
+        "Une identité rose doux « peau & lumière », premium et féminine, qui met les produits au premier plan et donne à la marque l’image qu’il lui faut pour vendre au-delà de la Tunisie.",
       solution:
         "Nouvelle identité visuelle, hero avec mannequin + produit, histoires de textures au scroll (l'eau, la goutte, la douceur), six collections avec les vraies photos produits, touches FR/AR, rapide et responsive.",
       highlights: [
@@ -925,12 +1551,13 @@ const fr: Dict = {
       ],
     },    kaizen: {
       type: "SaaS trading crypto systématique",
+      proof: ["En production", "Paiement en ligne", "43 tests automatisés", "Sécurité 84/100"],
       summary:
-        "SaaS full-stack pour le trading crypto systématique : site marketing, abonnements Paddle (16 formules), dashboard client avec signaux live, reporting performance, cadre de risque obligatoire et back-office admin.",
+        "Une plateforme d’abonnement complète pour un service de signaux de trading crypto : le visiteur s’abonne en ligne, accède à son espace client et l’équipe pilote tout depuis son back-office.",
       problem:
-        "Lancer un produit de signaux exige plus qu’une landing : accès gated, performance vérifiée, cycle de facturation et outils opérateurs sans failles de sécurité.",
+        "Vendre des signaux de trading demande bien plus qu’une page de présentation : il faut encaisser les abonnements, réserver le contenu aux clients payants et prouver les performances, sans faille de sécurité.",
       impact:
-        "Plateforme commerciale de bout en bout : souscription via Paddle, signaux selon le tier après le risk framework 1 %, admin pour utilisateurs, revenus et billing.",
+        "Un produit commercial en production : paiement en ligne, activation automatique de l’abonnement, espace client avec signaux et rapport de performance, et un back-office pour suivre utilisateurs et revenus.",
       solution:
         "Construit avec Next.js 14, Prisma + Neon, NextAuth (email + Google), webhooks Paddle, rate limiting Upstash, 2FA admin, sync equity curve, SEO et 43 tests automatisés + CI.",
       highlights: [
@@ -949,12 +1576,13 @@ const fr: Dict = {
     },
     istetdaa: {
       type: "Invitations digitales premium",
+      proof: ["En ligne", "Commande par WhatsApp", "FR / EN / AR"],
       summary:
-        "Plateforme d’invitations digitales de luxe (استدعاء) pour mariages, anniversaires et soirées — templates mobile-first, démos interactives, multilingue FR/EN/AR et commande WhatsApp.",
+        "Une plateforme d’invitations digitales haut de gamme (استدعاء) pour mariages, anniversaires et soirées : modèles pensés pour le mobile, démos interactives, trois langues et commande par WhatsApp.",
       problem:
-        "Les couples et hôtes veulent des invitations élégantes et partageables sans checkout complexe, avec RSVP, countdown, lieu et dress code sur mobile.",
+        "Les couples et les hôtes veulent des invitations élégantes et faciles à partager, sans paiement compliqué, avec la confirmation de présence, le compte à rebours, le lieu et le dress code sur mobile.",
       impact:
-        "Catalogue orienté conversion : démo live sur téléphone, choix du modèle, commande simple via WhatsApp — sans paiement carte sur le site.",
+        "Un catalogue qui convertit : le client teste la démo sur son téléphone, choisit son modèle et commande simplement par WhatsApp, sans carte bancaire sur le site.",
       solution:
         "Site marketing + produit multilingue avec démos interactives (ouverture d’enveloppe, musique, animations), catalogue par catégorie et tunnel WhatsApp-first.",
       highlights: [
@@ -973,12 +1601,13 @@ const fr: Dict = {
     },
     "shopify-press-on-nails-scan": {
       type: "E-commerce Shopify + Scan",
+      proof: ["Boutique Shopify", "Taille guidée par scan"],
       summary:
-        "Boutique Shopify pour press-on nails avec parcours de commande personnalisé et sizing assisté par scan pour renforcer la confiance d’achat.",
+        "Une boutique Shopify de faux ongles avec un parcours de commande personnalisée et une aide au choix de la taille par scan, pour acheter en confiance.",
       problem:
-        "Les clients hésitent à acheter en ligne si le sizing est flou — plus de support, retours et abandons checkout.",
+        "Quand la taille est incertaine, les clientes hésitent à commander : plus de questions au support, de retours et de paniers abandonnés.",
       impact:
-        "Parcours d’achat clarifié : découverte produit, commande custom et guidance sizing par scan intégrée aux pages Shopify.",
+        "Un parcours d’achat plus clair : découverte des produits, commande personnalisée et aide à la taille par scan, directement dans les pages de la boutique.",
       solution:
         "Pages Shopify custom (home, collections, produit, commande perso, checkout) avec expérience de sizing liée au scan.",
       highlights: [
@@ -995,12 +1624,13 @@ const fr: Dict = {
     },
     "nailscan-pro": {
       type: "SaaS Shopify",
+      proof: ["SaaS pour Shopify", "Scan par caméra", "Abonnements en ligne"],
       summary:
-        "SaaS de sizing ongles pour Shopify avec démo caméra, proxy vers une API scan dédiée, et fondations auth + abonnement production.",
+        "Un outil pour les boutiques Shopify de faux ongles : la cliente scanne sa main avec la caméra de son téléphone et obtient sa taille, sans mesurer.",
       problem:
-        "Besoin d’un flux fiable caméra → sizing dans Shopify, sans coupler le frontend à l’API scan.",
+        "Choisir la bonne taille de faux ongles en ligne est difficile : les clientes hésitent, se trompent et renvoient leurs commandes.",
       impact:
-        "Architecture end-to-end itérable : UX démo claire, couche proxy vers l’API scan, fondations produit pour users et billing.",
+        "Une démo caméra fonctionnelle et la base d’un SaaS vendable : comptes utilisateurs, abonnements en ligne et un service de scan indépendant, facile à faire évoluer.",
       solution:
         "Frontend Next.js SaaS avec auth, abonnements et `/demo` caméra qui forward les scans vers un service FastAPI séparé.",
       highlights: [

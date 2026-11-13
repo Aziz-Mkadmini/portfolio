@@ -3,74 +3,67 @@
 @tailwind utilities;
 
 :root {
-  --surface: 9 9 11;
-  --surface-raised: 24 24 27;
-  --accent: 56 189 248;
-  --accent-muted: 37 99 235;
-  --ring: 255 255 255 / 0.12;
-  --fx-violet: 79 70 229;
-  --fx-cyan: 56 189 248;
-  --fx-teal: 56 189 248;
-  --fx-blue: 37 99 235;
+  --surface: 11 10 9;
+  --surface-raised: 20 18 16;
+  --accent: 245 165 36;
+  --accent-muted: 196 128 22;
+  --ink: 242 238 230;
+  --muted: 163 158 148;
 }
 
+/* Native smooth scrolling for anchors on touch devices; Lenis takes over on desktop. */
 html {
   scroll-behavior: smooth;
-  background-color: #020308;
+  scroll-padding-top: 68px;
+}
+
+html.lenis {
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 html,
 body {
   min-height: 100%;
-  background-color: #020308;
+  background-color: rgb(var(--surface));
 }
 
 @layer base {
   body {
-    @apply text-zinc-100 antialiased;
-    background:
-      radial-gradient(1460px 760px at 6% -20%, rgba(var(--fx-violet), 0.32), transparent 58%),
-      radial-gradient(1080px 580px at 98% -8%, rgba(var(--fx-cyan), 0.24), transparent 60%),
-      radial-gradient(900px 520px at 48% 118%, rgba(var(--fx-blue), 0.2), transparent 68%),
-      linear-gradient(160deg, #020308 0%, #04070f 35%, #06080d 70%, #07080c 100%);
-    background-attachment: fixed;
+    @apply antialiased;
+    color: rgb(var(--ink));
     position: relative;
   }
 
+  /* Static film grain: fixed, never animated, sits under the content. */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background:
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(circle at 50% 0%, black 28%, transparent 84%);
-    opacity: 0.38;
-    z-index: -1;
-    animation: driftGrid 24s linear infinite alternate;
+    z-index: 0;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  body::after {
-    content: "";
-    position: fixed;
-    inset: -20vh -10vw;
-    pointer-events: none;
-    z-index: -2;
-    background:
-      radial-gradient(36rem 24rem at 22% 18%, rgba(var(--fx-cyan), 0.16), transparent 72%),
-      radial-gradient(40rem 26rem at 84% 20%, rgba(var(--fx-violet), 0.14), transparent 74%),
-      radial-gradient(34rem 20rem at 56% 82%, rgba(var(--fx-blue), 0.12), transparent 72%);
-    filter: blur(18px);
-    animation: floatAura 11s ease-in-out infinite;
-  }
   body > * {
     position: relative;
     z-index: 1;
   }
+
   ::selection {
-    @apply bg-sky-500/25 text-white;
+    background: rgb(var(--accent) / 0.9);
+    color: rgb(var(--surface));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
   }
 }
 
@@ -85,70 +78,89 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .glass-panel {
-    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 20px 40px -28px rgba(0, 0, 0, 0.9);
+
+  /* Small uppercase label used for kickers, indexes and metadata. */
+  .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
-  .glow-border {
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 0 0 1px rgba(var(--fx-cyan), 0.22),
-      0 0 44px -14px rgba(var(--fx-blue), 0.62),
-      0 18px 38px -24px rgba(var(--fx-violet), 0.56);
+
+  /* Word-by-word title reveal (see RevealWords in components/Motion.tsx). */
+  .rw {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
   }
-  .hover-lift {
-    transition:
-      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 320ms ease,
-      background-color 320ms ease,
-      box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  .rw > span {
+    display: inline-block;
+    transform: translateY(112%);
   }
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 22px 44px -28px rgba(8, 47, 73, 0.65);
+  .rw-in .rw > span {
+    animation: rwUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i) * 35ms + var(--d, 0ms));
   }
-  .ambient-orb {
-    animation: orbFloat 7.5s ease-in-out infinite;
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--d, 0ms);
   }
-  .ambient-orb-delayed {
-    animation: orbFloat 9.5s ease-in-out infinite reverse;
+
+  .marquee-track {
+    animation: marquee 48s linear infinite;
   }
-  .neon-text {
-    text-shadow:
-      0 0 14px rgba(var(--fx-cyan), 0.34),
-      0 0 26px rgba(var(--fx-violet), 0.2);
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
   }
 }
 
-@keyframes driftGrid {
-  0% {
+@keyframes rwUp {
+  to {
     transform: translateY(0);
   }
-  100% {
-    transform: translateY(22px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes floatAura {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(0, -2.5%, 0) scale(1.02);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }
 
-@keyframes orbFloat {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
+@media (prefers-reduced-motion: reduce) {
+  .rw > span {
+    transform: none;
+    animation: none !important;
   }
-  50% {
-    transform: translate3d(0, -12px, 0) scale(1.05);
+  .fade-up {
+    opacity: 1;
+    animation: none;
   }
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Custom cursor: only hide the native one when ours is mounted. */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor summary,
+html.has-cursor label,
+html.has-cursor input[type="range"] {
+  cursor: none;
 }

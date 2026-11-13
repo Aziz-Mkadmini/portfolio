@@ -44,52 +44,52 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid gap-3 rounded-2xl border border-white/10 bg-zinc-900/30 p-4 sm:p-5"
+      className="grid gap-7 rounded-2xl border border-line bg-surface-raised p-6 sm:p-10"
     >
-      <div className="grid gap-3 sm:grid-cols-2">
-        <label className="text-xs text-zinc-500">
+      <div className="grid gap-7 sm:grid-cols-2">
+        <label className="label text-muted">
           {t.form.name}
           <input
             name="name"
             required
-            className="mt-1 w-full rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2.5 text-sm text-zinc-100 outline-none transition focus:border-sky-500/40 focus:ring-2 focus:ring-sky-500/20"
+            className="mt-2 w-full rounded-none border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-base font-normal normal-case tracking-normal text-ink outline-none transition-colors focus:border-accent"
             autoComplete="name"
           />
         </label>
-        <label className="text-xs text-zinc-500">
+        <label className="label text-muted">
           {t.form.email}
           <input
             name="email"
             type="email"
             required
-            className="mt-1 w-full rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2.5 text-sm text-zinc-100 outline-none transition focus:border-sky-500/40 focus:ring-2 focus:ring-sky-500/20"
+            className="mt-2 w-full rounded-none border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-base font-normal normal-case tracking-normal text-ink outline-none transition-colors focus:border-accent"
             autoComplete="email"
           />
         </label>
       </div>
-      <label className="text-xs text-zinc-500">
+      <label className="label text-muted">
         {t.form.company}
         <input
           name="company"
-          className="mt-1 w-full rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2.5 text-sm text-zinc-100 outline-none transition focus:border-sky-500/40 focus:ring-2 focus:ring-sky-500/20"
+          className="mt-2 w-full rounded-none border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-base font-normal normal-case tracking-normal text-ink outline-none transition-colors focus:border-accent"
           autoComplete="organization"
         />
       </label>
-      <label className="text-xs text-zinc-500">
+      <label className="label text-muted">
         {t.form.project}
         <textarea
           name="project"
           required
           rows={4}
-          className="mt-1 w-full resize-y rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2.5 text-sm text-zinc-100 outline-none transition focus:border-sky-500/40 focus:ring-2 focus:ring-sky-500/20"
+          className="mt-2 w-full resize-y rounded-none border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-base font-normal normal-case tracking-normal text-ink outline-none transition-colors focus:border-accent"
         />
       </label>
       {message ? (
-        <p className="text-sm text-zinc-300">
+        <p className="text-sm text-ink/85">
           {message}{" "}
           {status === "error" ? (
             <>
-              <a href={`mailto:${site.email}`} className="underline underline-offset-2 hover:text-white">
+              <a href={`mailto:${site.email}`} className="underline underline-offset-2 hover:text-accent">
                 {site.email}
               </a>
             </>

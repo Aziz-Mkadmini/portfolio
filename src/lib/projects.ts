@@ -1,7 +1,11 @@
 export type ProjectIcon = "orbit" | "rocket" | "boxes" | "sparkles";
 
+export type Pillar = "automation" | "fullstack";
+
 export type Project = {
   slug: string;
+  /** Which side of the offer this project proves; drives the filters in the Projects section. */
+  pillars: Pillar[];
   name: string;
   type: string;
   icon: ProjectIcon;
@@ -29,6 +33,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "kaizen",
+    pillars: ["fullstack"],
     name: "Kaizen Kyoto Capital",
     type: "Systematic Crypto Trading SaaS",
     icon: "rocket",
@@ -74,7 +79,28 @@ export const projects: Project[] = [
       "Kaizen Kyoto Capital — full-page screenshot of the systematic crypto trading platform",
   },
   {
+    slug: "n8n-ai-agents",
+    pillars: ["automation"],
+    name: "Lumina Énergie — AI Sales & Support Agents (n8n)",
+    type: "AI Automation • n8n Agents",
+    icon: "boxes",
+    summary: "Two AI agents orchestrated in n8n that qualify quote requests and answer support tickets, with RAG and business rules.",
+    problem: "Leads and support tickets handled by hand, slowly and inconsistently.",
+    impact: "Every request is scored, answered and logged in seconds.",
+    solution: "n8n workflows, RAG on pgvector, local LLM (Ollama) or OpenAI, PostgreSQL, Docker.",
+    stack: ["n8n", "Webhooks / REST", "PostgreSQL + pgvector", "RAG", "Ollama / OpenAI", "JavaScript", "Python", "Docker Compose"],
+    demoUrl: "#contact",
+    imageSrc: "/n8n/crm-lead-email.jpg",
+    imageAlt: "Lumina Énergie — qualified leads with AI summary and generated email",
+    images: [
+      { src: "/n8n/chat-bubble.jpg", alt: "AI chat bubble on a client website" },
+      { src: "/n8n/lead-form.jpg", alt: "Quote request form connected to n8n" },
+      { src: "/n8n/crm-lead-email.jpg", alt: "Lead scored hot with AI summary and personalised email" },
+    ],
+  },
+  {
     slug: "oppenheim-3d",
+    pillars: ["fullstack"],
     name: "The Oppenheim Group — 3D Redesign",
     type: "Luxury Real-Estate Website Redesign (concept)",
     icon: "sparkles",
@@ -95,6 +121,7 @@ export const projects: Project[] = [
   },
   {
     slug: "falak-cosmetic",
+    pillars: ["fullstack"],
     name: "Falak Cosmetic — Brand & Site Redesign",
     type: "Cosmetics Brand & E-commerce Redesign",
     icon: "sparkles",
@@ -115,26 +142,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "n8n-ai-agents",
-    name: "Lumina Énergie — AI Sales & Support Agents (n8n)",
-    type: "AI Automation • n8n Agents",
-    icon: "boxes",
-    summary: "Two AI agents orchestrated in n8n that qualify quote requests and answer support tickets, with RAG and business rules.",
-    problem: "Leads and support tickets handled by hand, slowly and inconsistently.",
-    impact: "Every request is scored, answered and logged in seconds.",
-    solution: "n8n workflows, RAG on pgvector, local LLM (Ollama) or OpenAI, PostgreSQL, Docker.",
-    stack: ["n8n", "Webhooks / REST", "PostgreSQL + pgvector", "RAG", "Ollama / OpenAI", "JavaScript", "Python", "Docker Compose"],
-    demoUrl: "#contact",
-    imageSrc: "/n8n/crm-lead-email.jpg",
-    imageAlt: "Lumina Énergie — qualified leads with AI summary and generated email",
-    images: [
-      { src: "/n8n/chat-bubble.jpg", alt: "AI chat bubble on a client website" },
-      { src: "/n8n/lead-form.jpg", alt: "Quote request form connected to n8n" },
-      { src: "/n8n/crm-lead-email.jpg", alt: "Lead scored hot with AI summary and personalised email" },
-    ],
-  },
-  {
     slug: "medassist-ai",
+    pillars: ["fullstack", "automation"],
     name: "MedAssist AI",
     type: "AI SaaS for Medical Practices",
     icon: "orbit",
@@ -153,6 +162,7 @@ export const projects: Project[] = [
   },
   {
     slug: "istetdaa",
+    pillars: ["fullstack"],
     name: "Istetdaa",
     type: "Premium Digital Invitations",
     icon: "sparkles",
@@ -193,6 +203,7 @@ export const projects: Project[] = [
   },
   {
     slug: "shopify-press-on-nails-scan",
+    pillars: ["fullstack"],
     name: "Press-On Nails Shopify Store",
     type: "Shopify E-commerce + Scan",
     icon: "boxes",
@@ -238,6 +249,7 @@ export const projects: Project[] = [
   },
   {
     slug: "nailscan-pro",
+    pillars: ["fullstack"],
     name: "NailScan Pro",
     type: "Shopify SaaS",
     icon: "orbit",

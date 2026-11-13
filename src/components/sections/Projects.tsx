@@ -1,54 +1,48 @@
 "use client";
 
-import {
-  Boxes,
-  CircleDot,
-  ExternalLink,
-  Github,
-  Orbit,
-  Rocket,
-  Sparkles,
-  Target,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowUpRight, Github, MessageCircle, Plus } from "lucide-react";
 import Image from "next/image";
-import { type ComponentType } from "react";
+import { useState, type ComponentType } from "react";
 import {
   SiAuth0,
   SiChartdotjs,
+  SiDocker,
   SiFastapi,
   SiFramer,
+  SiN8N,
   SiNextdotjs,
+  SiOpenai,
   SiPostgresql,
   SiPrisma,
+  SiPython,
+  SiReact,
+  SiShopify,
   SiStripe,
+  SiSupabase,
   SiTailwindcss,
   SiThreedotjs,
   SiTypescript,
+  SiVercel,
 } from "react-icons/si";
-import { projects, type ProjectIcon } from "@/lib/projects";
-import { site } from "@/lib/site";
+import { projects, type Pillar, type Project } from "@/lib/projects";
+import { whatsappLink } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { MockProductShot } from "@/components/ui/MockProductShot";
-import { FadeIn, Stagger, StaggerItem } from "@/components/Motion";
+import { BeforeAfter } from "@/components/ui/BeforeAfter";
+import { TiltCard } from "@/components/ui/TiltCard";
+import { FadeIn } from "@/components/Motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
-const projectIcons: Record<ProjectIcon, LucideIcon> = {
-  orbit: Orbit,
-  rocket: Rocket,
-  boxes: Boxes,
-  sparkles: Sparkles,
-};
-
-const tone = ["violet", "slate", "violet"] as const;
+/** Projects whose main visual is a stacked before/after sheet (see BeforeAfter). */
+const beforeAfterSlugs = new Set(["oppenheim-3d", "falak-cosmetic"]);
 
 const stackIconByKeyword: Array<{ key: string; icon: ComponentType<{ className?: string }> }> = [
   { key: "next.js", icon: SiNextdotjs },
   { key: "typescript", icon: SiTypescript },
   { key: "tailwind", icon: SiTailwindcss },
   { key: "prisma", icon: SiPrisma },
+  { key: "supabase", icon: SiSupabase },
   { key: "postgresql", icon: SiPostgresql },
   { key: "neon", icon: SiPostgresql },
   { key: "nextauth", icon: SiAuth0 },
@@ -57,6 +51,13 @@ const stackIconByKeyword: Array<{ key: string; icon: ComponentType<{ className?:
   { key: "framer", icon: SiFramer },
   { key: "recharts", icon: SiChartdotjs },
   { key: "three.js", icon: SiThreedotjs },
+  { key: "react", icon: SiReact },
+  { key: "n8n", icon: SiN8N },
+  { key: "openai", icon: SiOpenai },
+  { key: "python", icon: SiPython },
+  { key: "docker", icon: SiDocker },
+  { key: "shopify", icon: SiShopify },
+  { key: "vercel", icon: SiVercel },
 ];
 
 function getStackIcon(stackLabel: string) {
@@ -64,279 +65,324 @@ function getStackIcon(stackLabel: string) {
   return stackIconByKeyword.find((entry) => normalized.includes(entry.key))?.icon;
 }
 
-export function Projects() {
+function Shot({
+  src,
+  alt,
+  ratio,
+  sizes,
+}: {
+  src: string;
+  alt: string;
+  ratio: string;
+  sizes: string;
+}) {
+  return (
+    <a
+      href={src}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group relative block overflow-hidden rounded-2xl border border-line bg-surface-raised ${ratio}`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+      />
+    </a>
+  );
+}
+
+function Facts({
+  items,
+  columns,
+}: {
+  items: Array<{ label: string; body: string; accent?: boolean }>;
+  columns: boolean;
+}) {
+  return (
+    <dl className={`grid gap-6 ${columns ? "md:grid-cols-2 md:gap-10" : ""}`}>
+      {items.map((item) => (
+        <div key={item.label} className="border-t border-line pt-4">
+          <dt className={`label ${item.accent ? "text-accent" : "text-muted"}`}>{item.label}</dt>
+          <dd className="mt-3 text-sm leading-relaxed text-ink/85">{item.body}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function ProjectCase({ p, index }: { p: Project; index: number }) {
   const { t } = useLocale();
+  // Gallery images and the video are only rendered once the case study has been opened.
+  const [opened, setOpened] = useState(false);
+  const copy = t.projectFields[p.slug];
+  const type = copy?.type ?? p.type;
+  const summary = copy?.summary ?? p.summary;
+  const highlights = copy?.highlights ?? p.highlights;
+  const outcomes = copy?.outcomes ?? p.outcomes;
+  const videoLabel = copy?.videoLabel ?? p.videoLabel;
+
+  const facts = [
+    { label: t.projects.problem, body: copy?.problem ?? p.problem },
+    { label: t.projects.impact, body: copy?.impact ?? p.impact, accent: true },
+  ];
+  // The technical "how" stays out of the first read: it lives in the expandable case study.
+  const solution = copy?.solution ?? p.solution;
+  const proof = copy?.proof;
+
+  const isBeforeAfter = beforeAfterSlugs.has(p.slug) && Boolean(p.imageSrc);
+  // The first project and the before/after ones get a full-width visual; the rest alternate
+  // between two split layouts so no two neighbours look the same.
+  const wide = index === 0 || isBeforeAfter;
+  const flipped = index % 2 === 1;
+  const isLive = Boolean(p.demoUrl && p.demoUrl.startsWith("http"));
+
+  const visual = !p.imageSrc ? null : isBeforeAfter ? (
+    <BeforeAfter
+      src={p.imageSrc}
+      alt={p.imageAlt}
+      beforeLabel={t.studio.before}
+      afterLabel={t.studio.after}
+      hint={t.studio.dragHint}
+    />
+  ) : (
+    <TiltCard>
+      <Shot
+        src={p.imageSrc}
+        alt={p.imageAlt}
+        ratio={wide ? "aspect-[4/3] sm:aspect-[16/9]" : flipped ? "aspect-[4/3]" : "aspect-[5/4]"}
+        sizes={wide ? "(min-width: 1024px) 1100px, 100vw" : "(min-width: 1024px) 640px, 100vw"}
+      />
+    </TiltCard>
+  );
+
+  const stack = (
+    <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
+      {p.stack.map((item) => {
+        const Icon = getStackIcon(item);
+        return (
+          <li key={item} className="inline-flex items-center gap-1.5">
+            {Icon ? <Icon className="h-3.5 w-3.5 text-ink/70" /> : null}
+            {item}
+          </li>
+        );
+      })}
+    </ul>
+  );
+
+  const actions = (
+    <div className="flex flex-col gap-3 min-[420px]:flex-row min-[420px]:flex-wrap">
+      {isLive ? (
+        <Button href={p.demoUrl} variant="secondary" external className="w-full min-[420px]:w-auto">
+          {t.projects.liveDemo}
+          <ArrowUpRight className="h-4 w-4" />
+        </Button>
+      ) : (
+        <Button
+          href={whatsappLink(`${t.studio.whatsappAbout} ${p.name}`)}
+          variant="secondary"
+          external
+          className="w-full min-[420px]:w-auto"
+        >
+          <MessageCircle className="h-4 w-4" />
+          {t.studio.askDemo}
+        </Button>
+      )}
+      {p.repoUrl ? (
+        <Button href={p.repoUrl} external variant="ghost" className="w-full min-[420px]:w-auto">
+          <Github className="h-4 w-4" />
+          GitHub
+        </Button>
+      ) : null}
+    </div>
+  );
 
   return (
-    <section id="projects" className="border-t border-white/10 py-24 sm:py-28">
-      <Container>
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
-            <SectionHeading
-              kicker={t.projects.kicker}
-              title={t.projects.title}
-              description={t.projects.description}
-            />
+    <article id={`project-${p.slug}`} className="scroll-mt-20 border-t border-line pt-10 sm:pt-14">
+      <FadeIn>
+        <header className="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="lg:col-span-8">
+            <p className="label flex flex-wrap items-center gap-x-3 gap-y-1 text-muted">
+              <span className="text-accent">{String(index + 1).padStart(2, "0")}</span>
+              <span>{type}</span>
+            </p>
+            <h3 className="mt-4 font-display text-3xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl text-balance">
+              {p.name}
+            </h3>
+            {proof?.length ? (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {proof.map((fact) => (
+                  <li
+                    key={fact}
+                    className="rounded-full border border-accent/40 px-3 py-1 text-xs font-medium text-accent"
+                  >
+                    {fact}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
-          <FadeIn>
-            <Button
-              href={site.bookCall}
-              variant="secondary"
-              external={site.bookCall.startsWith("http")}
-              className="w-full sm:w-auto"
-            >
-              {t.projects.discuss}
-            </Button>
-          </FadeIn>
+          <p className="text-base leading-relaxed text-muted lg:col-span-4">{summary}</p>
+        </header>
+      </FadeIn>
+
+      {wide ? (
+        <div className="mt-10">
+          <FadeIn y={24}>{visual}</FadeIn>
+          <div className="mt-10">
+            <Facts items={facts} columns />
+          </div>
+          <div className="mt-8">{actions}</div>
         </div>
+      ) : (
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <FadeIn y={24} className={`lg:col-span-7 ${flipped ? "lg:order-2" : ""}`}>
+            {visual}
+          </FadeIn>
+          <div className="flex flex-col gap-8 lg:col-span-5">
+            <Facts items={facts} columns={false} />
+            {actions}
+          </div>
+        </div>
+      )}
 
-        <Stagger className="mt-14 space-y-16 sm:mt-20 sm:space-y-20">
-          {projects.map((p, i) => {
-            const TypeIcon = projectIcons[p.icon];
-            const copy = t.projectFields[p.slug];
-            const type = copy?.type ?? p.type;
-            const summary = copy?.summary ?? p.summary;
-            const problem = copy?.problem ?? p.problem;
-            const impact = copy?.impact ?? p.impact;
-            const solution = copy?.solution ?? p.solution;
-            const highlights = copy?.highlights ?? p.highlights;
-            const outcomes = copy?.outcomes ?? p.outcomes;
-            const videoLabel = copy?.videoLabel ?? p.videoLabel;
+      <details
+          className="group mt-10 border-t border-line"
+          onToggle={(e) => {
+            if (e.currentTarget.open) setOpened(true);
+          }}
+        >
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-sm font-semibold text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+            {t.studio.caseToggle}
+            <Plus className="h-5 w-5 flex-none transition-transform duration-300 group-open:rotate-45" />
+          </summary>
+          <div className="grid gap-10 pb-4 pt-2 lg:grid-cols-12 lg:gap-12">
+            <div className="space-y-8 lg:col-span-5">
+              <div>
+                <p className="label text-muted">{t.projects.solution}</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink/85">{solution}</p>
+                <p className="label mt-6 text-muted">{t.projects.stack}</p>
+                <div className="mt-3">{stack}</div>
+              </div>
+              {highlights?.length ? (
+                <div>
+                  <p className="label text-muted">{t.projects.highlights}</p>
+                  <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink/85">
+                    {highlights.map((h) => (
+                      <li key={h} className="flex gap-3">
+                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-muted" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {outcomes?.length ? (
+                <div>
+                  <p className="label text-accent">{t.projects.outcomes}</p>
+                  <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink/85">
+                    {outcomes.map((o) => (
+                      <li key={o} className="flex gap-3">
+                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+            <div className="space-y-4 lg:col-span-7">
+              {opened && p.images?.length ? (
+                <>
+                  <p className="label text-muted">{t.studio.gallery}</p>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {p.images.map((img) => (
+                      <Shot
+                        key={img.src}
+                        src={img.src}
+                        alt={img.alt}
+                        ratio="aspect-[16/10]"
+                        sizes="(min-width: 1024px) 340px, (min-width: 640px) 50vw, 100vw"
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : null}
+              {opened && p.videoSrc ? (
+                <div className="overflow-hidden rounded-2xl border border-line bg-surface-raised">
+                  <p className="label border-b border-line px-4 py-3 text-muted">
+                    {videoLabel ?? t.projects.videoFallback}
+                  </p>
+                  <video
+                    className="mx-auto aspect-[9/16] max-h-[560px] w-full bg-surface object-contain"
+                    controls
+                    playsInline
+                    preload="metadata"
+                  >
+                    <source src={p.videoSrc} type="video/mp4" />
+                  </video>
+                </div>
+              ) : null}
+            </div>
+          </div>
+      </details>
+    </article>
+  );
+}
+
+type Filter = "all" | Pillar;
+const filterKeys: Filter[] = ["all", "automation", "fullstack"];
+
+export function Projects() {
+  const { t } = useLocale();
+  const [filter, setFilter] = useState<Filter>("all");
+  const shown = filter === "all" ? projects : projects.filter((p) => p.pillars.includes(filter));
+
+  return (
+    <section id="projects" className="py-24 sm:py-36">
+      <Container>
+        <SectionHeading
+          index="01"
+          kicker={t.projects.kicker}
+          title={t.projects.title}
+          description={t.projects.description}
+        />
+
+        <div
+          className="mt-10 flex flex-wrap gap-2"
+          role="group"
+          aria-label={t.studio.filters.label}
+        >
+          {filterKeys.map((key) => {
+            const count =
+              key === "all" ? projects.length : projects.filter((p) => p.pillars.includes(key)).length;
+            const active = filter === key;
             return (
-              <StaggerItem key={p.slug}>
-                <article
-                  className={`grid gap-8 border-t border-white/10 pt-8 lg:grid-cols-12 lg:items-start lg:gap-12 lg:pt-10 ${
-                    i % 2 === 1 ? "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1" : ""
-                  }`}
-                >
-                  <div className="lg:col-span-5">
-                    <div className="flex items-center gap-2 text-xs text-zinc-500">
-                      <p className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-medium text-zinc-300">
-                        <TypeIcon className="h-3.5 w-3.5 text-sky-300/80" />
-                        {type}
-                      </p>
-                      <span className="text-zinc-600">·</span>
-                      <span>{t.projects.caseStudy}</span>
-                    </div>
-                    <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-white">
-                      {p.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-400">{summary}</p>
-
-                    <div className="mt-6 space-y-4">
-                      <div className="glass-panel hover-lift rounded-2xl p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          {t.projects.problem}
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-zinc-300">{problem}</p>
-                      </div>
-                      <div className="hover-lift rounded-2xl border border-white/10 bg-gradient-to-b from-sky-500/10 to-zinc-950/10 p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-200/60">
-                          {t.projects.impact}
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-zinc-200">{impact}</p>
-                      </div>
-                      <div className="glass-panel hover-lift rounded-2xl p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          {t.projects.solution}
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-zinc-300">{solution}</p>
-                      </div>
-                    </div>
-
-                    <div className="mt-5">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                        {t.projects.stack}
-                      </p>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {p.stack.map((stackItem) => (
-                          <span
-                            key={stackItem}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2 py-1 text-xs text-zinc-200"
-                          >
-                            {(() => {
-                              const Icon = getStackIcon(stackItem);
-                              return Icon ? (
-                                <Icon className="h-3.5 w-3.5 text-sky-300/95" />
-                              ) : (
-                                <CircleDot className="h-3.5 w-3.5 text-sky-300/80" />
-                              );
-                            })()}
-                            {stackItem}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-6 flex flex-col gap-2 min-[400px]:flex-row min-[400px]:flex-wrap">
-                      <Button
-                        href={p.demoUrl ?? "#contact"}
-                        variant="primary"
-                        className="w-full min-[400px]:w-auto"
-                        external={Boolean(p.demoUrl && p.demoUrl.startsWith("http"))}
-                      >
-                        <Sparkles className="h-4 w-4" />
-                        {p.demoUrl && p.demoUrl !== "#contact" && p.demoUrl.startsWith("http")
-                          ? t.projects.liveDemo
-                          : t.projects.requestDemo}
-                        <ExternalLink className="h-4 w-4 opacity-80" />
-                      </Button>
-                      {p.repoUrl ? (
-                        <Button
-                          href={p.repoUrl}
-                          external
-                          variant="secondary"
-                          className="w-full min-[400px]:w-auto"
-                        >
-                          <Github className="h-4 w-4" />
-                          GitHub
-                          <ExternalLink className="h-4 w-4 opacity-70" />
-                        </Button>
-                      ) : null}
-                      <Button href="#contact" variant="ghost" className="w-full min-[400px]:w-auto">
-                        <Target className="h-4 w-4" />
-                        {t.projects.talkAbout}
-                      </Button>
-                    </div>
-
-                    {highlights?.length ? (
-                      <div className="glass-panel hover-lift mt-5 rounded-2xl p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          {t.projects.highlights}
-                        </p>
-                        <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-                          {highlights.map((h) => (
-                            <li key={h} className="flex gap-2">
-                              <span className="text-sky-400/70">·</span>
-                              <span>{h}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-
-                    {outcomes?.length ? (
-                      <div className="hover-lift mt-4 rounded-2xl border border-white/10 bg-gradient-to-b from-sky-500/10 to-zinc-950/10 p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-200/60">
-                          {t.projects.outcomes}
-                        </p>
-                        <ul className="mt-3 space-y-2 text-sm text-zinc-200">
-                          {outcomes.map((o) => (
-                            <li key={o} className="flex gap-2">
-                              <span className="text-sky-400/70">·</span>
-                              <span>{o}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className="lg:col-span-7">
-                    <div className="space-y-3">
-                      <p className="text-xs text-zinc-500">{t.projects.preview}</p>
-                      {p.imageSrc ? (
-                        <a
-                          href={p.imageSrc}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="glass-panel hover-lift group relative block overflow-hidden rounded-2xl"
-                        >
-                          <div className="relative h-[520px] w-full sm:h-[680px] lg:h-[760px]">
-                            <Image
-                              src={p.imageSrc}
-                              alt={p.imageAlt}
-                              fill
-                              sizes="(min-width: 1024px) 640px, 100vw"
-                              className="object-contain bg-zinc-950/20 transition duration-700 group-hover:scale-[1.06]"
-                              priority={i === 0}
-                            />
-                          </div>
-                        </a>
-                      ) : (
-                        <MockProductShot label={p.name} icon={p.icon} tone={tone[i % 3]} />
-                      )}
-                      {p.videoSrc ? (
-                        <div className="glass-panel overflow-hidden rounded-2xl">
-                          <p className="border-b border-white/10 px-3 py-2 text-xs text-zinc-500">
-                            {videoLabel ?? t.projects.videoFallback}
-                          </p>
-                          <video
-                            className="aspect-[9/16] max-h-[520px] w-full bg-zinc-950 object-contain sm:max-h-[640px]"
-                            controls
-                            playsInline
-                            preload="metadata"
-                          >
-                            <source src={p.videoSrc} type="video/mp4" />
-                          </video>
-                        </div>
-                      ) : null}
-                      {t.projects.previewHint ? (
-                        <p className="text-[11px] leading-relaxed text-zinc-600">
-                          {t.projects.previewHint}
-                        </p>
-                      ) : null}
-                      {p.images?.length ? (
-                        <>
-                          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                            {p.images.slice(0, 4).map((img) => (
-                              <a
-                                key={img.src}
-                                href={img.src}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="glass-panel group relative block overflow-hidden rounded-xl"
-                              >
-                                <div className="relative h-44 w-full sm:h-56">
-                                  <Image
-                                    src={img.src}
-                                    alt={img.alt}
-                                    fill
-                                    sizes="(min-width: 1024px) 560px, 100vw"
-                                    className="object-contain bg-zinc-950/20 transition duration-500 group-hover:scale-[1.08]"
-                                  />
-                                </div>
-                              </a>
-                            ))}
-                          </div>
-                          {p.images.length > 4 ? (
-                            <details className="group mt-3">
-                              <summary className="inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-zinc-200 transition hover:border-white/15 hover:bg-white/10">
-                                <span>{t.projects.seeMore}</span>
-                                <span className="text-zinc-400">(+{p.images.length - 4})</span>
-                              </summary>
-                              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                                {p.images.slice(4).map((img) => (
-                                  <a
-                                    key={img.src}
-                                    href={img.src}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="glass-panel group relative block overflow-hidden rounded-xl"
-                                  >
-                                    <div className="relative h-44 w-full sm:h-56">
-                                      <Image
-                                        src={img.src}
-                                        alt={img.alt}
-                                        fill
-                                        sizes="(min-width: 1024px) 560px, 100vw"
-                                        className="object-contain bg-zinc-950/20 transition duration-500 group-hover:scale-[1.08]"
-                                      />
-                                    </div>
-                                  </a>
-                                ))}
-                              </div>
-                            </details>
-                          ) : null}
-                        </>
-                      ) : null}
-                    </div>
-                  </div>
-                </article>
-              </StaggerItem>
+              <button
+                key={key}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setFilter(key)}
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors ${
+                  active
+                    ? "border-accent bg-accent text-surface"
+                    : "border-ink/20 text-ink hover:border-accent hover:text-accent"
+                }`}
+              >
+                {t.studio.filters[key]}
+                <span className={active ? "text-surface/70" : "text-muted"}>{count}</span>
+              </button>
             );
           })}
-        </Stagger>
+        </div>
+
+        <div className="mt-14 space-y-20 sm:mt-20 sm:space-y-28">
+          {shown.map((p, i) => (
+            <ProjectCase key={p.slug} p={p} index={i} />
+          ))}
+        </div>
       </Container>
     </section>
   );
