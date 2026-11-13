@@ -696,13 +696,13 @@ const en: Dict = {
         "You always know where the project stands, what comes next and what it costs.",
       steps: [
         {
-          title: "Call",
-          body: "30 minutes to understand your need, constraints and budget. You leave with a clear scope and a quote.",
+          title: "Free call",
+          body: "30 minutes, no commitment, to understand your need, constraints and budget. You leave with a clear scope and a quote.",
           when: "Day 1",
         },
         {
-          title: "Mockup",
-          body: "I design the visual direction and the key screens. You approve before a single line of code is written.",
+          title: "Audit / mockup",
+          body: "For an automation, I map your current process. For a website or SaaS, I design the key screens. You approve before anything is built.",
           when: "Week 1",
         },
         {
@@ -711,8 +711,8 @@ const en: Dict = {
           when: "Following weeks",
         },
         {
-          title: "Launch",
-          body: "Deployment, domain, SEO, testing and handover. I stay available after go-live.",
+          title: "Launch + follow-up",
+          body: "Deployment, testing and handover with documentation. I stay available after go-live for adjustments.",
           when: "Final week",
         },
       ],
@@ -1386,13 +1386,13 @@ const fr: Dict = {
         "Vous savez à tout moment où en est le projet, ce qui vient ensuite et ce que ça coûte.",
       steps: [
         {
-          title: "Appel",
-          body: "30 minutes pour comprendre votre besoin, vos contraintes et votre budget. Vous repartez avec un périmètre clair et un devis.",
+          title: "Appel gratuit",
+          body: "30 minutes, sans engagement, pour comprendre votre besoin, vos contraintes et votre budget. Vous repartez avec un périmètre clair et un devis.",
           when: "Jour 1",
         },
         {
-          title: "Maquette",
-          body: "Je conçois la direction visuelle et les écrans clés. Vous validez avant qu’une seule ligne de code ne soit écrite.",
+          title: "Audit / maquette",
+          body: "Pour une automatisation, je cartographie votre fonctionnement actuel. Pour un site ou un SaaS, je dessine les écrans clés. Vous validez avant toute construction.",
           when: "Semaine 1",
         },
         {
@@ -1401,8 +1401,8 @@ const fr: Dict = {
           when: "Semaines suivantes",
         },
         {
-          title: "Mise en ligne",
-          body: "Déploiement, nom de domaine, SEO, tests et passation. Je reste disponible après le lancement.",
+          title: "Mise en ligne + suivi",
+          body: "Déploiement, tests et passation avec documentation. Je reste disponible après le lancement pour les ajustements.",
           when: "Dernière semaine",
         },
       ],
