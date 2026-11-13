@@ -141,6 +141,12 @@ type Dict = {
   studio: {
     viewProjects: string;
     whatsappCta: string;
+    /** Short label for the navbar and the floating mobile button. */
+    contactCta: string;
+    /** Pre-filled WhatsApp message. */
+    whatsappPrefill: string;
+    whatsappAbout: string;
+    askDemo: string;
     scroll: string;
     marquee: string;
     caseToggle: string;
@@ -459,6 +465,10 @@ const en: Dict = {
   studio: {
     viewProjects: "View my work",
     whatsappCta: "Message me on WhatsApp",
+    contactCta: "Contact me",
+    whatsappPrefill: "Hello Mohamed, I have a project I would like to discuss.",
+    whatsappAbout: "Hello Mohamed, I would like to know more about this project:",
+    askDemo: "Ask for a demo",
     scroll: "Scroll",
     marquee: "Technologies I ship to production",
     caseToggle: "Read the full case study",
@@ -977,6 +987,10 @@ const fr: Dict = {
   studio: {
     viewProjects: "Voir mes projets",
     whatsappCta: "Me contacter sur WhatsApp",
+    contactCta: "Me contacter",
+    whatsappPrefill: "Bonjour Mohamed, j’ai un projet dont j’aimerais discuter.",
+    whatsappAbout: "Bonjour Mohamed, j’aimerais en savoir plus sur ce projet :",
+    askDemo: "Demander une démo",
     scroll: "Défiler",
     marquee: "Les technologies que je mets en production",
     caseToggle: "Voir l’étude de cas complète",

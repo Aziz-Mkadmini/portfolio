@@ -2,7 +2,7 @@
 
 import { ArrowDown, MessageCircle } from "lucide-react";
 import { type CSSProperties } from "react";
-import { site } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/Button";
 import { RevealWords } from "@/components/Motion";
@@ -52,13 +52,18 @@ export function Hero() {
             className="fade-up mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
             style={delay(850)}
           >
-            <Button href="#projects" variant="primary" className="w-full sm:w-auto">
-              {t.studio.viewProjects}
-              <ArrowDown className="h-4 w-4" />
-            </Button>
-            <Button href={site.whatsapp} external variant="secondary" className="w-full sm:w-auto">
+            <Button
+              href={whatsappLink(t.studio.whatsappPrefill)}
+              external
+              variant="primary"
+              className="w-full sm:w-auto"
+            >
               <MessageCircle className="h-4 w-4" />
               {t.studio.whatsappCta}
+            </Button>
+            <Button href="#projects" variant="secondary" className="w-full sm:w-auto">
+              {t.studio.viewProjects}
+              <ArrowDown className="h-4 w-4" />
             </Button>
           </div>
         </div>

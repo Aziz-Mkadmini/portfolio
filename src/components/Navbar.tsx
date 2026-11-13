@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/Container";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
@@ -93,12 +93,13 @@ export function Navbar() {
               {hasResume ? t.nav.resume : t.nav.requestResume}
             </a>
             <Button
-              href={site.bookCall}
-              external={site.bookCall.startsWith("http")}
+              href={whatsappLink(t.studio.whatsappPrefill)}
+              external
               variant="primary"
               className="!py-2.5"
             >
-              {t.nav.bookCall}
+              <MessageCircle className="h-4 w-4" />
+              {t.studio.contactCta}
             </Button>
           </div>
 
@@ -139,8 +140,14 @@ export function Navbar() {
                   </a>
                 ))}
                 <div className="mt-6 flex flex-col gap-3">
-                  <Button href={site.bookCall} variant="primary" onClick={() => setOpen(false)}>
-                    {t.nav.bookCall}
+                  <Button
+                    href={whatsappLink(t.studio.whatsappPrefill)}
+                    external
+                    variant="primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    {t.studio.whatsappCta}
                   </Button>
                   <Button href={resumeHref} external={hasResume} variant="secondary">
                     {hasResume ? t.hero.downloadResume : t.hero.requestResume}

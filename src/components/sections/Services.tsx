@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import { whatsappLink } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -60,9 +61,14 @@ export function Services() {
         </ul>
 
         <div className="mt-10">
-          <Button href="#contact" variant="primary" className="w-full sm:w-auto">
+          <Button
+            href={whatsappLink(t.studio.whatsappPrefill)}
+            external
+            variant="primary"
+            className="w-full sm:w-auto"
+          >
+            <MessageCircle className="h-4 w-4" />
             {s.cta}
-            <ArrowUpRight className="h-4 w-4" />
           </Button>
         </div>
       </Container>

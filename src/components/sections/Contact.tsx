@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Download, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui/Button";
@@ -66,7 +66,12 @@ export function Contact() {
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-6 lg:justify-end">
             {hasWhatsapp ? (
-              <Button href={site.whatsapp} external variant="primary" className="w-full sm:w-auto">
+              <Button
+                href={whatsappLink(t.studio.whatsappPrefill)}
+                external
+                variant="primary"
+                className="w-full sm:w-auto"
+              >
                 <MessageCircle className="h-4 w-4" />
                 {t.studio.whatsappCta}
               </Button>
@@ -76,12 +81,7 @@ export function Contact() {
                 {t.cta.bookCall}
                 <ArrowUpRight className="h-4 w-4" />
               </Button>
-            ) : (
-              <Button href="/projects" variant="secondary" className="w-full sm:w-auto">
-                {t.cta.viewPortfolio}
-                <ArrowUpRight className="h-4 w-4" />
-              </Button>
-            )}
+            ) : null}
           </div>
         </div>
 
@@ -115,10 +115,7 @@ export function Contact() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-xs leading-relaxed text-muted">
-              <span className="text-ink/80">{t.contact.preferCall}</span> {t.contact.bookACall}{" "}
-              {t.contact.preferCallBody} {t.cta.asyncNote}
-            </p>
+            <p className="mt-6 text-xs leading-relaxed text-muted">{t.cta.asyncNote}</p>
           </div>
           <FadeIn className="lg:col-span-7" y={18}>
             <ContactForm />

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Github, Plus } from "lucide-react";
+import { ArrowUpRight, Github, MessageCircle, Plus } from "lucide-react";
 import Image from "next/image";
 import { useState, type ComponentType } from "react";
 import {
@@ -25,7 +25,7 @@ import {
   SiVercel,
 } from "react-icons/si";
 import { projects, type Project } from "@/lib/projects";
-import { site } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -173,24 +173,26 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
 
   const actions = (
     <div className="flex flex-col gap-3 min-[420px]:flex-row min-[420px]:flex-wrap">
-      <Button
-        href={p.demoUrl ?? "#contact"}
-        variant={isLive ? "primary" : "secondary"}
-        external={isLive}
-        className="w-full min-[420px]:w-auto"
-      >
-        {isLive ? t.projects.liveDemo : t.projects.requestDemo}
-        <ArrowUpRight className="h-4 w-4" />
-      </Button>
+      {isLive ? (
+        <Button href={p.demoUrl} variant="secondary" external className="w-full min-[420px]:w-auto">
+          {t.projects.liveDemo}
+          <ArrowUpRight className="h-4 w-4" />
+        </Button>
+      ) : (
+        <Button
+          href={whatsappLink(`${t.studio.whatsappAbout} ${p.name}`)}
+          variant="secondary"
+          external
+          className="w-full min-[420px]:w-auto"
+        >
+          <MessageCircle className="h-4 w-4" />
+          {t.studio.askDemo}
+        </Button>
+      )}
       {p.repoUrl ? (
-        <Button href={p.repoUrl} external variant="secondary" className="w-full min-[420px]:w-auto">
+        <Button href={p.repoUrl} external variant="ghost" className="w-full min-[420px]:w-auto">
           <Github className="h-4 w-4" />
           GitHub
-        </Button>
-      ) : null}
-      {isLive ? (
-        <Button href="#contact" variant="ghost" className="w-full min-[420px]:w-auto">
-          {t.projects.talkAbout}
         </Button>
       ) : null}
     </div>
@@ -329,18 +331,6 @@ export function Projects() {
           title={t.projects.title}
           description={t.projects.description}
         />
-        <div className="mt-8">
-          <Button
-            href={site.bookCall}
-            variant="secondary"
-            external={site.bookCall.startsWith("http")}
-            className="w-full sm:w-auto"
-          >
-            {t.projects.discuss}
-            <ArrowUpRight className="h-4 w-4" />
-          </Button>
-        </div>
-
         <div className="mt-16 space-y-20 sm:mt-24 sm:space-y-28">
           {projects.map((p, i) => (
             <ProjectCase key={p.slug} p={p} index={i} />

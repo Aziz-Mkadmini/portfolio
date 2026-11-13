@@ -37,6 +37,13 @@ export const site = {
     "mailto:mkadmiaziz0203@gmail.com?subject=Resume%20request&body=Hi%20Mohamed%2C%20I%20would%20like%20to%20receive%20your%20latest%20resume.",
 } as const;
 
+/** WhatsApp link with a pre-filled message (falls back to the bare link for non wa.me URLs). */
+export function whatsappLink(text?: string) {
+  if (!text || !site.whatsapp.includes("wa.me")) return site.whatsapp;
+  const sep = site.whatsapp.includes("?") ? "&" : "?";
+  return `${site.whatsapp}${sep}text=${encodeURIComponent(text)}`;
+}
+
 export const services = [
   {
     title: "AI SaaS Development",
