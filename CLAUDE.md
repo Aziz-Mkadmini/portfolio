@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio site for Mohamed Aziz Mkadmini (live at https://mohamedazizmkadmini.vercel.app/). Next.js 15 App Router, React 19, TypeScript, Tailwind CSS 3, Framer Motion, one react-three-fiber scene, Lenis. No database, no auth — the only server code is the contact form endpoint.
 
+## Positioning — read before touching copy
+
+The site exists to turn visitors into freelance clients (SMEs, startups, agencies, French speakers first), not to impress developers. The owner is positioned as "Développeur Full-Stack & Automatisation IA", with two pillars on equal footing: **Automation** (n8n, AI agents, workflows) and **Full-Stack** (websites, SaaS). Rules that follow from this:
+
+- Lead with the client benefit; technical vocabulary (Prisma, webhooks, RBAC…) belongs in the collapsed part of a case study, never in a headline or first paragraph.
+- One primary call to action everywhere: WhatsApp, built with `whatsappLink(prefill)` from `src/lib/site.ts`. Other buttons are secondary.
+- Never invent testimonials, client logos, figures or prices. Every key figure carries its `source`. Prices stay "on quote" (`t.studio.offers.priceNote`) and timelines are indicative until the owner supplies real ones.
+- Use-case examples by trade are examples, not past clients — keep them worded that way.
+- Do not remove a project or an image without asking.
+
 ## Commands
 
 ```bash
@@ -35,10 +45,13 @@ There are no locale routes. `LocaleProvider` (`src/lib/i18n/LocaleProvider.tsx`)
 
 ### Pages
 
-- `/` (`src/app/page.tsx`) stacks the sections from `src/components/sections/` in order: Hero, TechMarquee, Projects, Services, Process, Experience, Contact. Everything below the marquee is loaded with `next/dynamic` (still server-rendered) so it hydrates in separate chunks.
+- `/` (`src/app/page.tsx`) stacks the sections from `src/components/sections/` in order: Hero, ProofBar (key figures), Pillars ("What I do for you"), Projects, TechMarquee, Services, Process, Experience ("Why me"), Contact. Everything from Projects down is loaded with `next/dynamic` (still server-rendered) so it hydrates in separate chunks.
 - `/projects` reuses the same `Projects` and `Contact` sections; there are no per-project routes — each case study is rendered inline by `Projects.tsx`.
 - Navigation uses hash links to section ids (`/#services`, `#contact`, …), so keep section `id`s stable.
-- Strings added by the redesign (CTAs, process steps, key figures, service timelines) live under `t.studio` in `messages.ts`. `t.studio.services.delays` is index-aligned with `t.services.items`. Prices show `t.studio.services.onQuote` until real amounts are provided.
+- Strings added by the redesign live under `t.studio` in `messages.ts`: `pillars` (the two offer cards), `offers` (services: two families of four offers with benefit, deliverables, timeline), `process`, `stats` (key figures with `source`), `why` ("Why me"), `filters`. The older `t.services.items`, `t.studio.services.delays` and `site.services` are no longer rendered.
+- Each project has `pillars` in `projects.ts`, which drives the Automation / Websites & SaaS filters, and an optional `proof` list in `projectFields[slug]` (short facts shown as chips). A case study shows hook, proof chips, visual, problem and result; solution, stack, highlights, outcomes and gallery sit inside its `<details>`.
+- `Experience.tsx` keeps the résumé content (internships, degrees, certifications, availability for jobs) behind a `<details>` so it does not compete with the client message.
+- Page metadata is static and French-first (`site.title`, `site.tagline`); the English variants (`titleEn`, `taglineEn`) only feed keywords and JSON-LD because there are no locale routes. `src/app/opengraph-image.tsx` generates the share preview.
 
 ### 3D hero — one canvas only
 
@@ -50,8 +63,8 @@ There are no locale routes. `LocaleProvider` (`src/lib/i18n/LocaleProvider.tsx`)
 
 ### Styling and motion
 
-- Dark theme only, with a single amber accent — no other hue. Colors are RGB-triplet CSS variables in `src/app/globals.css` exposed as Tailwind colors: `surface`, `surface-raised`, `ink` (text), `muted` (secondary text), `line` (hairline borders), `accent`. Fonts are Inter (`font-sans`) and Bricolage Grotesque (`font-display`) via `next/font`. Layout is editorial: hairlines and type rather than boxed cards; `.label` is the small uppercase caption style.
-- `src/components/Motion.tsx`: `FadeIn`, `Stagger`, `StaggerItem` (scroll reveals), `RevealWords` (word-by-word titles, CSS-driven so the hero `<h1>` paints before hydration), `Counter` (count-up numbers). All honor `prefers-reduced-motion`. `SectionHeading` already uses `RevealWords`.
+- Dark theme only, with a single amber accent — no other hue. Colors are RGB-triplet CSS variables in `src/app/globals.css` exposed as Tailwind colors: `surface`, `surface-raised`, `ink` (text), `muted` (secondary text), `line` (hairline borders), `accent`. Fonts are Inter (`font-sans`) and Bricolage Grotesque (`font-display`) via `next/font`; the display font uses font-display `block` because swapping it re-wrapped the hero title and caused layout shift. Layout is editorial: hairlines and type rather than boxed cards; `.label` is the small uppercase caption style.
+- `src/components/Motion.tsx`: `FadeIn`, `Stagger`, `StaggerItem` (scroll reveals), `RevealWords` (word-by-word titles, CSS-driven so the hero `<h1>` paints before hydration), `Counter` (count-up numbers). All honor `prefers-reduced-motion`. Reveal wrappers carry the `js-reveal` class, which a `<noscript>` style in `layout.tsx` forces visible. `SectionHeading` already uses `RevealWords`.
 - `SmoothScroll.tsx` loads Lenis only for mouse/trackpad devices; touch devices use native scrolling. `Cursor.tsx` (custom cursor) likewise only mounts for a fine pointer and adds `html.has-cursor`.
 - `ui/BeforeAfter.tsx` expects the stacked 1680x1614 sheets in `public/redesigns/*-before-after.jpg` (before on top, after below) and crops the same file twice; a new sheet must use the same layout. Which projects use it is set by `beforeAfterSlugs` in `Projects.tsx`.
 - `Projects.tsx` maps stack labels to brand icons by keyword (`stackIconByKeyword`); add an entry there when a new technology should show an icon. Gallery images and the video inside a case study are only rendered once its `<details>` is opened.
