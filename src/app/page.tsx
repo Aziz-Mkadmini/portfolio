@@ -1,23 +1,21 @@
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
+import { TechMarquee } from "@/components/sections/TechMarquee";
 import { Projects } from "@/components/sections/Projects";
 import { Services } from "@/components/sections/Services";
+import { Process } from "@/components/sections/Process";
 import { Experience } from "@/components/sections/Experience";
-import { SocialProof } from "@/components/sections/SocialProof";
 import { Contact } from "@/components/sections/Contact";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
+      <TechMarquee />
       <Projects />
       <Services />
+      <Process />
       <Experience />
-      <SocialProof />
       <Contact />
-      <FinalCTA />
     </>
   );
 }

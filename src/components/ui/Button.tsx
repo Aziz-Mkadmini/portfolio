@@ -54,6 +54,7 @@ export function Button({
       return (
         <a
           href={href}
+          onClick={onClick}
           className={classes}
           target={openInNew ? "_blank" : undefined}
           rel={openInNew ? "noopener noreferrer" : undefined}
@@ -63,7 +64,7 @@ export function Button({
       );
     }
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} onClick={onClick} className={classes}>
         {children}
       </Link>
     );

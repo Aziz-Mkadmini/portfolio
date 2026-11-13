@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/app/json-ld";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Cursor } from "@/components/Cursor";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="relative min-h-dvh overflow-x-clip">{children}</main>
             <Footer />
           </SmoothScroll>
+          <Cursor />
         </LocaleProvider>
       </body>
     </html>
