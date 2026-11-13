@@ -1,66 +1,70 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Stagger, StaggerItem } from "@/components/Motion";
-import {
-  SiOpenai,
-  SiNextdotjs,
-  SiN8N,
-  SiPostman,
-  SiGrafana,
-  SiJupyter,
-  SiZapier,
-} from "react-icons/si";
-import { type ReactNode } from "react";
+import { Button } from "@/components/ui/Button";
+import { FadeIn } from "@/components/Motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
-
-const icons: ReactNode[] = [
-  <SiOpenai key="ai" className="h-5 w-5 text-accent/95" />,
-  <SiNextdotjs key="fs" className="h-5 w-5 text-accent/95" />,
-  <SiN8N key="aut" className="h-5 w-5 text-accent/95" />,
-  <SiPostman key="api" className="h-5 w-5 text-accent/95" />,
-  <SiGrafana key="dash" className="h-5 w-5 text-accent/95" />,
-  <SiJupyter key="ds" className="h-5 w-5 text-accent/95" />,
-  <SiZapier key="bpa" className="h-5 w-5 text-accent/95" />,
-];
 
 export function Services() {
   const { t } = useLocale();
+  const s = t.studio.services;
 
   return (
-    <section id="services" className="border-t border-white/10 py-24 sm:py-28">
+    <section id="services" className="border-t border-line py-24 sm:py-36">
       <Container>
         <SectionHeading
+          index="02"
           kicker={t.services.kicker}
           title={t.services.title}
           description={t.services.description}
         />
 
-        <Stagger className="mt-14 grid gap-4 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
-          {t.services.items.map((s, i) => (
-            <StaggerItem key={s.title}>
-              <div className="glass-panel hover-lift group relative h-full overflow-hidden rounded-2xl p-5">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-transparent to-accent/0 opacity-0 transition group-hover:opacity-100 group-hover:from-accent/10 group-hover:to-accent/8" />
-                <div className="relative">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                    {icons[i] ?? <SiOpenai className="h-5 w-5 text-accent/95" />}
-                  </div>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-white">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{s.description}</p>
-                  <ul className="mt-4 space-y-2 text-xs text-zinc-500">
-                    {s.highlights.map((h) => (
-                      <li key={h} className="flex gap-2">
-                        <span className="text-accent/70">·</span>
-                        <span className="text-zinc-400">{h}</span>
+        <ul className="mt-16 sm:mt-24">
+          {t.services.items.map((item, i) => (
+            <li key={item.title} className="group border-t border-line last:border-b">
+              <FadeIn className="grid gap-6 py-8 sm:py-10 lg:grid-cols-12 lg:gap-10">
+                <div className="flex gap-5 lg:col-span-5">
+                  <span className="label pt-2 text-muted">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-display text-2xl font-semibold leading-tight tracking-tight text-ink transition-colors duration-300 group-hover:text-accent sm:text-3xl">
+                    {item.title}
+                  </h3>
+                </div>
+                <div className="lg:col-span-4">
+                  <p className="text-sm leading-relaxed text-muted">{item.description}</p>
+                  <ul className="mt-4 space-y-1.5 text-sm text-ink/80">
+                    {item.highlights.map((h) => (
+                      <li key={h} className="flex gap-3">
+                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+                        {h}
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            </StaggerItem>
+                <dl className="grid grid-cols-2 gap-6 lg:col-span-3 lg:grid-cols-1 lg:gap-5 lg:text-right">
+                  <div>
+                    <dt className="label text-muted">{s.from}</dt>
+                    <dd className="mt-1 font-display text-xl font-semibold text-ink">{s.onQuote}</dd>
+                  </div>
+                  <div>
+                    <dt className="label text-muted">{s.delayLabel}</dt>
+                    <dd className="mt-1 font-display text-xl font-semibold text-ink">
+                      {s.delays[i] ?? "—"}
+                    </dd>
+                  </div>
+                </dl>
+              </FadeIn>
+            </li>
           ))}
-        </Stagger>
+        </ul>
+
+        <div className="mt-10">
+          <Button href="#contact" variant="primary" className="w-full sm:w-auto">
+            {s.cta}
+            <ArrowUpRight className="h-4 w-4" />
+          </Button>
+        </div>
       </Container>
     </section>
   );
