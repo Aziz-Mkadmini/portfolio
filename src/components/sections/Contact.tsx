@@ -1,34 +1,21 @@
 "use client";
 
+import { ArrowUpRight, Download, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
-import { FadeIn, Stagger, StaggerItem } from "@/components/Motion";
-import { Download, Github, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { FadeIn, RevealWords } from "@/components/Motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
 export function Contact() {
   const { t } = useLocale();
   const hasResume = /^(https?:\/\/|\/)/.test(site.resume);
   const resumeHref = hasResume ? site.resume : site.resumeRequestMailto;
-  const resumeLabel = hasResume ? t.nav.resume : t.nav.requestResume;
   const hasWhatsapp = site.whatsapp.startsWith("http");
+  const hasBooking = site.bookCall.startsWith("http");
 
   const links = [
-    { label: "LinkedIn", href: site.linkedin, icon: Linkedin, hint: t.contact.linkedinHint },
-    { label: "GitHub", href: site.github, icon: Github, hint: t.contact.githubHint },
-    {
-      label: resumeLabel,
-      href: resumeHref,
-      icon: Download,
-      hint: hasResume ? t.contact.resumeHint : t.contact.requestResumeHint,
-    },
-    {
-      label: "Email",
-      href: `mailto:${site.email}?subject=Portfolio%20inquiry&body=Hi%20Mohamed%2C%20I%20want%20to%20discuss%20a%20project.`,
-      icon: Mail,
-      hint: site.email,
-    },
     ...(hasWhatsapp
       ? [
           {
@@ -39,52 +26,99 @@ export function Contact() {
           },
         ]
       : []),
+    {
+      label: "Email",
+      href: `mailto:${site.email}?subject=Portfolio%20inquiry&body=Hi%20Mohamed%2C%20I%20want%20to%20discuss%20a%20project.`,
+      icon: Mail,
+      hint: site.email,
+    },
+    { label: "LinkedIn", href: site.linkedin, icon: Linkedin, hint: t.contact.linkedinHint },
+    { label: "GitHub", href: site.github, icon: Github, hint: t.contact.githubHint },
+    {
+      label: hasResume ? t.nav.resume : t.nav.requestResume,
+      href: resumeHref,
+      icon: Download,
+      hint: hasResume ? t.contact.resumeHint : t.contact.requestResumeHint,
+    },
   ];
 
   return (
-    <section id="contact" className="border-t border-white/10 py-24 sm:py-28">
+    <section id="contact" className="border-t border-line py-24 sm:py-36">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/90">
-              {t.contact.kicker}
+        {/* Final call to action */}
+        <p className="label flex items-center gap-3 text-accent">
+          <span className="text-muted">05</span>
+          <span className="h-px w-8 bg-accent/60" aria-hidden />
+          {t.contact.kicker}
+        </p>
+        <RevealWords
+          as="h2"
+          text={t.cta.title}
+          className="mt-6 max-w-5xl font-display text-[2.5rem] font-semibold leading-[1] tracking-tight text-ink sm:text-7xl lg:text-[5.5rem]"
+        />
+        <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="lg:col-span-6">
+            <p className="text-base leading-relaxed text-muted sm:text-lg">{t.cta.body}</p>
+            <p className="label mt-5 flex flex-wrap gap-x-6 gap-y-2 text-ink/70">
+              <span>{t.cta.chipFast}</span>
+              <span>{t.cta.chipSolid}</span>
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl text-balance">
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:col-span-6 lg:justify-end">
+            {hasWhatsapp ? (
+              <Button href={site.whatsapp} external variant="primary" className="w-full sm:w-auto">
+                <MessageCircle className="h-4 w-4" />
+                {t.studio.whatsappCta}
+              </Button>
+            ) : null}
+            {hasBooking ? (
+              <Button href={site.bookCall} external variant="secondary" className="w-full sm:w-auto">
+                {t.cta.bookCall}
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            ) : (
+              <Button href="/projects" variant="secondary" className="w-full sm:w-auto">
+                {t.cta.viewPortfolio}
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {/* Contact */}
+        <div className="mt-20 grid gap-12 border-t border-line pt-12 sm:mt-28 sm:pt-16 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <h3 className="font-display text-2xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl text-balance">
               {t.contact.title}
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-zinc-400">{t.contact.description}</p>
-            <Stagger className="mt-6 space-y-2" staggerChildren={0.08}>
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-muted">{t.contact.description}</p>
+
+            <p className="label mt-10 text-muted">{t.studio.contactOr}</p>
+            <ul className="mt-4 border-b border-line">
               {links.map((l) => (
-                <StaggerItem key={l.label}>
+                <li key={l.label}>
                   <a
                     href={l.href}
                     target={l.href.startsWith("http") ? "_blank" : undefined}
                     rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="glass-panel hover-lift flex items-start justify-between gap-3 rounded-2xl px-4 py-3"
+                    className="group flex items-center justify-between gap-4 border-t border-line py-4 transition-colors hover:text-accent"
                   >
-                    <div className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-accent/90">
-                        <l.icon className="h-4 w-4" />
+                    <span className="flex min-w-0 items-center gap-4">
+                      <l.icon className="h-4 w-4 flex-none text-accent" />
+                      <span className="min-w-0">
+                        <span className="block text-sm font-semibold">{l.label}</span>
+                        <span className="block truncate text-xs text-muted">{l.hint}</span>
                       </span>
-                      <div>
-                        <p className="text-sm font-medium text-white">{l.label}</p>
-                        <p className="text-xs text-zinc-500">{l.hint}</p>
-                      </div>
-                    </div>
-                    <span className="self-center text-xs text-zinc-500">{t.contact.open}</span>
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 flex-none text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                   </a>
-                </StaggerItem>
+                </li>
               ))}
-            </Stagger>
-            <div className="glass-panel mt-4 rounded-2xl border-dashed p-4 text-xs text-zinc-500">
-              <p className="inline-flex items-center gap-2 text-zinc-300">
-                <Phone className="h-3.5 w-3.5 text-zinc-400" />
-                {t.contact.preferCall}
-              </p>
-              <p className="mt-1">
-                {t.contact.bookACall} {t.contact.preferCallBody}
-              </p>
-            </div>
+            </ul>
+            <p className="mt-6 text-xs leading-relaxed text-muted">
+              <span className="text-ink/80">{t.contact.preferCall}</span> {t.contact.bookACall}{" "}
+              {t.contact.preferCallBody} {t.cta.asyncNote}
+            </p>
           </div>
           <FadeIn className="lg:col-span-7" y={18}>
             <ContactForm />
