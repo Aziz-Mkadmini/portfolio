@@ -210,6 +210,8 @@ type Dict = {
     string,
     {
       type: string;
+      /** Two to four short facts shown as chips under the project title. */
+      proof?: string[];
       summary: string;
       problem: string;
       impact: string;
@@ -273,7 +275,7 @@ const en: Dict = {
     discuss: "Discuss a similar build",
     caseStudy: "Case study",
     problem: "Problem",
-    impact: "Business impact",
+    impact: "Result",
     solution: "Solution",
     stack: "Stack",
     liveDemo: "Live demo",
@@ -617,6 +619,7 @@ const en: Dict = {
   projectFields: {
     "n8n-ai-agents": {
       type: "AI Automation • n8n Agents",
+      proof: ["Answers in seconds", "Leads scored hot / cold", "24/7"],
       summary:
         "What if no lead ever waited for a call back? Two AI agents built in n8n for a solar & heat-pump installer: one qualifies quote requests, the other answers support tickets, 24/7.",
       problem:
@@ -638,6 +641,7 @@ const en: Dict = {
     },
     "medassist-ai": {
       type: "AI SaaS for Medical Practices",
+      proof: ["Online booking 24/7", "Patient chatbot", "FR / EN / AR"],
       summary:
         "An AI assistant for doctors and clinics: online booking, a 24/7 patient chatbot, voice notes transcribed by AI, billing and analytics, in FR / EN / AR.",
       problem:
@@ -658,6 +662,7 @@ const en: Dict = {
     },
     "oppenheim-3d": {
       type: "Luxury Real-Estate Website Redesign (concept)",
+      proof: ["Redesign concept", "Scroll-driven 3D tour"],
       summary:
         "What if a website sold the house before the first viewing? An immersive, scroll-driven 3D redesign concept for The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubai).",
       problem:
@@ -678,6 +683,7 @@ const en: Dict = {
     },
     "falak-cosmetic": {
       type: "Cosmetics Brand & E-commerce Redesign",
+      proof: ["Redesign live", "New brand identity"],
       summary:
         "From a cluttered local shop to an international-looking beauty brand: full brand and website redesign for Falak Cosmetic, a Tunisian natural cosmetics label, keeping its real products and packaging.",
       problem:
@@ -697,12 +703,13 @@ const en: Dict = {
       ],
     },    kaizen: {
       type: "Systematic Crypto Trading SaaS",
+      proof: ["Live in production", "Online payments", "43 automated tests", "Security 84/100"],
       summary:
-        "Full-stack SaaS for systematic crypto trading: public marketing site, Paddle subscriptions (16 plans), client dashboard with live signals, performance reporting, mandatory risk framework, and admin back-office.",
+        "A complete subscription platform for a crypto trading signals service: visitors subscribe online, get their client area, and the team runs everything from an admin back-office.",
       problem:
-        "Launching a trading signals product requires more than a landing page — subscribers need gated access, verified performance, billing lifecycle, and operator tooling without security gaps.",
+        "Selling trading signals takes far more than a landing page: you need to collect subscriptions, reserve content for paying clients and prove performance, with no security gaps.",
       impact:
-        "Delivered an end-to-end commercial platform: visitors can subscribe via Paddle, clients receive tier-gated signals after completing the 1% risk framework, and admins manage users, revenue, and billing from a dedicated console.",
+        "A commercial product live in production: online payment, automatic plan activation, a client area with signals and performance reports, and a back-office to track users and revenue.",
       solution:
         "Built with Next.js 14, Prisma + Neon, NextAuth (email + Google), Paddle webhooks, Upstash rate limiting, 2FA for admins, equity-curve performance sync, SEO (sitemap, Learn hub, JSON-LD), and 43 automated tests with CI.",
       highlights: [
@@ -721,6 +728,7 @@ const en: Dict = {
     },
     istetdaa: {
       type: "Premium Digital Invitations",
+      proof: ["Live", "Order via WhatsApp", "FR / EN / AR"],
       summary:
         "Luxury digital invitation platform (استدعاء) for weddings, birthdays, and parties — mobile-first templates, interactive demos, multilingual FR/EN/AR, and WhatsApp ordering.",
       problem:
@@ -745,6 +753,7 @@ const en: Dict = {
     },
     "shopify-press-on-nails-scan": {
       type: "Shopify E-commerce + Scan",
+      proof: ["Shopify store", "Scan-guided sizing"],
       summary:
         "A Shopify storefront for press-on nails with a custom order flow and scan-assisted sizing implementation to improve purchase confidence.",
       problem:
@@ -767,12 +776,13 @@ const en: Dict = {
     },
     "nailscan-pro": {
       type: "Shopify SaaS",
+      proof: ["SaaS for Shopify", "Camera scan", "Online subscriptions"],
       summary:
-        "A Shopify nail sizing SaaS with camera-based demo flow, search/proxy integration to a dedicated scan API, and production-grade user/auth + subscription foundations.",
+        "A tool for Shopify press-on nail stores: the customer scans her hand with her phone camera and gets her size, no measuring.",
       problem:
-        "Teams needed a reliable way to convert camera scans into a usable sizing flow inside Shopify, while keeping the frontend and scan API decoupled.",
+        "Picking the right press-on nail size online is hard: customers hesitate, get it wrong and send orders back.",
       impact:
-        "A structured end-to-end architecture that supports iteration: clear frontend demo UX, a proxy layer to the scan API, and a consistent product foundation for users and billing.",
+        "A working camera demo and the base of a sellable SaaS: user accounts, online subscriptions and a separate scan service that is easy to evolve.",
       solution:
         "Implemented a Next.js SaaS frontend with authentication, subscription setup, and a `/demo` camera experience that forwards scan requests to a separate FastAPI service.",
       highlights: [
@@ -842,7 +852,7 @@ const fr: Dict = {
     discuss: "Discuter d’un projet similaire",
     caseStudy: "Étude de cas",
     problem: "Problème",
-    impact: "Impact business",
+    impact: "Résultat",
     solution: "Solution",
     stack: "Stack",
     liveDemo: "Démo live",
@@ -1186,6 +1196,7 @@ const fr: Dict = {
   projectFields: {
     "n8n-ai-agents": {
       type: "Automatisation IA • Agents n8n",
+      proof: ["Réponse en quelques secondes", "Prospects notés chaud / froid", "24 h/24"],
       summary:
         "Et si plus aucun prospect n'attendait qu'on le rappelle ? Deux agents IA construits dans n8n pour un installateur solaire et pompes à chaleur : l'un qualifie les demandes de devis, l'autre répond au SAV, 24 h/24.",
       problem:
@@ -1207,6 +1218,7 @@ const fr: Dict = {
     },
     "medassist-ai": {
       type: "SaaS IA pour cabinets médicaux",
+      proof: ["Rendez-vous en ligne 24/7", "Chatbot patient", "FR / EN / AR"],
       summary:
         "Un assistant IA pour médecins et cabinets : prise de rendez-vous en ligne, chatbot patient 24/7, notes vocales transcrites par IA, facturation et statistiques, en FR / EN / AR.",
       problem:
@@ -1227,12 +1239,13 @@ const fr: Dict = {
     },
     "oppenheim-3d": {
       type: "Refonte site immobilier de luxe (concept)",
+      proof: ["Concept de refonte", "Visite 3D au scroll"],
       summary:
         "Et si votre site vendait la maison avant la première visite ? Concept de refonte 3D immersive pilotée par le scroll pour The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubaï).",
       problem:
         "Les acheteurs de luxe décident en quelques secondes, mais le site actuel (ogroup.com) ressemble à une brochure : une grande photo, un menu, un formulaire. Rien ne met en valeur un bien à 10 M$.",
       impact:
-        "A site that feels like a private showing: visitors walk through the property from morning arrival to the house lit at night, stay longer and land on a clear \"Book a tour\" action.",
+        "Un site qui se vit comme une visite privée : le visiteur parcourt la propriété de l’arrivée au petit matin jusqu’à la maison illuminée le soir, reste plus longtemps et arrive sur une action claire, « Réserver une visite ».",
       solution:
         "Visite 3D cinématique au scroll (10 scènes), navigation en verre, typographie luxe, grille de propriétés avec filtres par ville, badges visite 3D et favoris, 100 % responsive.",
       highlights: [
@@ -1247,12 +1260,13 @@ const fr: Dict = {
     },
     "falak-cosmetic": {
       type: "Refonte marque & e-commerce cosmétique",
+      proof: ["Refonte en ligne", "Nouvelle identité de marque"],
       summary:
         "D'une boutique locale chargée à une marque beauté à l'allure internationale : refonte complète de la marque et du site de Falak Cosmetic (cosmétique naturelle tunisienne), en gardant ses vrais produits et emballages.",
       problem:
         "Le site actuel (falakcosmetic.tn) ressemble à un template générique : en-tête chargé, couleurs criardes et petites photos qui ne reflètent pas la qualité des produits.",
       impact:
-        "A soft pink \"skin & light\" identity that feels premium and girly, puts the products first and gives the brand the image it needs to sell beyond Tunisia.",
+        "Une identité rose doux « peau & lumière », premium et féminine, qui met les produits au premier plan et donne à la marque l’image qu’il lui faut pour vendre au-delà de la Tunisie.",
       solution:
         "Nouvelle identité visuelle, hero avec mannequin + produit, histoires de textures au scroll (l'eau, la goutte, la douceur), six collections avec les vraies photos produits, touches FR/AR, rapide et responsive.",
       highlights: [
@@ -1266,12 +1280,13 @@ const fr: Dict = {
       ],
     },    kaizen: {
       type: "SaaS trading crypto systématique",
+      proof: ["En production", "Paiement en ligne", "43 tests automatisés", "Sécurité 84/100"],
       summary:
-        "SaaS full-stack pour le trading crypto systématique : site marketing, abonnements Paddle (16 formules), dashboard client avec signaux live, reporting performance, cadre de risque obligatoire et back-office admin.",
+        "Une plateforme d’abonnement complète pour un service de signaux de trading crypto : le visiteur s’abonne en ligne, accède à son espace client et l’équipe pilote tout depuis son back-office.",
       problem:
-        "Lancer un produit de signaux exige plus qu’une landing : accès gated, performance vérifiée, cycle de facturation et outils opérateurs sans failles de sécurité.",
+        "Vendre des signaux de trading demande bien plus qu’une page de présentation : il faut encaisser les abonnements, réserver le contenu aux clients payants et prouver les performances, sans faille de sécurité.",
       impact:
-        "Plateforme commerciale de bout en bout : souscription via Paddle, signaux selon le tier après le risk framework 1 %, admin pour utilisateurs, revenus et billing.",
+        "Un produit commercial en production : paiement en ligne, activation automatique de l’abonnement, espace client avec signaux et rapport de performance, et un back-office pour suivre utilisateurs et revenus.",
       solution:
         "Construit avec Next.js 14, Prisma + Neon, NextAuth (email + Google), webhooks Paddle, rate limiting Upstash, 2FA admin, sync equity curve, SEO et 43 tests automatisés + CI.",
       highlights: [
@@ -1290,12 +1305,13 @@ const fr: Dict = {
     },
     istetdaa: {
       type: "Invitations digitales premium",
+      proof: ["En ligne", "Commande par WhatsApp", "FR / EN / AR"],
       summary:
-        "Plateforme d’invitations digitales de luxe (استدعاء) pour mariages, anniversaires et soirées — templates mobile-first, démos interactives, multilingue FR/EN/AR et commande WhatsApp.",
+        "Une plateforme d’invitations digitales haut de gamme (استدعاء) pour mariages, anniversaires et soirées : modèles pensés pour le mobile, démos interactives, trois langues et commande par WhatsApp.",
       problem:
-        "Les couples et hôtes veulent des invitations élégantes et partageables sans checkout complexe, avec RSVP, countdown, lieu et dress code sur mobile.",
+        "Les couples et les hôtes veulent des invitations élégantes et faciles à partager, sans paiement compliqué, avec la confirmation de présence, le compte à rebours, le lieu et le dress code sur mobile.",
       impact:
-        "Catalogue orienté conversion : démo live sur téléphone, choix du modèle, commande simple via WhatsApp — sans paiement carte sur le site.",
+        "Un catalogue qui convertit : le client teste la démo sur son téléphone, choisit son modèle et commande simplement par WhatsApp, sans carte bancaire sur le site.",
       solution:
         "Site marketing + produit multilingue avec démos interactives (ouverture d’enveloppe, musique, animations), catalogue par catégorie et tunnel WhatsApp-first.",
       highlights: [
@@ -1314,12 +1330,13 @@ const fr: Dict = {
     },
     "shopify-press-on-nails-scan": {
       type: "E-commerce Shopify + Scan",
+      proof: ["Boutique Shopify", "Taille guidée par scan"],
       summary:
-        "Boutique Shopify pour press-on nails avec parcours de commande personnalisé et sizing assisté par scan pour renforcer la confiance d’achat.",
+        "Une boutique Shopify de faux ongles avec un parcours de commande personnalisée et une aide au choix de la taille par scan, pour acheter en confiance.",
       problem:
-        "Les clients hésitent à acheter en ligne si le sizing est flou — plus de support, retours et abandons checkout.",
+        "Quand la taille est incertaine, les clientes hésitent à commander : plus de questions au support, de retours et de paniers abandonnés.",
       impact:
-        "Parcours d’achat clarifié : découverte produit, commande custom et guidance sizing par scan intégrée aux pages Shopify.",
+        "Un parcours d’achat plus clair : découverte des produits, commande personnalisée et aide à la taille par scan, directement dans les pages de la boutique.",
       solution:
         "Pages Shopify custom (home, collections, produit, commande perso, checkout) avec expérience de sizing liée au scan.",
       highlights: [
@@ -1336,12 +1353,13 @@ const fr: Dict = {
     },
     "nailscan-pro": {
       type: "SaaS Shopify",
+      proof: ["SaaS pour Shopify", "Scan par caméra", "Abonnements en ligne"],
       summary:
-        "SaaS de sizing ongles pour Shopify avec démo caméra, proxy vers une API scan dédiée, et fondations auth + abonnement production.",
+        "Un outil pour les boutiques Shopify de faux ongles : la cliente scanne sa main avec la caméra de son téléphone et obtient sa taille, sans mesurer.",
       problem:
-        "Besoin d’un flux fiable caméra → sizing dans Shopify, sans coupler le frontend à l’API scan.",
+        "Choisir la bonne taille de faux ongles en ligne est difficile : les clientes hésitent, se trompent et renvoient leurs commandes.",
       impact:
-        "Architecture end-to-end itérable : UX démo claire, couche proxy vers l’API scan, fondations produit pour users et billing.",
+        "Une démo caméra fonctionnelle et la base d’un SaaS vendable : comptes utilisateurs, abonnements en ligne et un service de scan indépendant, facile à faire évoluer.",
       solution:
         "Frontend Next.js SaaS avec auth, abonnements et `/demo` caméra qui forward les scans vers un service FastAPI séparé.",
       highlights: [

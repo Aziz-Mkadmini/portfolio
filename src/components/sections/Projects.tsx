@@ -102,7 +102,7 @@ function Facts({
   columns: boolean;
 }) {
   return (
-    <dl className={`grid gap-6 ${columns ? "md:grid-cols-3 md:gap-10" : ""}`}>
+    <dl className={`grid gap-6 ${columns ? "md:grid-cols-2 md:gap-10" : ""}`}>
       {items.map((item) => (
         <div key={item.label} className="border-t border-line pt-4">
           <dt className={`label ${item.accent ? "text-accent" : "text-muted"}`}>{item.label}</dt>
@@ -127,8 +127,10 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
   const facts = [
     { label: t.projects.problem, body: copy?.problem ?? p.problem },
     { label: t.projects.impact, body: copy?.impact ?? p.impact, accent: true },
-    { label: t.projects.solution, body: copy?.solution ?? p.solution },
   ];
+  // The technical "how" stays out of the first read: it lives in the expandable case study.
+  const solution = copy?.solution ?? p.solution;
+  const proof = copy?.proof;
 
   const isBeforeAfter = beforeAfterSlugs.has(p.slug) && Boolean(p.imageSrc);
   // The first project and the before/after ones get a full-width visual; the rest alternate
@@ -136,7 +138,6 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
   const wide = index === 0 || isBeforeAfter;
   const flipped = index % 2 === 1;
   const isLive = Boolean(p.demoUrl && p.demoUrl.startsWith("http"));
-  const hasMore = Boolean(highlights?.length || outcomes?.length || p.images?.length || p.videoSrc);
 
   const visual = !p.imageSrc ? null : isBeforeAfter ? (
     <BeforeAfter
@@ -210,6 +211,18 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
             <h3 className="mt-4 font-display text-3xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl text-balance">
               {p.name}
             </h3>
+            {proof?.length ? (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {proof.map((fact) => (
+                  <li
+                    key={fact}
+                    className="rounded-full border border-accent/40 px-3 py-1 text-xs font-medium text-accent"
+                  >
+                    {fact}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
           <p className="text-base leading-relaxed text-muted lg:col-span-4">{summary}</p>
         </header>
@@ -221,10 +234,7 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
           <div className="mt-10">
             <Facts items={facts} columns />
           </div>
-          <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            {stack}
-            <div className="flex-none">{actions}</div>
-          </div>
+          <div className="mt-8">{actions}</div>
         </div>
       ) : (
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
@@ -233,14 +243,12 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
           </FadeIn>
           <div className="flex flex-col gap-8 lg:col-span-5">
             <Facts items={facts} columns={false} />
-            {stack}
             {actions}
           </div>
         </div>
       )}
 
-      {hasMore ? (
-        <details
+      <details
           className="group mt-10 border-t border-line"
           onToggle={(e) => {
             if (e.currentTarget.open) setOpened(true);
@@ -252,6 +260,12 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
           </summary>
           <div className="grid gap-10 pb-4 pt-2 lg:grid-cols-12 lg:gap-12">
             <div className="space-y-8 lg:col-span-5">
+              <div>
+                <p className="label text-muted">{t.projects.solution}</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink/85">{solution}</p>
+                <p className="label mt-6 text-muted">{t.projects.stack}</p>
+                <div className="mt-3">{stack}</div>
+              </div>
               {highlights?.length ? (
                 <div>
                   <p className="label text-muted">{t.projects.highlights}</p>
@@ -313,8 +327,7 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
               ) : null}
             </div>
           </div>
-        </details>
-      ) : null}
+      </details>
     </article>
   );
 }
