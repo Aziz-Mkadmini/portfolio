@@ -11,6 +11,18 @@
   --muted: 163 158 148;
 }
 
+/* Native smooth scrolling for anchors on touch devices; Lenis takes over on desktop. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 68px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 html,
 body {
   min-height: 100%;
@@ -84,8 +96,8 @@ body {
     transform: translateY(112%);
   }
   .rw-in .rw > span {
-    animation: rwUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: calc(var(--i) * 45ms + var(--d, 0ms));
+    animation: rwUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i) * 35ms + var(--d, 0ms));
   }
 
   .fade-up {

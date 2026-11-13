@@ -2,7 +2,7 @@
 
 import { ArrowUpRight, Github, Plus } from "lucide-react";
 import Image from "next/image";
-import { type ComponentType } from "react";
+import { useState, type ComponentType } from "react";
 import {
   SiAuth0,
   SiChartdotjs,
@@ -115,6 +115,8 @@ function Facts({
 
 function ProjectCase({ p, index }: { p: Project; index: number }) {
   const { t } = useLocale();
+  // Gallery images and the video are only rendered once the case study has been opened.
+  const [opened, setOpened] = useState(false);
   const copy = t.projectFields[p.slug];
   const type = copy?.type ?? p.type;
   const summary = copy?.summary ?? p.summary;
@@ -236,7 +238,12 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
       )}
 
       {hasMore ? (
-        <details className="group mt-10 border-t border-line">
+        <details
+          className="group mt-10 border-t border-line"
+          onToggle={(e) => {
+            if (e.currentTarget.open) setOpened(true);
+          }}
+        >
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-sm font-semibold text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
             {t.studio.caseToggle}
             <Plus className="h-5 w-5 flex-none transition-transform duration-300 group-open:rotate-45" />
@@ -271,7 +278,7 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
               ) : null}
             </div>
             <div className="space-y-4 lg:col-span-7">
-              {p.images?.length ? (
+              {opened && p.images?.length ? (
                 <>
                   <p className="label text-muted">{t.studio.gallery}</p>
                   <div className="grid gap-3 sm:grid-cols-2">
@@ -287,7 +294,7 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
                   </div>
                 </>
               ) : null}
-              {p.videoSrc ? (
+              {opened && p.videoSrc ? (
                 <div className="overflow-hidden rounded-2xl border border-line bg-surface-raised">
                   <p className="label border-b border-line px-4 py-3 text-muted">
                     {videoLabel ?? t.projects.videoFallback}
@@ -296,8 +303,7 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
                     className="mx-auto aspect-[9/16] max-h-[560px] w-full bg-surface object-contain"
                     controls
                     playsInline
-                    preload="none"
-                    poster={p.imageSrc}
+                    preload="metadata"
                   >
                     <source src={p.videoSrc} type="video/mp4" />
                   </video>
