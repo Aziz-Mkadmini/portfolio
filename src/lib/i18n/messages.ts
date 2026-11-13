@@ -191,6 +191,14 @@ type Dict = {
         items: Array<{ title: string; benefit: string; deliverables: string[]; delay: string }>;
       }>;
     };
+    /** Client-facing "Why me" block; the full résumé sits behind `backgroundToggle`. */
+    why: {
+      kicker: string;
+      title: string;
+      description: string;
+      points: Array<{ title: string; body: string }>;
+      backgroundToggle: string;
+    };
     services: {
       from: string;
       onQuote: string;
@@ -673,6 +681,18 @@ const en: Dict = {
           ],
         },
       ],
+    },
+    why: {
+      kicker: "Why me",
+      title: "One person to talk to, from the first call to launch",
+      description:
+        "No account manager, no subcontracting chain: the person you talk to is the one who builds.",
+      points: [
+        { title: "Reply within 24 hours", body: "On WhatsApp or by email, weekdays included in your time zone." },
+        { title: "You see the progress", body: "A preview link at each stage, so you can adjust as we go." },
+        { title: "French, English, Arabic", body: "Based in Tunis (UTC+1), working remotely with clients abroad." },
+      ],
+      backgroundToggle: "Background, education and certifications",
     },
     services: {
       from: "From",
@@ -1363,6 +1383,18 @@ const fr: Dict = {
           ],
         },
       ],
+    },
+    why: {
+      kicker: "Pourquoi moi",
+      title: "Un seul interlocuteur, du premier appel à la mise en ligne",
+      description:
+        "Pas de chef de projet intermédiaire ni de sous-traitance : la personne à qui vous parlez est celle qui construit.",
+      points: [
+        { title: "Réponse sous 24 h", body: "Sur WhatsApp ou par email, en semaine, sur votre fuseau horaire." },
+        { title: "Vous voyez l’avancement", body: "Un lien de prévisualisation à chaque étape, pour ajuster au fil de l’eau." },
+        { title: "Français, anglais, arabe", body: "Basé à Tunis (UTC+1), je travaille à distance avec des clients à l’étranger." },
+      ],
+      backgroundToggle: "Parcours, formation et certifications",
     },
     services: {
       from: "À partir de",
