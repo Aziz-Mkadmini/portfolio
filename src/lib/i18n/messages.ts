@@ -178,6 +178,19 @@ type Dict = {
         prefill: string;
       }>;
     };
+    /** The offers, grouped by pillar. Prices stay "on quote" until real amounts are provided. */
+    offers: {
+      title: string;
+      description: string;
+      deliverablesLabel: string;
+      priceNote: string;
+      families: Array<{
+        key: "automation" | "fullstack";
+        title: string;
+        intro: string;
+        items: Array<{ title: string; benefit: string; deliverables: string[]; delay: string }>;
+      }>;
+    };
     services: {
       from: string;
       onQuote: string;
@@ -552,6 +565,112 @@ const en: Dict = {
             "A SaaS in production with online subscriptions, a customer area and an admin back-office.",
           cta: "Launch my website or SaaS",
           prefill: "Hello Mohamed, I would like to launch a website or a SaaS.",
+        },
+      ],
+    },
+    offers: {
+      title: "Clear offers, each with a deliverable and a timeline",
+      description:
+        "Tell me what you need: you get a costed quote within 24 hours, before any commitment.",
+      deliverablesLabel: "What you receive",
+      priceNote: "Price on quote, sent within 24 hours",
+      families: [
+        {
+          key: "automation",
+          title: "Automation",
+          intro: "AI agents and n8n workflows that take the repetitive work off your team.",
+          items: [
+            {
+              title: "AI agent that answers your customers",
+              benefit:
+                "Your customers get an accurate answer in seconds, at any hour, based on your own documents.",
+              deliverables: [
+                "Agent connected to your website or mailbox",
+                "Answers grounded in your documents and your rules",
+                "Handover to a human for sensitive cases",
+              ],
+              delay: "1 to 2 weeks",
+            },
+            {
+              title: "Lead qualification",
+              benefit:
+                "Every request is scored, summarised and filed before your first call.",
+              deliverables: [
+                "Connected form or entry point",
+                "Hot / cold score and automatic summary",
+                "Personalised email and call-back scheduling",
+              ],
+              delay: "1 to 2 weeks",
+            },
+            {
+              title: "n8n workflows",
+              benefit:
+                "Repetitive tasks run on their own: follow-ups, reporting, data syncing.",
+              deliverables: [
+                "Map of your repetitive tasks",
+                "Documented, versioned n8n workflows",
+                "Execution log and alerts when something fails",
+              ],
+              delay: "3 to 10 days",
+            },
+            {
+              title: "API integrations",
+              benefit: "Your tools finally talk to each other: payments, CRM, forms, databases.",
+              deliverables: [
+                "Connection between the tools you already use",
+                "Automatic retries when a call fails",
+                "Clear documentation for your team",
+              ],
+              delay: "3 to 10 days",
+            },
+          ],
+        },
+        {
+          key: "fullstack",
+          title: "Websites & SaaS",
+          intro: "From the showcase site to the complete platform, designed, built and launched.",
+          items: [
+            {
+              title: "Premium showcase website",
+              benefit: "A fast, elegant site that builds trust and makes people contact you.",
+              deliverables: [
+                "Custom, mobile-first design",
+                "SEO, performance and contact form",
+                "Launch and domain setup",
+              ],
+              delay: "2 to 3 weeks",
+            },
+            {
+              title: "Redesign",
+              benefit: "Your current site, rethought to match the level you really work at.",
+              deliverables: [
+                "Audit of the existing site and before / after mockup",
+                "New visual identity and animations",
+                "Migration of your content",
+              ],
+              delay: "2 to 4 weeks",
+            },
+            {
+              title: "SaaS MVP",
+              benefit: "Your idea becomes a product customers can pay for.",
+              deliverables: [
+                "Customer accounts and online payment",
+                "Customer dashboard and admin back-office",
+                "Automated tests and production launch",
+              ],
+              delay: "4 to 8 weeks",
+            },
+            {
+              title: "Dashboard",
+              benefit: "Your key numbers in one place, up to date and readable at a glance.",
+              deliverables: [
+                "Indicators defined with you",
+                "Role-based access",
+                "Data refreshed automatically",
+              ],
+              delay: "2 to 3 weeks",
+            },
+          ],
         },
       ],
     },
@@ -1135,6 +1254,113 @@ const fr: Dict = {
             "Un SaaS en production avec abonnements en ligne, espace client et back-office.",
           cta: "Lancer mon site ou mon SaaS",
           prefill: "Bonjour Mohamed, j’aimerais lancer un site ou un SaaS.",
+        },
+      ],
+    },
+    offers: {
+      title: "Des offres claires, chacune avec un livrable et un délai",
+      description:
+        "Dites-moi votre besoin : vous recevez un devis chiffré sous 24 h, avant tout engagement.",
+      deliverablesLabel: "Ce que vous recevez",
+      priceNote: "Prix sur devis, envoyé sous 24 h",
+      families: [
+        {
+          key: "automation",
+          title: "Automatisation",
+          intro: "Des agents IA et des workflows n8n qui déchargent votre équipe du répétitif.",
+          items: [
+            {
+              title: "Agent IA de réponse aux clients",
+              benefit:
+                "Vos clients reçoivent une réponse précise en quelques secondes, à toute heure, à partir de vos propres documents.",
+              deliverables: [
+                "Agent branché sur votre site ou votre boîte mail",
+                "Réponses fondées sur vos documents et vos règles",
+                "Passage à un humain pour les cas sensibles",
+              ],
+              delay: "1 à 2 semaines",
+            },
+            {
+              title: "Qualification de leads",
+              benefit:
+                "Chaque demande est notée, résumée et classée avant votre premier appel.",
+              deliverables: [
+                "Formulaire ou point d’entrée connecté",
+                "Score chaud / froid et résumé automatique",
+                "Email personnalisé et prise de rappel",
+              ],
+              delay: "1 à 2 semaines",
+            },
+            {
+              title: "Workflows n8n",
+              benefit:
+                "Les tâches répétitives s’exécutent toutes seules : relances, reporting, synchronisation des données.",
+              deliverables: [
+                "Cartographie de vos tâches répétitives",
+                "Workflows n8n documentés et versionnés",
+                "Journal d’exécution et alertes en cas d’erreur",
+              ],
+              delay: "3 à 10 jours",
+            },
+            {
+              title: "Intégrations API",
+              benefit:
+                "Vos outils se parlent enfin : paiement, CRM, formulaires, bases de données.",
+              deliverables: [
+                "Connexion entre vos outils existants",
+                "Reprises automatiques en cas d’échec",
+                "Documentation claire pour votre équipe",
+              ],
+              delay: "3 à 10 jours",
+            },
+          ],
+        },
+        {
+          key: "fullstack",
+          title: "Sites & SaaS",
+          intro: "Du site vitrine à la plateforme complète, conçu, développé et mis en ligne.",
+          items: [
+            {
+              title: "Site vitrine premium",
+              benefit: "Un site rapide et élégant qui donne confiance et pousse à vous contacter.",
+              deliverables: [
+                "Design sur mesure, pensé d’abord pour le mobile",
+                "SEO, performance et formulaire de contact",
+                "Mise en ligne et nom de domaine",
+              ],
+              delay: "2 à 3 semaines",
+            },
+            {
+              title: "Refonte",
+              benefit: "Votre site actuel, repensé pour être à la hauteur de votre vrai niveau.",
+              deliverables: [
+                "Audit de l’existant et maquette avant / après",
+                "Nouvelle identité visuelle et animations",
+                "Reprise de vos contenus",
+              ],
+              delay: "2 à 4 semaines",
+            },
+            {
+              title: "SaaS MVP",
+              benefit: "Votre idée devient un produit que des clients peuvent payer.",
+              deliverables: [
+                "Comptes clients et paiement en ligne",
+                "Tableau de bord client et back-office",
+                "Tests automatisés et mise en production",
+              ],
+              delay: "4 à 8 semaines",
+            },
+            {
+              title: "Tableau de bord",
+              benefit: "Vos chiffres clés au même endroit, à jour et lisibles d’un coup d’œil.",
+              deliverables: [
+                "Indicateurs définis avec vous",
+                "Accès par rôle",
+                "Données mises à jour automatiquement",
+              ],
+              delay: "2 à 3 semaines",
+            },
+          ],
         },
       ],
     },
