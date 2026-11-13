@@ -1,92 +1,167 @@
 "use client";
 
+import Image from "next/image";
+import { Download } from "lucide-react";
+import { site } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { FadeIn, Stagger, StaggerItem } from "@/components/Motion";
-import { Award, Briefcase, CalendarRange, Medal, Trophy } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { Counter, FadeIn, Stagger, StaggerItem } from "@/components/Motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink/85">
+      {items.map((item) => (
+        <li key={item} className="flex gap-3">
+          <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function Experience() {
   const { t } = useLocale();
-
-  const experience = [
-    { label: t.experience.professional, items: t.experience.professionalItems, icon: Briefcase },
-    { label: t.experience.education, items: t.experience.educationItems, icon: Briefcase },
-  ];
-
-  const credIcons = [Briefcase, Award] as const;
+  const hasResume = /^(https?:\/\/|\/)/.test(site.resume);
+  const credentials = [...t.experience.creds, ...t.social.items];
 
   return (
-    <section id="experience" className="border-t border-white/10 py-24 sm:py-28">
+    <section id="experience" className="border-t border-line py-24 sm:py-36">
       <Container>
         <SectionHeading
+          index="04"
           kicker={t.experience.kicker}
           title={t.experience.title}
           description={t.experience.description}
         />
 
-        <div className="mt-14 grid gap-4 sm:mt-20 lg:grid-cols-2">
-          {experience.map((b) => (
-            <FadeIn key={b.label}>
-              <div className="glass-panel hover-lift h-full rounded-2xl p-6">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                  <b.icon className="h-4 w-4 text-accent/80" />
-                  {b.label}
-                </div>
-                <ul className="mt-4 space-y-3 text-sm text-zinc-300">
-                  {b.items.map((i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="text-accent/60">·</span>
-                      <span className="leading-relaxed">{i}</span>
-                    </li>
-                  ))}
-                </ul>
+        {/* Key figures */}
+        <div className="mt-16 sm:mt-24">
+          <p className="label text-muted">{t.studio.stats.kicker}</p>
+          <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line pt-8 lg:grid-cols-4">
+            {t.studio.stats.items.map((stat) => (
+              <div key={stat.label} className="flex flex-col-reverse justify-end">
+                <dt className="mt-3 max-w-[16rem] text-sm leading-snug text-muted">{stat.label}</dt>
+                <dd className="whitespace-nowrap font-display text-5xl font-semibold leading-none tracking-tight text-ink sm:text-7xl">
+                  <Counter value={stat.value} prefix={stat.prefix} />
+                  {stat.suffix ? (
+                    <span className="text-2xl text-accent sm:text-4xl">{stat.suffix}</span>
+                  ) : null}
+                </dd>
               </div>
-            </FadeIn>
-          ))}
+            ))}
+          </dl>
         </div>
 
-        <Stagger className="mt-4 grid gap-4 lg:grid-cols-3">
-          {t.experience.creds.map((c, idx) => {
-            const Icon = credIcons[idx] ?? Award;
-            return (
+        {/* About */}
+        <div className="mt-20 grid gap-10 sm:mt-28 lg:grid-cols-12 lg:gap-12">
+          <FadeIn className="lg:col-span-4" y={24}>
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-line bg-surface-raised">
+              <div
+                className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-accent/15 to-transparent"
+                aria-hidden
+              />
+              <Image
+                src="/imageprofil.png"
+                alt={site.name}
+                fill
+                sizes="(min-width: 1024px) 360px, 86vw"
+                className="object-contain object-bottom"
+              />
+            </div>
+          </FadeIn>
+          <div className="lg:col-span-8">
+            <p className="label text-accent">{t.studio.aboutKicker}</p>
+            <h3 className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl text-balance">
+              {t.about.title}
+            </h3>
+            <p className="mt-5 text-base leading-relaxed text-muted">{t.about.description}</p>
+            <p className="mt-4 text-base leading-relaxed text-ink/85">
+              {t.about.bodyBefore} <strong className="font-semibold text-ink">AI Engineer</strong> &{" "}
+              <strong className="font-semibold text-ink">Software Engineer</strong>{" "}
+              {t.about.bodyAfter}
+            </p>
+            <Bullets items={t.about.bullets} />
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 sm:grid-cols-4">
+              {t.social.strip.map((s) => (
+                <div key={s.k}>
+                  <dt className="label text-muted">{s.k}</dt>
+                  <dd className="mt-1.5 text-sm font-medium text-ink">{s.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+
+        {/* Experience */}
+        <div className="mt-20 grid gap-10 sm:mt-28 lg:grid-cols-3 lg:gap-12">
+          <div className="border-t border-line pt-5">
+            <p className="label text-muted">{t.experience.professional}</p>
+            <Bullets items={t.experience.professionalItems} />
+          </div>
+          <div className="border-t border-line pt-5">
+            <p className="label text-muted">{t.experience.education}</p>
+            <Bullets items={t.experience.educationItems} />
+          </div>
+          <div className="border-t border-line pt-5">
+            <p className="label text-muted">{t.experience.achievements}</p>
+            <Bullets items={t.experience.achievementItems} />
+          </div>
+        </div>
+
+        {/* Certifications & credentials */}
+        <div className="mt-20 sm:mt-28">
+          <div className="max-w-2xl">
+            <p className="label text-accent">{t.studio.credsKicker}</p>
+            <h3 className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl text-balance">
+              {t.social.title}
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-muted">{t.social.description}</p>
+          </div>
+          <Stagger className="mt-10 border-b border-line" staggerChildren={0.07}>
+            {credentials.map((c, i) => (
               <StaggerItem key={c.title}>
-                <div className="glass-panel hover-lift h-full rounded-2xl bg-gradient-to-b from-white/[0.04] to-zinc-950/20 p-6">
-                  <Icon className="h-5 w-5 text-accent/80" />
-                  <h3 className="mt-3 font-display text-base font-semibold text-white">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{c.body}</p>
+                <div className="grid gap-2 border-t border-line py-5 sm:grid-cols-12 sm:gap-8">
+                  <p className="label pt-1 text-muted sm:col-span-1">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h4 className="font-display text-lg font-semibold text-ink sm:col-span-4">
+                    {c.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed text-muted sm:col-span-7">{c.body}</p>
                 </div>
               </StaggerItem>
-            );
-          })}
-        </Stagger>
+            ))}
+          </Stagger>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">{t.social.note}</p>
+        </div>
 
-        <div className="mt-4 grid gap-4 lg:grid-cols-3">
-          <div className="glass-panel hover-lift lg:col-span-2 rounded-2xl bg-zinc-950/40 p-6">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">
-              <Trophy className="h-4 w-4 text-amber-300/70" />
-              {t.experience.achievements}
-            </div>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              {t.experience.achievementItems.map((a) => (
-                <li key={a} className="flex gap-2">
-                  <span className="text-accent/60">·</span>
-                  {a}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-xs text-zinc-500">{t.experience.moreDetails}</p>
+        {/* Availability */}
+        <div className="mt-16 grid gap-8 rounded-2xl border border-line bg-surface-raised p-6 sm:p-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-4">
+            <p className="label text-accent">{t.experience.availability}</p>
+            <p className="mt-3 font-display text-xl font-semibold leading-snug text-ink">
+              {t.experience.availabilityBody}
+            </p>
           </div>
-          <div className="glass-panel hover-lift rounded-2xl p-6">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">
-              <CalendarRange className="h-4 w-4 text-zinc-400" />
-              {t.experience.timeline}
-            </div>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">{t.experience.timelineBody}</p>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-zinc-300">
-              <Medal className="h-4 w-4 text-accent/80" />
-              {t.experience.resumeNote}
-            </div>
+          <div className="lg:col-span-5">
+            <p className="label text-muted">{t.experience.timeline}</p>
+            <p className="mt-3 text-sm leading-relaxed text-ink/85">{t.experience.timelineBody}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{t.experience.moreDetails}</p>
+          </div>
+          <div className="lg:col-span-3 lg:text-right">
+            <Button
+              href={hasResume ? site.resume : site.resumeRequestMailto}
+              external={hasResume}
+              variant="secondary"
+              className="w-full lg:w-auto"
+            >
+              <Download className="h-4 w-4" />
+              {hasResume ? t.hero.downloadResume : t.hero.requestResume}
+            </Button>
+            <p className="mt-3 text-xs text-muted">{t.experience.resumeNote}</p>
           </div>
         </div>
       </Container>
