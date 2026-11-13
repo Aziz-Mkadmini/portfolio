@@ -150,6 +150,7 @@ type Dict = {
     scroll: string;
     marquee: string;
     caseToggle: string;
+    filters: { label: string; all: string; automation: string; fullstack: string };
     gallery: string;
     before: string;
     after: string;
@@ -497,6 +498,12 @@ const en: Dict = {
     scroll: "Scroll",
     marquee: "Technologies I ship to production",
     caseToggle: "Read the full case study",
+    filters: {
+      label: "Filter projects",
+      all: "All",
+      automation: "Automation",
+      fullstack: "Websites & SaaS",
+    },
     gallery: "Screens",
     before: "Before",
     after: "After",
@@ -1074,6 +1081,12 @@ const fr: Dict = {
     scroll: "Défiler",
     marquee: "Les technologies que je mets en production",
     caseToggle: "Voir l’étude de cas complète",
+    filters: {
+      label: "Filtrer les projets",
+      all: "Tous",
+      automation: "Automatisation",
+      fullstack: "Sites & SaaS",
+    },
     gallery: "Captures",
     before: "Avant",
     after: "Après",

@@ -24,7 +24,7 @@ import {
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
-import { projects, type Project } from "@/lib/projects";
+import { projects, type Pillar, type Project } from "@/lib/projects";
 import { whatsappLink } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -332,8 +332,13 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
   );
 }
 
+type Filter = "all" | Pillar;
+const filterKeys: Filter[] = ["all", "automation", "fullstack"];
+
 export function Projects() {
   const { t } = useLocale();
+  const [filter, setFilter] = useState<Filter>("all");
+  const shown = filter === "all" ? projects : projects.filter((p) => p.pillars.includes(filter));
 
   return (
     <section id="projects" className="py-24 sm:py-36">
@@ -344,8 +349,37 @@ export function Projects() {
           title={t.projects.title}
           description={t.projects.description}
         />
-        <div className="mt-16 space-y-20 sm:mt-24 sm:space-y-28">
-          {projects.map((p, i) => (
+
+        <div
+          className="mt-10 flex flex-wrap gap-2"
+          role="group"
+          aria-label={t.studio.filters.label}
+        >
+          {filterKeys.map((key) => {
+            const count =
+              key === "all" ? projects.length : projects.filter((p) => p.pillars.includes(key)).length;
+            const active = filter === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setFilter(key)}
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors ${
+                  active
+                    ? "border-accent bg-accent text-surface"
+                    : "border-ink/20 text-ink hover:border-accent hover:text-accent"
+                }`}
+              >
+                {t.studio.filters[key]}
+                <span className={active ? "text-surface/70" : "text-muted"}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-14 space-y-20 sm:mt-20 sm:space-y-28">
+          {shown.map((p, i) => (
             <ProjectCase key={p.slug} p={p} index={i} />
           ))}
         </div>

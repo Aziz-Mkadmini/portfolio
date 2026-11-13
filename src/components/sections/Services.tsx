@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/Motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
+/** Offers grouped by pillar: what the client gets, how long it takes, and one way to ask. */
 export function Services() {
   const { t } = useLocale();
+  const o = t.studio.offers;
   const s = t.studio.services;
 
   return (
@@ -18,49 +20,62 @@ export function Services() {
         <SectionHeading
           index="02"
           kicker={t.services.kicker}
-          title={t.services.title}
-          description={t.services.description}
+          title={o.title}
+          description={o.description}
         />
 
-        <ul className="mt-16 sm:mt-24">
-          {t.services.items.map((item, i) => (
-            <li key={item.title} className="group border-t border-line last:border-b">
-              <FadeIn className="grid gap-6 py-8 sm:py-10 lg:grid-cols-12 lg:gap-10">
-                <div className="flex gap-5 lg:col-span-5">
-                  <span className="label pt-2 text-muted">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="font-display text-2xl font-semibold leading-tight tracking-tight text-ink transition-colors duration-300 group-hover:text-accent sm:text-3xl">
-                    {item.title}
+        <div className="mt-16 space-y-20 sm:mt-24 sm:space-y-28">
+          {o.families.map((family, f) => (
+            <div key={family.key} className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-4">
+                <div className="lg:sticky lg:top-28">
+                  <p className="label text-accent">
+                    02.{f + 1} — {t.studio.filters[family.key]}
+                  </p>
+                  <h3 className="mt-4 font-display text-4xl font-semibold leading-none tracking-tight text-ink sm:text-5xl">
+                    {family.title}
                   </h3>
+                  <p className="mt-5 text-base leading-relaxed text-muted">{family.intro}</p>
+                  <p className="mt-6 inline-flex rounded-full border border-accent/40 px-3 py-1 text-xs font-medium text-accent">
+                    {o.priceNote}
+                  </p>
                 </div>
-                <div className="lg:col-span-4">
-                  <p className="text-sm leading-relaxed text-muted">{item.description}</p>
-                  <ul className="mt-4 space-y-1.5 text-sm text-ink/80">
-                    {item.highlights.map((h) => (
-                      <li key={h} className="flex gap-3">
-                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <dl className="grid grid-cols-2 gap-6 lg:col-span-3 lg:grid-cols-1 lg:gap-5 lg:text-right">
-                  <div>
-                    <dt className="label text-muted">{s.from}</dt>
-                    <dd className="mt-1 font-display text-xl font-semibold text-ink">{s.onQuote}</dd>
-                  </div>
-                  <div>
-                    <dt className="label text-muted">{s.delayLabel}</dt>
-                    <dd className="mt-1 font-display text-xl font-semibold text-ink">
-                      {s.delays[i] ?? "—"}
-                    </dd>
-                  </div>
-                </dl>
-              </FadeIn>
-            </li>
-          ))}
-        </ul>
+              </div>
 
-        <div className="mt-10">
+              <ul className="lg:col-span-8">
+                {family.items.map((item) => (
+                  <li key={item.title} className="group border-t border-line last:border-b">
+                    <FadeIn className="grid gap-5 py-8 sm:grid-cols-12 sm:gap-8">
+                      <div className="sm:col-span-6">
+                        <h4 className="font-display text-2xl font-semibold leading-tight tracking-tight text-ink transition-colors duration-300 group-hover:text-accent">
+                          {item.title}
+                        </h4>
+                        <p className="mt-3 text-sm leading-relaxed text-ink/85">{item.benefit}</p>
+                        <p className="mt-4 text-sm text-muted">
+                          <span className="label mr-2 text-muted">{s.delayLabel}</span>
+                          <span className="font-semibold text-ink">{item.delay}</span>
+                        </p>
+                      </div>
+                      <div className="sm:col-span-6">
+                        <p className="label text-muted">{o.deliverablesLabel}</p>
+                        <ul className="mt-3 space-y-2 text-sm leading-relaxed text-ink/85">
+                          {item.deliverables.map((d) => (
+                            <li key={d} className="flex gap-3">
+                              <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+                              {d}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </FadeIn>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12">
           <Button
             href={whatsappLink(t.studio.whatsappPrefill)}
             external
