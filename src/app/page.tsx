@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
+import { ProofBar } from "@/components/sections/ProofBar";
 import { TechMarquee } from "@/components/sections/TechMarquee";
 
 // Below-the-fold sections are still server-rendered, but each hydrates in its own chunk so
@@ -16,8 +17,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TechMarquee />
+      <ProofBar />
       <Projects />
+      <TechMarquee />
       <Services />
       <Process />
       <Experience />

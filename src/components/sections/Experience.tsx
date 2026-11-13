@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { Counter, FadeIn, Stagger, StaggerItem } from "@/components/Motion";
+import { FadeIn, Stagger, StaggerItem } from "@/components/Motion";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
 function Bullets({ items }: { items: string[] }) {
@@ -37,29 +37,8 @@ export function Experience() {
           description={t.experience.description}
         />
 
-        {/* Key figures */}
-        <div className="mt-16 sm:mt-24">
-          <p className="label text-muted">{t.studio.stats.kicker}</p>
-          <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line pt-8 lg:grid-cols-4">
-            {t.studio.stats.items.map((stat) => (
-              <div key={stat.label} className="flex flex-col-reverse justify-end">
-                <dt className="mt-3 max-w-[16rem] text-sm leading-snug text-muted">
-                  {stat.label}
-                  <span className="label mt-2 block text-ink/70">{stat.source}</span>
-                </dt>
-                <dd className="whitespace-nowrap font-display text-5xl font-semibold leading-none tracking-tight text-ink sm:text-7xl">
-                  <Counter value={stat.value} prefix={stat.prefix} />
-                  {stat.suffix ? (
-                    <span className="text-2xl text-accent sm:text-4xl">{stat.suffix}</span>
-                  ) : null}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
         {/* About */}
-        <div className="mt-20 grid gap-10 sm:mt-28 lg:grid-cols-12 lg:gap-12">
+        <div className="mt-16 grid gap-10 sm:mt-24 lg:grid-cols-12 lg:gap-12">
           <FadeIn className="lg:col-span-4" y={24}>
             <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-line bg-surface-raised">
               <div
