@@ -3,9 +3,13 @@
  */
 export const site = {
   name: "Mohamed Aziz Mkadmini",
-  title: "Software Engineer • AI Engineer",
+  /** Used in the <title>, Open Graph and JSON-LD. French first: the main audience is francophone. */
+  title: "Développeur Full-Stack & Automatisation n8n / IA freelance",
+  titleEn: "Freelance Full-Stack & AI Automation Developer",
   tagline:
-    "I build reliable full-stack products and AI-enabled workflows for startups and teams.",
+    "J’automatise les tâches répétitives de votre entreprise (agents IA, workflows n8n) et je développe vos sites et SaaS, de l’idée à la mise en ligne.",
+  taglineEn:
+    "I automate your business with AI agents and n8n workflows, and build your websites and SaaS from idea to launch.",
   url: (() => {
     const u = process.env.NEXT_PUBLIC_SITE_URL?.trim();
     if (u) {

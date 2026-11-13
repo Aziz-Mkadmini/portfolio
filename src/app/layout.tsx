@@ -36,6 +36,14 @@ export const metadata: Metadata = {
   },
   description: site.tagline,
   applicationName: site.name,
+  keywords: [
+    "développeur full-stack freelance",
+    "automatisation n8n",
+    "agent IA",
+    "création de site web",
+    "développement SaaS",
+    site.titleEn,
+  ],
   openGraph: {
     type: "website",
     locale: "fr_FR",
