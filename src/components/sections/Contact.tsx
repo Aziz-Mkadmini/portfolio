@@ -46,7 +46,7 @@ export function Contact() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/90">
               {t.contact.kicker}
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl text-balance">
@@ -63,7 +63,7 @@ export function Contact() {
                     className="glass-panel hover-lift flex items-start justify-between gap-3 rounded-2xl px-4 py-3"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-sky-200/90">
+                      <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-accent/90">
                         <l.icon className="h-4 w-4" />
                       </span>
                       <div>

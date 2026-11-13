@@ -38,7 +38,7 @@ export function Footer() {
         <div className="py-12 sm:py-16">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/90">
                 Mohamed Aziz Mkadmini
               </p>
               <h3 className="mt-2 font-display text-2xl font-semibold text-white text-balance">

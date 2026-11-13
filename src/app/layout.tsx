@@ -1,26 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Sora } from "next/font/google";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/app/json-ld";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
-const sans = Manrope({
+const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const display = Sora({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#0b0a09",
   width: "device-width",
   initialScale: 1,
 };
@@ -60,12 +62,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body>
+      <body className="font-sans">
         <LocaleProvider>
           <JsonLd />
-          <Navbar />
-          <main className="relative min-h-dvh overflow-x-clip">{children}</main>
-          <Footer />
+          <SmoothScroll>
+            <Navbar />
+            <main className="relative min-h-dvh overflow-x-clip">{children}</main>
+            <Footer />
+          </SmoothScroll>
         </LocaleProvider>
       </body>
     </html>

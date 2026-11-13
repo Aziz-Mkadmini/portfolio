@@ -6,12 +6,9 @@ import { type ReactNode } from "react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "border border-cyan-300/40 bg-cyan-300/12 text-cyan-100 shadow-[0_0_24px_-12px_rgba(103,232,249,0.6)] hover:border-cyan-200/55 hover:bg-cyan-300/18 focus-visible:ring-2 focus-visible:ring-cyan-300/35",
-  secondary:
-    "border border-white/15 bg-zinc-900/60 text-zinc-100 hover:border-cyan-300/30 hover:bg-zinc-900/90 focus-visible:ring-2 focus-visible:ring-white/15",
-  ghost:
-    "border border-transparent text-zinc-300 hover:border-white/10 hover:text-white hover:bg-white/[0.03] focus-visible:ring-2 focus-visible:ring-white/10",
+  primary: "bg-accent text-surface hover:bg-ink",
+  secondary: "border border-ink/20 text-ink hover:border-accent hover:text-accent",
+  ghost: "text-muted hover:text-ink",
 };
 
 function isAbsoluteOrSpecialHref(href: string) {
@@ -43,7 +40,7 @@ export function Button({
   type?: "button" | "submit";
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 focus:outline-none disabled:opacity-50";
+    "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors duration-300 disabled:opacity-50";
   const classes = `${base} ${variants[variant]} ${className}`;
 
   if (href) {

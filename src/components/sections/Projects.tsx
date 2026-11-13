@@ -112,7 +112,7 @@ export function Projects() {
                   <div className="lg:col-span-5">
                     <div className="flex items-center gap-2 text-xs text-zinc-500">
                       <p className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-medium text-zinc-300">
-                        <TypeIcon className="h-3.5 w-3.5 text-sky-300/80" />
+                        <TypeIcon className="h-3.5 w-3.5 text-accent/80" />
                         {type}
                       </p>
                       <span className="text-zinc-600">·</span>
@@ -130,8 +130,8 @@ export function Projects() {
                         </p>
                         <p className="mt-2 text-sm leading-relaxed text-zinc-300">{problem}</p>
                       </div>
-                      <div className="hover-lift rounded-2xl border border-white/10 bg-gradient-to-b from-sky-500/10 to-zinc-950/10 p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-200/60">
+                      <div className="hover-lift rounded-2xl border border-white/10 bg-gradient-to-b from-accent/10 to-zinc-950/10 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-accent/60">
                           {t.projects.impact}
                         </p>
                         <p className="mt-2 text-sm leading-relaxed text-zinc-200">{impact}</p>
@@ -157,9 +157,9 @@ export function Projects() {
                             {(() => {
                               const Icon = getStackIcon(stackItem);
                               return Icon ? (
-                                <Icon className="h-3.5 w-3.5 text-sky-300/95" />
+                                <Icon className="h-3.5 w-3.5 text-accent/95" />
                               ) : (
-                                <CircleDot className="h-3.5 w-3.5 text-sky-300/80" />
+                                <CircleDot className="h-3.5 w-3.5 text-accent/80" />
                               );
                             })()}
                             {stackItem}
@@ -207,7 +207,7 @@ export function Projects() {
                         <ul className="mt-3 space-y-2 text-sm text-zinc-300">
                           {highlights.map((h) => (
                             <li key={h} className="flex gap-2">
-                              <span className="text-sky-400/70">·</span>
+                              <span className="text-accent/70">·</span>
                               <span>{h}</span>
                             </li>
                           ))}
@@ -216,14 +216,14 @@ export function Projects() {
                     ) : null}
 
                     {outcomes?.length ? (
-                      <div className="hover-lift mt-4 rounded-2xl border border-white/10 bg-gradient-to-b from-sky-500/10 to-zinc-950/10 p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-200/60">
+                      <div className="hover-lift mt-4 rounded-2xl border border-white/10 bg-gradient-to-b from-accent/10 to-zinc-950/10 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-accent/60">
                           {t.projects.outcomes}
                         </p>
                         <ul className="mt-3 space-y-2 text-sm text-zinc-200">
                           {outcomes.map((o) => (
                             <li key={o} className="flex gap-2">
-                              <span className="text-sky-400/70">·</span>
+                              <span className="text-accent/70">·</span>
                               <span>{o}</span>
                             </li>
                           ))}

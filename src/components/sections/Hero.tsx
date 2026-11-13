@@ -24,12 +24,12 @@ export function Hero() {
       <motion.div
         animate={r ? undefined : { y: [0, -12, 0], opacity: [0.3, 0.45, 0.3] }}
         transition={r ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="ambient-orb pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-blue-500/30 blur-3xl"
+        className="ambient-orb pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-accent/30 blur-3xl"
       />
       <motion.div
         animate={r ? undefined : { y: [0, 14, 0], opacity: [0.28, 0.42, 0.28] }}
         transition={r ? undefined : { duration: 9.5, repeat: Infinity, ease: "easeInOut" }}
-        className="ambient-orb-delayed pointer-events-none absolute -right-20 top-40 h-72 w-72 rounded-full bg-cyan-400/28 blur-3xl"
+        className="ambient-orb-delayed pointer-events-none absolute -right-20 top-40 h-72 w-72 rounded-full bg-accent/28 blur-3xl"
       />
 
       <Container>
@@ -39,7 +39,7 @@ export function Hero() {
               initial={r ? false : { opacity: 0, y: 8 }}
               animate={r ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="neon-text text-xs font-semibold uppercase tracking-[0.2em] text-sky-300/95"
+              className="neon-text text-xs font-semibold uppercase tracking-[0.2em] text-accent/95"
             >
               {t.hero.kicker}
             </motion.p>
@@ -50,7 +50,7 @@ export function Hero() {
               className="mt-4 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl text-balance"
             >
               {t.hero.titleBefore}{" "}
-              <span className="bg-gradient-to-r from-sky-200 via-blue-200 to-indigo-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent via-accent to-accent bg-clip-text text-transparent">
                 {t.hero.titleHighlight}
               </span>{" "}
               {t.hero.titleAfter}
@@ -123,8 +123,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              <div className="pointer-events-none absolute inset-x-10 top-12 h-52 rounded-full bg-cyan-400/20 blur-3xl" />
-              <div className="pointer-events-none absolute inset-x-16 bottom-20 h-44 rounded-full bg-violet-500/20 blur-3xl" />
+              <div className="pointer-events-none absolute inset-x-10 top-12 h-52 rounded-full bg-accent/20 blur-3xl" />
+              <div className="pointer-events-none absolute inset-x-16 bottom-20 h-44 rounded-full bg-accent/20 blur-3xl" />
               <motion.div
                 whileHover={r ? undefined : { y: -6 }}
                 className="relative mx-auto w-full max-w-md"
@@ -156,7 +156,7 @@ export function Hero() {
                 <ul className="mt-5 space-y-3 text-sm text-zinc-300">
                   {t.hero.sideBullets.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-sky-400/60" />
+                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-accent/60" />
                       <span className="leading-relaxed text-zinc-200/90">{item}</span>
                     </li>
                   ))}

@@ -15,21 +15,21 @@ type Tone = "blue" | "violet" | "slate";
 
 const tones: Record<Tone, { top: string; bar: string; glow: string; chip: string }> = {
   blue: {
-    top: "from-blue-500/20 via-cyan-500/5 to-transparent",
-    bar: "from-blue-500/30 to-cyan-500/10",
-    glow: "from-blue-500/20",
-    chip: "text-sky-200/80",
+    top: "from-accent/20 via-accent/5 to-transparent",
+    bar: "from-accent/30 to-accent/10",
+    glow: "from-accent/20",
+    chip: "text-accent/80",
   },
   violet: {
-    top: "from-violet-500/20 via-fuchsia-500/5 to-transparent",
-    bar: "from-violet-500/30 to-fuchsia-500/10",
-    glow: "from-violet-500/20",
-    chip: "text-violet-200/80",
+    top: "from-accent/20 via-fuchsia-500/5 to-transparent",
+    bar: "from-accent/30 to-fuchsia-500/10",
+    glow: "from-accent/20",
+    chip: "text-accent/80",
   },
   slate: {
-    top: "from-sky-500/15 via-slate-500/5 to-transparent",
+    top: "from-accent/15 via-slate-500/5 to-transparent",
     bar: "from-slate-500/30 to-slate-500/10",
-    glow: "from-sky-500/10",
+    glow: "from-accent/10",
     chip: "text-slate-200/80",
   },
 };
@@ -77,7 +77,7 @@ export function MockProductShot({
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-zinc-300">
-              <Icon className="h-3.5 w-3.5 text-sky-300/80" />
+              <Icon className="h-3.5 w-3.5 text-accent/80" />
               {label}
             </div>
             <div className="mt-2 h-2 w-40 rounded bg-white/10" />

@@ -30,13 +30,13 @@ export function Experience() {
             <FadeIn key={b.label}>
               <div className="glass-panel hover-lift h-full rounded-2xl p-6">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                  <b.icon className="h-4 w-4 text-sky-300/80" />
+                  <b.icon className="h-4 w-4 text-accent/80" />
                   {b.label}
                 </div>
                 <ul className="mt-4 space-y-3 text-sm text-zinc-300">
                   {b.items.map((i) => (
                     <li key={i} className="flex gap-2">
-                      <span className="text-sky-400/60">·</span>
+                      <span className="text-accent/60">·</span>
                       <span className="leading-relaxed">{i}</span>
                     </li>
                   ))}
@@ -52,7 +52,7 @@ export function Experience() {
             return (
               <StaggerItem key={c.title}>
                 <div className="glass-panel hover-lift h-full rounded-2xl bg-gradient-to-b from-white/[0.04] to-zinc-950/20 p-6">
-                  <Icon className="h-5 w-5 text-sky-300/80" />
+                  <Icon className="h-5 w-5 text-accent/80" />
                   <h3 className="mt-3 font-display text-base font-semibold text-white">{c.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-zinc-400">{c.body}</p>
                 </div>
@@ -70,7 +70,7 @@ export function Experience() {
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
               {t.experience.achievementItems.map((a) => (
                 <li key={a} className="flex gap-2">
-                  <span className="text-sky-400/60">·</span>
+                  <span className="text-accent/60">·</span>
                   {a}
                 </li>
               ))}
@@ -84,7 +84,7 @@ export function Experience() {
             </div>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">{t.experience.timelineBody}</p>
             <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-zinc-300">
-              <Medal className="h-4 w-4 text-sky-300/80" />
+              <Medal className="h-4 w-4 text-accent/80" />
               {t.experience.resumeNote}
             </div>
           </div>

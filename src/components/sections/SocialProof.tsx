@@ -31,7 +31,7 @@ export function SocialProof() {
                 return (
                   <StaggerItem key={i.title}>
                     <div className="glass-panel hover-lift h-full rounded-2xl p-5">
-                      <Icon className="h-5 w-5 text-sky-300/80" />
+                      <Icon className="h-5 w-5 text-accent/80" />
                       <h3 className="mt-3 text-sm font-semibold text-white">{i.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-zinc-400">{i.body}</p>
                     </div>

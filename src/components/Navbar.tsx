@@ -46,7 +46,7 @@ export function Navbar() {
             onClick={() => setLocale(code)}
             className={`rounded-lg px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition ${
               locale === code
-                ? "bg-sky-500/20 text-sky-100"
+                ? "bg-accent/20 text-accent"
                 : "text-zinc-400 hover:text-zinc-200"
             }`}
           >

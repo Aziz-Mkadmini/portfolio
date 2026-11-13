@@ -15,8 +15,8 @@ export function FinalCTA() {
       <Container>
         <FadeIn>
           <div className="glass-panel glow-border relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900/60 via-zinc-950/40 to-zinc-950/80 p-8 sm:p-10">
-            <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-blue-500/15 blur-3xl" />
-            <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
+            <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
+            <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
             <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-7">
                 <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl text-balance">
@@ -31,7 +31,7 @@ export function FinalCTA() {
                     {t.cta.chipFast}
                   </span>
                   <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 text-zinc-300">
-                    <Shield className="h-3.5 w-3.5 text-sky-300/80" />
+                    <Shield className="h-3.5 w-3.5 text-accent/80" />
                     {t.cta.chipSolid}
                   </span>
                 </div>

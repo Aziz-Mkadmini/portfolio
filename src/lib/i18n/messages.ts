@@ -137,6 +137,39 @@ type Dict = {
     requestResume: string;
     rights: string;
   };
+  /** Strings added with the studio redesign (hero CTAs, marquee, process, stats, sliders). */
+  studio: {
+    viewProjects: string;
+    whatsappCta: string;
+    scroll: string;
+    marquee: string;
+    caseToggle: string;
+    gallery: string;
+    before: string;
+    after: string;
+    dragHint: string;
+    services: {
+      from: string;
+      onQuote: string;
+      delayLabel: string;
+      /** One indicative timeline per entry of `services.items`, same order. */
+      delays: string[];
+      cta: string;
+    };
+    process: {
+      kicker: string;
+      title: string;
+      description: string;
+      steps: Array<{ title: string; body: string; when: string }>;
+    };
+    stats: {
+      kicker: string;
+      items: Array<{ value: number; prefix?: string; suffix?: string; label: string }>;
+    };
+    aboutKicker: string;
+    credsKicker: string;
+    contactOr: string;
+  };
   projectFields: Record<
     string,
     {
@@ -408,6 +441,72 @@ const en: Dict = {
     downloadResume: "Download resume",
     requestResume: "Request resume",
     rights: "All rights reserved.",
+  },
+  studio: {
+    viewProjects: "View my work",
+    whatsappCta: "Message me on WhatsApp",
+    scroll: "Scroll",
+    marquee: "Technologies I ship to production",
+    caseToggle: "Read the full case study",
+    gallery: "Screens",
+    before: "Before",
+    after: "After",
+    dragHint: "Drag to compare",
+    services: {
+      from: "From",
+      onQuote: "On quote",
+      delayLabel: "Timeline",
+      delays: [
+        "4 to 8 weeks",
+        "2 to 4 weeks",
+        "1 to 2 weeks",
+        "3 to 10 days",
+        "2 to 3 weeks",
+        "2 to 4 weeks",
+        "1 to 3 weeks",
+      ],
+      cta: "Get a quote",
+    },
+    process: {
+      kicker: "Process",
+      title: "Four steps, no surprises",
+      description:
+        "You always know where the project stands, what comes next and what it costs.",
+      steps: [
+        {
+          title: "Call",
+          body: "30 minutes to understand your need, constraints and budget. You leave with a clear scope and a quote.",
+          when: "Day 1",
+        },
+        {
+          title: "Mockup",
+          body: "I design the visual direction and the key screens. You approve before a single line of code is written.",
+          when: "Week 1",
+        },
+        {
+          title: "Development",
+          body: "Built in stages with a preview link: you follow progress and adjust as we go.",
+          when: "Following weeks",
+        },
+        {
+          title: "Launch",
+          body: "Deployment, domain, SEO, testing and handover. I stay available after go-live.",
+          when: "Final week",
+        },
+      ],
+    },
+    stats: {
+      kicker: "Key figures",
+      items: [
+        { value: 43, label: "automated tests on a SaaS in production" },
+        { value: 40, prefix: "-", suffix: "%", label: "ETL processing time" },
+        { value: 50, prefix: "-", suffix: "%", label: "reporting time" },
+        { value: 84, suffix: "/100", label: "security audit score" },
+      ],
+    },
+    aboutKicker: "About",
+    credsKicker: "Certifications & credentials",
+    contactOr: "or write to me directly",
   },
   projectFields: {
     "n8n-ai-agents": {
@@ -841,6 +940,72 @@ const fr: Dict = {
     downloadResume: "Télécharger le CV",
     requestResume: "Demander le CV",
     rights: "Tous droits réservés.",
+  },
+  studio: {
+    viewProjects: "Voir mes projets",
+    whatsappCta: "Me contacter sur WhatsApp",
+    scroll: "Défiler",
+    marquee: "Les technologies que je mets en production",
+    caseToggle: "Voir l’étude de cas complète",
+    gallery: "Captures",
+    before: "Avant",
+    after: "Après",
+    dragHint: "Glissez pour comparer",
+    services: {
+      from: "À partir de",
+      onQuote: "Sur devis",
+      delayLabel: "Délai",
+      delays: [
+        "4 à 8 semaines",
+        "2 à 4 semaines",
+        "1 à 2 semaines",
+        "3 à 10 jours",
+        "2 à 3 semaines",
+        "2 à 4 semaines",
+        "1 à 3 semaines",
+      ],
+      cta: "Demander un devis",
+    },
+    process: {
+      kicker: "Process",
+      title: "Quatre étapes, aucune surprise",
+      description:
+        "Vous savez à tout moment où en est le projet, ce qui vient ensuite et ce que ça coûte.",
+      steps: [
+        {
+          title: "Appel",
+          body: "30 minutes pour comprendre votre besoin, vos contraintes et votre budget. Vous repartez avec un périmètre clair et un devis.",
+          when: "Jour 1",
+        },
+        {
+          title: "Maquette",
+          body: "Je conçois la direction visuelle et les écrans clés. Vous validez avant qu’une seule ligne de code ne soit écrite.",
+          when: "Semaine 1",
+        },
+        {
+          title: "Développement",
+          body: "Construction par étapes avec un lien de prévisualisation : vous suivez l’avancement et ajustez au fil de l’eau.",
+          when: "Semaines suivantes",
+        },
+        {
+          title: "Mise en ligne",
+          body: "Déploiement, nom de domaine, SEO, tests et passation. Je reste disponible après le lancement.",
+          when: "Dernière semaine",
+        },
+      ],
+    },
+    stats: {
+      kicker: "Chiffres clés",
+      items: [
+        { value: 43, label: "tests automatisés sur un SaaS en production" },
+        { value: 40, prefix: "-", suffix: " %", label: "de temps de traitement ETL" },
+        { value: 50, prefix: "-", suffix: " %", label: "de temps de reporting" },
+        { value: 84, suffix: "/100", label: "score d’audit de sécurité" },
+      ],
+    },
+    aboutKicker: "À propos",
+    credsKicker: "Certifications & références",
+    contactOr: "ou écrivez-moi directement",
   },
   projectFields: {
     "n8n-ai-agents": {

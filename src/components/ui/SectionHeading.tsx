@@ -1,31 +1,36 @@
 import { type ReactNode } from "react";
+import { RevealWords } from "@/components/Motion";
 
 export function SectionHeading({
   kicker,
+  index,
   title,
   description,
-  align = "left",
 }: {
   kicker?: string;
+  /** Optional section number shown before the kicker, e.g. "02". */
+  index?: string;
   title: string;
   description?: ReactNode;
-  align?: "left" | "center";
 }) {
   return (
-    <div
-      className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}
-    >
-      {kicker ? (
-        <p className="inline-flex text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300/85">
-          {kicker}
-        </p>
-      ) : null}
-      <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl text-balance">
-        {title}
-      </h2>
-      <div className="mt-4 h-px w-20 bg-gradient-to-r from-cyan-300/70 to-transparent" />
+    <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+      <div className="lg:col-span-8">
+        {kicker ? (
+          <p className="label flex items-center gap-3 text-accent">
+            {index ? <span className="text-muted">{index}</span> : null}
+            <span className="h-px w-8 bg-accent/60" aria-hidden />
+            {kicker}
+          </p>
+        ) : null}
+        <RevealWords
+          as="h2"
+          text={title}
+          className="mt-5 font-display text-[2rem] font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-[3.5rem] text-balance"
+        />
+      </div>
       {description ? (
-        <p className="mt-5 text-base leading-relaxed text-zinc-400 text-balance">
+        <p className="max-w-md self-end text-base leading-relaxed text-muted lg:col-span-4">
           {description}
         </p>
       ) : null}
