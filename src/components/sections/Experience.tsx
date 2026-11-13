@@ -43,7 +43,10 @@ export function Experience() {
           <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line pt-8 lg:grid-cols-4">
             {t.studio.stats.items.map((stat) => (
               <div key={stat.label} className="flex flex-col-reverse justify-end">
-                <dt className="mt-3 max-w-[16rem] text-sm leading-snug text-muted">{stat.label}</dt>
+                <dt className="mt-3 max-w-[16rem] text-sm leading-snug text-muted">
+                  {stat.label}
+                  <span className="label mt-2 block text-ink/70">{stat.source}</span>
+                </dt>
                 <dd className="whitespace-nowrap font-display text-5xl font-semibold leading-none tracking-tight text-ink sm:text-7xl">
                   <Counter value={stat.value} prefix={stat.prefix} />
                   {stat.suffix ? (

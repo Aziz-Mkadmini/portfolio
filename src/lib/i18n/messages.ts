@@ -164,7 +164,14 @@ type Dict = {
     };
     stats: {
       kicker: string;
-      items: Array<{ value: number; prefix?: string; suffix?: string; label: string }>;
+      items: Array<{
+        value: number;
+        prefix?: string;
+        suffix?: string;
+        label: string;
+        /** Where the figure comes from (project or employer). */
+        source: string;
+      }>;
     };
     aboutKicker: string;
     credsKicker: string;
@@ -336,21 +343,28 @@ const en: Dict = {
     professional: "Professional experience",
     education: "Education & training",
     professionalItems: [
-      "Software Engineering Intern — APRILIUM (2024): contributed to production web features, code quality, and delivery workflows.",
-      "AI and automation project work (2023-2026): built scalable software, AI-backed tools, and business process systems.",
+      "Freelance Full-Stack & AI Developer (06/2025 – present): design and production launch of web products, APIs and SaaS — Kaizen Kyoto Capital, NailScan Pro, MedAssist AI.",
+      "Data Science & AI Intern — Poulina Group Holding (02/2025 – 05/2025): ETL flows automated with SSIS (-40% processing time), ML models above 80% accuracy, Power BI dashboards (-50% reporting time).",
+      "Software Development Intern — Société Tunisienne de Banque (10/2023 – 11/2023): archive management web app with Clean Architecture (Angular, .NET, PostgreSQL).",
+      "Full-Stack Development Intern — APRILIUM (01/2023 – 02/2023): school management app (React, TypeScript, NestJS, SQL Server).",
+      "Full-Stack Development Intern — AZZEDDA (02/2022 – 05/2022): e-commerce app (Angular, Spring Boot, MongoDB).",
     ],
     educationItems: [
-      "Computer science engineering track with hands-on software architecture, data systems, and full-stack implementation.",
-      "Continuous learning through practical projects, technical certifications, and applied product work.",
+      "Engineering degree in Computer Engineering — Université Centrale, Tunis (2022 – 2025).",
+      "Applied bachelor's degree in Information Technology — ISET Zaghouan (2019 – 2022).",
     ],
     creds: [
       {
-        title: "APRILIUM Internship",
-        body: "Industry internship with real delivery expectations, collaborative development, and production-focused engineering practices.",
+        title: "ISTQB Foundation",
+        body: "Software testing certification: a testing and quality foundation that strengthens reliability across architecture, implementation, and release flow.",
       },
       {
-        title: "ISTQB Certification Path",
-        body: "Testing and quality assurance foundation that strengthens reliability mindset across architecture, implementation, and release flow.",
+        title: "NASA Space Apps Challenge",
+        body: "Took part in the international hackathon with an AI project.",
+      },
+      {
+        title: "Full Stack Angular / Spring Boot",
+        body: "Full-stack development certification covering Angular and Spring Boot.",
       },
     ],
     achievements: "Achievements",
@@ -362,7 +376,7 @@ const en: Dict = {
     availability: "Availability",
     availabilityBody: "Open to freelance, consulting, and full-time opportunities — remote-first.",
     timeline: "Timeline snapshot",
-    timelineBody: "2023-2026: software and AI product builds. 2024: APRILIUM internship.",
+    timelineBody: "2022 – 2023: internships at AZZEDDA, APRILIUM and STB. 2025: final-year internship at Poulina Group Holding, then freelance since June 2025.",
     resumeNote: "Resume available for recruiters and partners",
   },
   social: {
@@ -498,10 +512,22 @@ const en: Dict = {
     stats: {
       kicker: "Key figures",
       items: [
-        { value: 43, label: "automated tests on a SaaS in production" },
-        { value: 40, prefix: "-", suffix: "%", label: "ETL processing time" },
-        { value: 50, prefix: "-", suffix: "%", label: "reporting time" },
-        { value: 84, suffix: "/100", label: "security audit score" },
+        { value: 43, label: "automated tests with CI", source: "Kaizen Kyoto Capital" },
+        {
+          value: 40,
+          prefix: "-",
+          suffix: "%",
+          label: "ETL processing time, automated with SSIS",
+          source: "Poulina Group Holding",
+        },
+        {
+          value: 50,
+          prefix: "-",
+          suffix: "%",
+          label: "reporting time with Power BI dashboards",
+          source: "Poulina Group Holding",
+        },
+        { value: 84, suffix: "/100", label: "security score", source: "Kaizen Kyoto Capital" },
       ],
     },
     aboutKicker: "About",
@@ -835,21 +861,28 @@ const fr: Dict = {
     professional: "Expérience professionnelle",
     education: "Formation",
     professionalItems: [
-      "Stagiaire ingénierie logicielle — APRILIUM (2024) : contributions features web en production, qualité de code et process de livraison.",
-      "Projets IA et automatisation (2023-2026) : logiciels scalables, outils IA et systèmes de processus métier.",
+      "Développeur Full-Stack & solutions IA, freelance (06/2025 – aujourd’hui) : conception et mise en production de produits web, APIs et SaaS — Kaizen Kyoto Capital, NailScan Pro, MedAssist AI.",
+      "Stagiaire Data Science & IA — Poulina Group Holding (02/2025 – 05/2025) : flux ETL automatisés via SSIS (-40 % de temps de traitement), modèles ML à plus de 80 % de précision, dashboards Power BI (-50 % de temps de reporting).",
+      "Stagiaire Développement Logiciel — Société Tunisienne de Banque (10/2023 – 11/2023) : application web de gestion d’archivage en Clean Architecture (Angular, .NET, PostgreSQL).",
+      "Stagiaire Développement Full-Stack — APRILIUM (01/2023 – 02/2023) : application de gestion scolaire (React, TypeScript, NestJS, SQL Server).",
+      "Stagiaire Développement Full-Stack — AZZEDDA (02/2022 – 05/2022) : application e-commerce (Angular, Spring Boot, MongoDB).",
     ],
     educationItems: [
-      "Parcours ingénierie informatique avec architecture logicielle, systèmes de données et full-stack appliqué.",
-      "Apprentissage continu via projets concrets, certifications techniques et travail produit.",
+      "Diplôme d’ingénieur en génie informatique — Université Centrale, Tunis (2022 – 2025).",
+      "Licence appliquée en technologies de l’informatique — ISET Zaghouan (2019 – 2022).",
     ],
     creds: [
       {
-        title: "Stage APRILIUM",
-        body: "Stage en conditions réelles : attentes de livraison, développement collaboratif et pratiques d’ingénierie orientées production.",
+        title: "ISTQB Foundation",
+        body: "Certification en test logiciel : des fondations test & qualité qui renforcent la fiabilité sur l’architecture, l’implémentation et le flux de release.",
       },
       {
-        title: "Parcours certification ISTQB",
-        body: "Fondations test & qualité qui renforcent la fiabilité sur l’architecture, l’implémentation et le flux de release.",
+        title: "NASA Space Apps Challenge",
+        body: "Participation au hackathon international avec un projet IA.",
+      },
+      {
+        title: "Full Stack Angular / Spring Boot",
+        body: "Certification en développement full-stack Angular et Spring Boot.",
       },
     ],
     achievements: "Réalisations",
@@ -861,7 +894,7 @@ const fr: Dict = {
     availability: "Disponibilité",
     availabilityBody: "Ouvert au freelance, au consulting et aux postes full-time — remote-first.",
     timeline: "Aperçu chronologique",
-    timelineBody: "2023-2026 : builds logiciel et produit IA. 2024 : stage APRILIUM.",
+    timelineBody: "2022 – 2023 : stages chez AZZEDDA, APRILIUM et STB. 2025 : stage de fin d’études chez Poulina Group Holding, puis freelance depuis juin 2025.",
     resumeNote: "CV disponible pour recruteurs et partenaires",
   },
   social: {
@@ -997,10 +1030,22 @@ const fr: Dict = {
     stats: {
       kicker: "Chiffres clés",
       items: [
-        { value: 43, label: "tests automatisés sur un SaaS en production" },
-        { value: 40, prefix: "-", suffix: " %", label: "de temps de traitement ETL" },
-        { value: 50, prefix: "-", suffix: " %", label: "de temps de reporting" },
-        { value: 84, suffix: "/100", label: "score d’audit de sécurité" },
+        { value: 43, label: "tests automatisés avec CI", source: "Kaizen Kyoto Capital" },
+        {
+          value: 40,
+          prefix: "-",
+          suffix: " %",
+          label: "de temps de traitement ETL, automatisé via SSIS",
+          source: "Poulina Group Holding",
+        },
+        {
+          value: 50,
+          prefix: "-",
+          suffix: " %",
+          label: "de temps de reporting avec des dashboards Power BI",
+          source: "Poulina Group Holding",
+        },
+        { value: 84, suffix: "/100", label: "score sécurité", source: "Kaizen Kyoto Capital" },
       ],
     },
     aboutKicker: "À propos",
