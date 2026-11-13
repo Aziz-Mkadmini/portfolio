@@ -71,6 +71,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${sans.variable} ${display.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {/* Without JavaScript the reveal animations never run: show everything instead. */}
+        <noscript>
+          <style>{`.js-reveal{opacity:1!important;transform:none!important}.rw>span{transform:none!important}.fade-up{opacity:1!important;animation:none!important}`}</style>
+        </noscript>
       </head>
       <body className="font-sans">
         <LocaleProvider>

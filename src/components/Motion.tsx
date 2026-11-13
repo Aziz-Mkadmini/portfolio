@@ -29,7 +29,7 @@ export function FadeIn({
   }
   return (
     <motion.div
-      className={className}
+      className={`js-reveal ${className}`}
       initial={{ opacity: 0, y, filter: blur ? `blur(${blur}px)` : "blur(0px)" }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
@@ -55,7 +55,7 @@ export function Stagger({
   }
   return (
     <motion.div
-      className={className}
+      className={`js-reveal ${className}`}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-10%" }}
@@ -81,7 +81,7 @@ export function StaggerItem({
   }
   return (
     <motion.div
-      className={className}
+      className={`js-reveal ${className}`}
       variants={{
         hidden: { opacity: 0, y },
         show: {
@@ -111,7 +111,7 @@ export function HoverScale({
   }
   return (
     <motion.div
-      className={className}
+      className={`js-reveal ${className}`}
       whileHover={{ scale, y: -2 }}
       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
     >

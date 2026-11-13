@@ -11,14 +11,14 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.com
 
 NEXT_PUBLIC_CONTACT_EMAIL=mkadmiaziz0203@gmail.com
 NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/in/mohamed-aziz-mkadmini-84b274221
-NEXT_PUBLIC_GITHUB_URL=https://github.com/Azizmkadmini
+NEXT_PUBLIC_GITHUB_URL=https://github.com/Aziz-Mkadmini
 
 NEXT_PUBLIC_RESUME_URL=/cv-mohamed-aziz-mkadmini.pdf
 
 # Optional
 NEXT_PUBLIC_WHATSAPP_URL=https://wa.me/216XXXXXXXX
 NEXT_PUBLIC_BOOK_CALL_URL=https://cal.com/your-link
-NEXT_PUBLIC_KAIZEN_GITHUB_URL=https://github.com/Azizmkadmini/your-kaizen-repo
+NEXT_PUBLIC_KAIZEN_GITHUB_URL=https://github.com/Aziz-Mkadmini/your-kaizen-repo
 ```
 
 ## 2) Local verification

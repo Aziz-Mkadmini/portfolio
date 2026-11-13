@@ -129,7 +129,7 @@ export function HeroVisual() {
         </div>
       ) : null}
       {/* Veil that keeps the headline readable over the scene. */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/75 to-surface lg:bg-gradient-to-r lg:from-surface lg:via-surface/70 lg:to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface/45 via-surface/85 to-surface lg:bg-gradient-to-r lg:from-surface lg:via-surface/70 lg:to-transparent" />
     </div>
   );
 }
