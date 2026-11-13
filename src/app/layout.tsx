@@ -17,10 +17,12 @@ const sans = Inter({
   display: "swap",
 });
 
+// "block" (not "swap"): the hero title re-wraps when the fallback font is swapped out, which
+// shifted the layout. The file is preloaded, so the invisible window is short.
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
-  display: "swap",
+  display: "block",
 });
 
 export const viewport: Viewport = {
