@@ -154,6 +154,29 @@ type Dict = {
     before: string;
     after: string;
     dragHint: string;
+    /** "What I do for you": the two pillars of the offer, shown under the hero. */
+    pillars: {
+      kicker: string;
+      title: string;
+      description: string;
+      benefitsLabel: string;
+      examplesLabel: string;
+      proofLabel: string;
+      cards: Array<{
+        /** Matches `Project.pillars` in src/lib/projects.ts. */
+        key: "automation" | "fullstack";
+        title: string;
+        promise: string;
+        benefits: string[];
+        /** Typical use cases. Examples, not past clients. */
+        examples: string;
+        proofSlug: string;
+        proofName: string;
+        proofText: string;
+        cta: string;
+        prefill: string;
+      }>;
+    };
     services: {
       from: string;
       onQuote: string;
@@ -476,6 +499,53 @@ const en: Dict = {
     before: "Before",
     after: "After",
     dragHint: "Drag to compare",
+    pillars: {
+      kicker: "What I do for you",
+      title: "Two ways to move your business forward",
+      description:
+        "Automate what wastes your team's time, or build the product your customers will use. Often both.",
+      benefitsLabel: "What you get",
+      examplesLabel: "Typical use cases",
+      proofLabel: "Proof",
+      cards: [
+        {
+          key: "automation",
+          title: "Automation",
+          promise:
+            "I automate your company's repetitive tasks: customer requests get an answer in seconds, leads are qualified, and your data moves on its own.",
+          benefits: [
+            "Every customer request answered in seconds, around the clock",
+            "Leads scored and sorted before your first call",
+            "Your tools connected to each other: no more copy-paste or forgotten follow-ups",
+          ],
+          examples: "Real-estate agencies, tradespeople, practices, e-commerce, recruitment",
+          proofSlug: "n8n-ai-agents",
+          proofName: "Lumina Énergie",
+          proofText:
+            "Two AI agents that qualify quote requests and answer support tickets for a solar installer.",
+          cta: "Automate my business",
+          prefill: "Hello Mohamed, I would like to automate part of my business.",
+        },
+        {
+          key: "fullstack",
+          title: "Websites & SaaS",
+          promise:
+            "I design and launch your website or SaaS, with payments, customer accounts and the dashboard.",
+          benefits: [
+            "A website or platform that is live, not a mockup",
+            "Online payments, customer accounts and a dashboard included",
+            "A premium design that is fast on mobile and ready for Google",
+          ],
+          examples: "Showcase sites, redesigns, SaaS MVPs, dashboards",
+          proofSlug: "kaizen",
+          proofName: "Kaizen Kyoto Capital",
+          proofText:
+            "A SaaS in production with online subscriptions, a customer area and an admin back-office.",
+          cta: "Launch my website or SaaS",
+          prefill: "Hello Mohamed, I would like to launch a website or a SaaS.",
+        },
+      ],
+    },
     services: {
       from: "From",
       onQuote: "On quote",
@@ -998,6 +1068,53 @@ const fr: Dict = {
     before: "Avant",
     after: "Après",
     dragHint: "Glissez pour comparer",
+    pillars: {
+      kicker: "Ce que je fais pour vous",
+      title: "Deux façons de faire avancer votre entreprise",
+      description:
+        "Automatiser ce qui fait perdre du temps à votre équipe, ou construire le produit que vos clients utiliseront. Souvent les deux.",
+      benefitsLabel: "Ce que vous obtenez",
+      examplesLabel: "Cas d’usage typiques",
+      proofLabel: "La preuve",
+      cards: [
+        {
+          key: "automation",
+          title: "Automatisation",
+          promise:
+            "J’automatise les tâches répétitives de votre entreprise : vos demandes clients reçoivent une réponse en quelques secondes, vos leads sont qualifiés, vos données circulent toutes seules.",
+          benefits: [
+            "Une réponse à chaque demande client en quelques secondes, 24 h/24",
+            "Des prospects notés et triés avant même votre premier appel",
+            "Vos outils reliés entre eux : fini les copier-coller et les oublis",
+          ],
+          examples: "Agences immobilières, artisans, cabinets, e-commerce, recrutement",
+          proofSlug: "n8n-ai-agents",
+          proofName: "Lumina Énergie",
+          proofText:
+            "Deux agents IA qui qualifient les demandes de devis et répondent au SAV pour un installateur solaire.",
+          cta: "Automatiser mon activité",
+          prefill: "Bonjour Mohamed, j’aimerais automatiser une partie de mon activité.",
+        },
+        {
+          key: "fullstack",
+          title: "Sites & SaaS",
+          promise:
+            "Je conçois et mets en ligne votre site ou votre SaaS, avec le paiement, les comptes clients et le tableau de bord.",
+          benefits: [
+            "Un site ou une plateforme réellement en ligne, pas une maquette",
+            "Paiement en ligne, comptes clients et tableau de bord inclus",
+            "Un design premium, rapide sur mobile et prêt pour Google",
+          ],
+          examples: "Sites vitrines, refontes, SaaS MVP, tableaux de bord",
+          proofSlug: "kaizen",
+          proofName: "Kaizen Kyoto Capital",
+          proofText:
+            "Un SaaS en production avec abonnements en ligne, espace client et back-office.",
+          cta: "Lancer mon site ou mon SaaS",
+          prefill: "Bonjour Mohamed, j’aimerais lancer un site ou un SaaS.",
+        },
+      ],
+    },
     services: {
       from: "À partir de",
       onQuote: "Sur devis",

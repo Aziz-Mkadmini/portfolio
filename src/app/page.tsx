@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
+import { Pillars } from "@/components/sections/Pillars";
 import { ProofBar } from "@/components/sections/ProofBar";
 import { TechMarquee } from "@/components/sections/TechMarquee";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <Hero />
       <ProofBar />
+      <Pillars />
       <Projects />
       <TechMarquee />
       <Services />

@@ -199,7 +199,7 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
   );
 
   return (
-    <article className="border-t border-line pt-10 sm:pt-14">
+    <article id={`project-${p.slug}`} className="scroll-mt-20 border-t border-line pt-10 sm:pt-14">
       <FadeIn>
         <header className="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-8">
