@@ -109,7 +109,7 @@ export const projects: Project[] = [
     impact: "A site that feels like a private showing.",
     solution: "Scroll-driven 3D walkthrough, luxury UI, filtered listings.",
     stack: ["HTML / CSS / JavaScript", "Scroll-driven 3D motion", "Responsive UI", "UX / UI design"],
-    demoUrl: "#contact",
+    demoUrl: "https://oppenheim-concept-aziz.netlify.app",
     imageSrc: "/redesigns/oppenheim-before-after.jpg",
     imageAlt: "The Oppenheim Group — before / after website redesign",
     images: [

@@ -808,7 +808,7 @@ const en: Dict = {
     },
     "oppenheim-3d": {
       type: "Luxury Real-Estate Website Redesign (concept)",
-      proof: ["Redesign concept", "Scroll-driven 3D tour"],
+      proof: ["Live concept", "Scroll-driven 3D tour"],
       summary:
         "What if a website sold the house before the first viewing? An immersive, scroll-driven 3D redesign concept for The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubai).",
       problem:
@@ -1510,7 +1510,7 @@ const fr: Dict = {
     },
     "oppenheim-3d": {
       type: "Refonte site immobilier de luxe (concept)",
-      proof: ["Concept de refonte", "Visite 3D au scroll"],
+      proof: ["Concept en ligne", "Visite 3D au scroll"],
       summary:
         "Et si votre site vendait la maison avant la première visite ? Concept de refonte 3D immersive pilotée par le scroll pour The Oppenheim Group (Los Angeles, Newport Beach, San Diego, Cabo, Dubaï).",
       problem:
