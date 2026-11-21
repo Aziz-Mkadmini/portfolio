@@ -137,7 +137,8 @@ function ProjectCase({ p, index }: { p: Project; index: number }) {
   // between two split layouts so no two neighbours look the same.
   const wide = index === 0 || isBeforeAfter;
   const flipped = index % 2 === 1;
-  const isLive = Boolean(p.demoUrl && p.demoUrl.startsWith("http"));
+  // Live demos: external sites (http…) or static demos served from /public (e.g. /fakhfakh)
+  const isLive = Boolean(p.demoUrl && (p.demoUrl.startsWith("http") || p.demoUrl.startsWith("/")));
 
   const visual = !p.imageSrc ? null : isBeforeAfter ? (
     <BeforeAfter

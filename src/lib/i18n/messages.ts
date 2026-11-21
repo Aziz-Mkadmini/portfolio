@@ -827,6 +827,27 @@ const en: Dict = {
         "Clear conversion path: every section leads to \"Book a tour\"",
       ],
     },
+    "fakhfakh-gallery": {
+      type: "Immersive 3D Gallery & Commission Site (concept)",
+      proof: ["Live concept", "AR \"see it on my wall\""],
+      summary:
+        "What if an artist's website felt like walking into their gallery? An immersive 3D gallery concept for Fakhfakh, a Tunisian pop artist between Tunisia and Canada who paints only on commission.",
+      problem:
+        "Her work lives on Instagram: small square photos that hide the real size of the canvases, nothing that explains how to order a custom piece, and client questions answered one message at a time.",
+      impact:
+        "Visitors enter through the blue door of one of her paintings, walk among the canvases, try a painting on their own wall with their phone and send a ready-made request on WhatsApp.",
+      solution:
+        "Scroll-driven entrance where the painting comes alive and its door opens into a WebGL gallery; real photos colour-corrected on her white faces; \"see it on my wall\" in AR at true scale, by camera or photo, with room-light matching and a shareable shot; ordering assistant that collects the brief and sends it on WhatsApp.",
+      highlights: [
+        "Scroll intro: zoom into the painting, the blue door opens onto the gallery",
+        "True-scale AR on the wall, camera mode sized by distance, QR code from desktop to phone",
+        "Rule-based assistant in French that answers questions and prepares the commission brief",
+      ],
+      outcomes: [
+        "Live concept: try it at /fakhfakh",
+        "One place to show the work, explain commissions and receive qualified requests",
+      ],
+    },
     "falak-cosmetic": {
       type: "Cosmetics Brand & E-commerce Redesign",
       proof: ["Redesign live", "New brand identity"],
@@ -1527,6 +1548,27 @@ const fr: Dict = {
       outcomes: [
         "Une expérience digitale à la hauteur d'une agence à 5,3 Md$ de ventes",
         "Clear conversion path: every section leads to \"Book a tour\"",
+      ],
+    },
+    "fakhfakh-gallery": {
+      type: "Galerie d'art 3D & site de commandes (concept)",
+      proof: ["Concept en ligne", "« Voir chez moi » en réalité augmentée"],
+      summary:
+        "Et si le site d'une artiste donnait l'impression d'entrer dans sa galerie ? Concept de galerie 3D immersive pour Fakhfakh, peintre pop tunisienne entre la Tunisie et le Canada, qui peint uniquement sur commande.",
+      problem:
+        "Son travail vit sur Instagram : de petites photos carrées qui cachent la vraie taille des toiles, rien qui explique comment commander une œuvre sur mesure, et les questions des clients traitées message par message.",
+      impact:
+        "Le visiteur entre par la porte bleue de l'un de ses tableaux, marche entre les toiles, essaie une œuvre sur son propre mur avec son téléphone et envoie une demande prête sur WhatsApp.",
+      solution:
+        "Entrée au scroll où le tableau s'anime et sa porte s'ouvre sur une galerie WebGL ; vraies photos aux couleurs recalées sur ses visages blancs ; « Voir chez moi » en réalité augmentée à taille réelle, par caméra ou photo, avec la lumière de la pièce et une photo à partager ; assistant de commande qui prépare la demande et l'envoie sur WhatsApp.",
+      highlights: [
+        "Intro au scroll : zoom dans le tableau, la porte bleue s'ouvre sur la galerie",
+        "Réalité augmentée à taille réelle sur le mur, caméra à l'échelle selon la distance, QR code de l'ordinateur au téléphone",
+        "Assistant en français qui répond aux questions et prépare la demande de commande",
+      ],
+      outcomes: [
+        "Concept en ligne : à essayer sur /fakhfakh",
+        "Un seul endroit pour montrer les œuvres, expliquer les commandes et recevoir des demandes qualifiées",
       ],
     },
     "falak-cosmetic": {
