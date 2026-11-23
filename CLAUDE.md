@@ -74,6 +74,7 @@ There are no locale routes. `LocaleProvider` (`src/lib/i18n/LocaleProvider.tsx`)
 - Served assets live in `public/<project>/`. The root-level `kaizen/`, `shopify/`, `Nailsscan pro/` folders, `imageprofil.png` and the CV PDF are original source captures, not referenced by the site.
 - `next.config.ts` sets a strict CSP (`default-src 'self'`, `media-src 'self'`, `form-action 'self'`) and only allows `images.unsplash.com` for remote `next/image`. Embedding third-party scripts, iframes, videos or fonts requires updating the CSP there. `'unsafe-eval'` is added in development only, because `next dev` cannot hydrate without it.
 - `next build` and `next dev` share `.next`: stop the dev server before running a build.
+- `public/bif/` is the BIF Cosmétique e-commerce concept (multi-page static HTML/CSS/JS), reached at `/bif` through a redirect to `/bif/index.html` so its relative links between pages work; it has its own CSP (Google Fonts) via `bifCsp` in `next.config.ts`.
 - `public/fakhfakh/` is a standalone static demo (the Fakhfakh 3D gallery, plain HTML + three.js from jsDelivr), served at `/fakhfakh` through a rewrite in `next.config.ts`. It has its own looser CSP and `Permissions-Policy` (camera, WebXR, jsDelivr, Google Fonts, `blob:`); the strict policy applies to every other route via the `/((?!fakhfakh).*)` source. The page sets `<base href="/fakhfakh/">`, so its asset paths stay relative. A project's `demoUrl` may be internal (`/…`) as well as `http…`.
 
 ## Misleading docs

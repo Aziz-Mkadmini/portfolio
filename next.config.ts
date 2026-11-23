@@ -24,6 +24,28 @@ const fakhfakhCsp = [
   "form-action 'self'",
 ].join("; ");
 
+// BIF Cosmétique (public/bif) is a multi-page static e-commerce concept: Google Fonts,
+// inline scripts, localStorage cart, WhatsApp links. No camera or third-party scripts.
+const bifCsp = [
+  "default-src 'self'",
+  "img-src 'self' data: https:",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "script-src 'self' 'unsafe-inline'",
+  "connect-src 'self'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
+const bifHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  { key: "Content-Security-Policy", value: bifCsp },
+];
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -33,14 +55,21 @@ const nextConfig: NextConfig = {
     ],
   },
   // /fakhfakh -> the gallery's static index.html
+  // /bif -> the BIF site's home page (a redirect, so its relative links between pages keep working)
+  async redirects() {
+    return [
+      { source: "/bif", destination: "/bif/index.html", permanent: false },
+      { source: "/bif/", destination: "/bif/index.html", permanent: false },
+    ];
+  },
   async rewrites() {
     return [{ source: "/fakhfakh", destination: "/fakhfakh/index.html" }];
   },
   async headers() {
     return [
       {
-        // everything except the Fakhfakh gallery
-        source: "/((?!fakhfakh).*)",
+        // everything except the Fakhfakh gallery and the BIF concept
+        source: "/((?!fakhfakh|bif/).*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
@@ -72,6 +101,7 @@ const nextConfig: NextConfig = {
           { key: "Content-Security-Policy", value: fakhfakhCsp },
         ],
       },
+      { source: "/bif/:path*", headers: bifHeaders },
     ];
   },
 };

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le distributeur — BIF Cosmétique</title>
+<meta name="description" content="Tape un numéro, ton produit BIF tombe : la façon la plus fun de découvrir la gamme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page vend-page">
+<header class="hdr" id="hdr">
+  <div class="container">
+    <a href="index.html" class="wordmark" aria-label="BIF Cosmétique, accueil">BIF</a>
+    <nav class="menu" aria-label="Menu principal"><a href="index.html#gamme">La gamme</a><a href="boutique.html">Boutique</a><a href="distributeur.html" aria-current="page">Distributeur</a><a href="boutique.html#parfums">Parfums</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+    <div class="hdr-right">
+      <a href="panier.html" class="cart" aria-label="Panier">Panier <b data-cart-count>0</b></a>
+      <a href="#" data-wa="Bonjour BIF, je voudrais passer une commande." target="_blank" rel="noopener" class="btn btn-ink"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg><span>Commander</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu mobile"><a href="index.html#gamme">La gamme</a><a href="boutique.html">Boutique</a><a href="distributeur.html">Distributeur</a><a href="boutique.html#parfums">Parfums</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+<main id="top">
+<section class="vtop">
+  <p class="kicker">Le distributeur</p>
+  <h1>BIF 2026</h1>
+  <p>Tape ton numéro, ton produit tombe. Ekhtar w ebri9.</p>
+</section>
+<section class="vend" aria-label="Le distributeur BIF">
+  <div class="machine">
+    <div class="glass"><div class="shelves" id="shelves"></div></div>
+    <div class="side"><div class="screen" id="screen" aria-live="polite">CHOISIS 1-8</div><div class="keys" id="keys"></div></div>
+    <div class="tray"><span id="trayText">Pick more. Glow more.</span><div class="drop" id="drop"></div></div>
+  </div>
+  <aside class="vpanel" aria-live="polite">
+    <span class="vtag" id="vTag">N° 01</span>
+    <h2 id="vName"></h2>
+    <p id="vDesc"></p>
+    <b class="price" id="vPrice"></b>
+    <div class="cta" style="margin-top:0">
+      <button class="btn btn-ink" id="vAdd" data-add="">Ajouter au panier</button>
+      <a class="btn btn-line" id="vLink" href="#">Voir le produit</a>
+    </div>
+    <p style="font-size:13px;margin-top:16px">Paiement à la livraison partout en Tunisie.</p>
+  </aside>
+</section>
+</main>
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><h4>Boutique</h4><a href="boutique.html#teint">Teint et correcteurs</a><a href="boutique.html#joues">Joues</a><a href="boutique.html#yeux">Yeux</a><a href="boutique.html#parfums">Parfums</a></div>
+      <div><h4>Aide</h4><a href="contact.html#faq">FAQ</a><a href="legal.html#livraison">Livraison et retours</a><a href="panier.html">Mon panier</a></div>
+      <div><h4>BIF</h4><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a><a href="https://www.instagram.com/bif_cosmetique/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="giant" aria-hidden="true">BIF</div>
+    <div class="legal"><span>© BIF Cosmétique</span><span><a href="legal.html#mentions">Mentions légales</a> · <a href="legal.html#cgv">Conditions de vente</a> · <a href="legal.html#confidentialite">Confidentialité</a></span></div>
+  </div>
+</footer>
+<script src="js/catalog.js"></script>
+<script src="js/app.js"></script>
+<script>
+(function(){
+  var items=['concealer','correcteur-rose','correcteur-orange','blush','fixateur','deep','vega-star'].map(function(id){var p=BIF.find(id);return {id:p.id,name:p.name,desc:p.desc,price:p.price,img:p.variants[0].img}});
+  items.push({id:BIF_PACK.id,name:'Routine essentielle',desc:'Le trio du quotidien : correcteur au choix, fixateur sourcils et blush, à prix réduit.',price:BIF_PACK.price,img:'img/p/beige-open.webp'});
+  var sh=document.getElementById('shelves'), keys=document.getElementById('keys'), $=function(i){return document.getElementById(i)};
+  items.forEach(function(it,i){ var s=document.createElement('div'); s.className='slot'; s.id='slot'+i;
+    s.innerHTML='<img src="'+it.img+'" alt="'+it.name+'"><span class="n">'+(i+1)+'</span>'; sh.appendChild(s);
+    var k=document.createElement('button'); k.className='key'; k.textContent=i+1; k.setAttribute('aria-pressed','false'); k.setAttribute('aria-label','Produit numéro '+(i+1)+' : '+it.name);
+    k.onclick=function(){choose(i)}; keys.appendChild(k); });
+  function pad(n){return (n<10?'0':'')+n}
+  function choose(i,init){ var it=items[i];
+    document.querySelectorAll('.slot').forEach(function(s,j){s.classList.toggle('sel',j===i);s.classList.remove('gone')});
+    document.querySelectorAll('.key').forEach(function(k,j){k.setAttribute('aria-pressed',j===i)});
+    $('screen').textContent='N°'+pad(i+1)+' OK'; $('vTag').textContent='N° '+pad(i+1); $('vName').textContent=it.name; $('vDesc').textContent=it.desc;
+    $('vPrice').textContent=BIF.money(it.price); $('vAdd').setAttribute('data-add',it.id);
+    $('vLink').href=it.id===BIF_PACK.id?'boutique.html':'produit.html#'+it.id; $('vLink').textContent=it.id===BIF_PACK.id?'Voir la boutique':'Voir le produit';
+    if(init)return;
+    setTimeout(function(){$('slot'+i).classList.add('gone')},250);
+    var d=$('drop'); d.className='drop'; d.innerHTML='<img src="'+it.img+'" alt="">'; void d.offsetWidth; d.className='drop fall'; $('trayText').style.opacity='0'; }
+  choose(0,true);
+})();</script>
+</body>
+</html>

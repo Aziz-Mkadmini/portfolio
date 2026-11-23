@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Produit — BIF Cosmétique</title>
+<meta name="description" content="Fiche produit BIF Cosmétique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page">
+<header class="hdr" id="hdr">
+  <div class="container">
+    <a href="index.html" class="wordmark" aria-label="BIF Cosmétique, accueil">BIF</a>
+    <nav class="menu" aria-label="Menu principal"><a href="index.html#gamme">La gamme</a><a href="boutique.html" aria-current="page">Boutique</a><a href="distributeur.html">Distributeur</a><a href="boutique.html#parfums">Parfums</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+    <div class="hdr-right">
+      <a href="panier.html" class="cart" aria-label="Panier">Panier <b data-cart-count>0</b></a>
+      <a href="#" data-wa="Bonjour BIF, je voudrais passer une commande." target="_blank" rel="noopener" class="btn btn-ink"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg><span>Commander</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu mobile"><a href="index.html#gamme">La gamme</a><a href="boutique.html">Boutique</a><a href="distributeur.html">Distributeur</a><a href="boutique.html#parfums">Parfums</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+<main id="top">
+<div class="container"><div class="pdp" id="pdp">
+  <div class="gallery">
+    <div class="g-main" id="gmain"><img id="gimg" alt=""></div>
+    <div class="thumbs" id="thumbs" role="group" aria-label="Photos du produit"></div>
+  </div>
+  <div class="buybox">
+    <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span><a href="boutique.html">Boutique</a></span><span id="crumb"></span></nav>
+    <h1 id="pname"></h1>
+    <p class="tagline" id="ptag"></p>
+    <p class="pprice" id="pprice"></p>
+    <p class="cod">Paiement à la livraison · Livraison partout en Tunisie</p>
+    <div id="varwrap"><p class="label-sm">Teinte <span id="vhint"></span></p><div class="variants" id="variants" role="group" aria-label="Choisir une teinte"></div></div>
+    <div class="qtyrow">
+      <div class="qty"><button id="minus" aria-label="Retirer une unité">−</button><output id="qv" aria-live="polite">1</output><button id="plus" aria-label="Ajouter une unité">+</button></div>
+      <button class="btn btn-ink" id="add">Ajouter au panier</button>
+    </div>
+    <a class="btn btn-wa" id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Commander sur WhatsApp</a>
+    <div class="perks">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Livraison partout en Tunisie en [X] jours</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Paiement à la réception, en espèces</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span id="perk3">Conseil teinte gratuit sur WhatsApp</span></div>
+    </div>
+    <div class="acc">
+      <details open><summary>Description</summary><div class="in" id="pdesc"></div></details>
+      <details id="notesBox" hidden><summary>Notes olfactives</summary><div class="in"><dl id="pnotes"></dl></div></details>
+      <details><summary>Comment l'appliquer</summary><div class="in"><ol id="phow"></ol></div></details>
+      <details><summary>Composition</summary><div class="in" id="pcompo"></div></details>
+      <details><summary>Livraison et retours</summary><div class="in">Livraison partout en Tunisie en [X] jours ouvrés, paiement à la réception. Conditions de retour : <a href="legal.html#livraison" style="text-decoration:underline">voir ici</a>.</div></details>
+    </div>
+  </div>
+</div></div>
+<section class="section" style="padding-top:40px"><div class="container">
+  <div class="section-head"><h2 class="h2 rv">Tu vas <em>aimer</em> aussi.</h2></div>
+  <div class="pgrid" id="related"></div>
+</div></section>
+</main>
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><h4>Boutique</h4><a href="boutique.html#teint">Teint et correcteurs</a><a href="boutique.html#joues">Joues</a><a href="boutique.html#yeux">Yeux</a><a href="boutique.html#parfums">Parfums</a></div>
+      <div><h4>Aide</h4><a href="contact.html#faq">FAQ</a><a href="legal.html#livraison">Livraison et retours</a><a href="panier.html">Mon panier</a></div>
+      <div><h4>BIF</h4><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a><a href="https://www.instagram.com/bif_cosmetique/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="giant" aria-hidden="true">BIF</div>
+    <div class="legal"><span>© BIF Cosmétique</span><span><a href="legal.html#mentions">Mentions légales</a> · <a href="legal.html#cgv">Conditions de vente</a> · <a href="legal.html#confidentialite">Confidentialité</a></span></div>
+  </div>
+</footer>
+<script src="js/catalog.js"></script>
+<script src="js/app.js"></script>
+<script>
+(function(){
+  var id=location.hash.slice(1)||'correcteur', p=BIF.find(id)||BIF.find('correcteur'); addEventListener('hashchange',function(){location.reload()});
+  var vi=0, qty=1;
+  document.title=p.name+' — BIF Cosmétique'; var md=document.querySelector('meta[name=description]'); if(md)md.setAttribute('content',p.name+' : '+p.short+' Paiement à la livraison partout en Tunisie.');
+  var $=function(i){return document.getElementById(i)}, gimg=$('gimg'), gmain=$('gmain');
+  $('crumb').textContent=p.name; $('pname').textContent=p.name; $('ptag').textContent=p.short; $('pprice').textContent=BIF.money(p.price);
+  $('pdesc').textContent=p.desc; $('pcompo').textContent=p.compo;
+  $('phow').innerHTML=p.how.map(function(s){return '<li>'+s+'</li>'}).join('');
+  if(p.notes){ $('notesBox').hidden=false; $('pnotes').innerHTML=Object.keys(p.notes).map(function(k){return '<div><dt>'+k+'</dt><dd>'+p.notes[k]+'</dd></div>'}).join(''); }
+  if(p.variants.length<2){ $('varwrap').style.display='none'; }
+  var shots=[];
+  function setImg(src,cover){ if(!src){ gmain.innerHTML='<span class="ph-text">'+p.name+'</span>'; return; }
+    if(!document.getElementById('gimg')){ gmain.innerHTML='<img id="gimg" alt="">'; gimg=$('gimg'); }
+    gimg.classList.add('swap'); setTimeout(function(){ gimg.onload=function(){ gimg.className=(gimg.naturalWidth/gimg.naturalHeight>0.7)?'cover':''; }; gimg.src=src; gimg.alt=p.name; },180); }
+  function thumbs(){ var v=p.variants[vi]; shots=[]; if(v.img)shots.push({src:v.img}); if(v.open)shots.push({src:v.open}); p.gallery.forEach(function(s){shots.push({src:s,cover:true})});
+    $('thumbs').innerHTML=shots.length>1?shots.map(function(s,i){return '<button class="thumb" aria-pressed="'+(i===0)+'" aria-label="Photo '+(i+1)+'" data-i="'+i+'"><img src="'+s.src+'" alt=""></button>'}).join(''):''; }
+  function pickVariant(i){ vi=i; var v=p.variants[i];
+    gmain.style.backgroundColor=v.bg; setImg(v.img,true); thumbs();
+    document.querySelectorAll('.var').forEach(function(b,j){b.setAttribute('aria-pressed',j===i)});
+    $('vhint').textContent=v.hint?v.name+' · '+v.hint:v.name; waLink(); }
+  function waLink(){ var v=p.variants[vi]; $('wa').href=BIF.wa('Bonjour BIF, je veux commander : '+p.name+(p.variants.length>1?' ('+v.name+')':'')+' × '+qty+'.'); }
+  $('variants').innerHTML=p.variants.map(function(v,i){return '<button class="var" aria-pressed="false" data-i="'+i+'"><i style="background:'+v.color+'"></i>'+v.name+'</button>'}).join('');
+  $('variants').addEventListener('click',function(e){var b=e.target.closest('.var');if(b)pickVariant(+b.dataset.i)});
+  $('thumbs').addEventListener('click',function(e){var b=e.target.closest('.thumb');if(!b)return;var s=shots[+b.dataset.i];setImg(s.src,s.cover);document.querySelectorAll('.thumb').forEach(function(t){t.setAttribute('aria-pressed',t===b)})});
+  gimg.addEventListener('load',function(){gimg.classList.remove('swap')});
+  document.addEventListener('load',function(e){if(e.target.id==='gimg')e.target.classList.remove('swap')},true);
+  $('minus').onclick=function(){qty=Math.max(1,qty-1);$('qv').textContent=qty;waLink()};
+  $('plus').onclick=function(){qty=Math.min(20,qty+1);$('qv').textContent=qty;waLink()};
+  $('add').onclick=function(){BIF.cart.add(p.id,p.variants[vi].name,qty)};
+  if(p.cat==='parfums'){ $('perk3').textContent='Conseil parfum gratuit sur WhatsApp'; }
+  pickVariant(vi);
+  var rel=BIF_CATALOG.filter(function(x){return x.id!==p.id&&(x.cat===p.cat||x.cat!=='parfums')}).slice(0,4);
+  $('related').innerHTML=rel.map(function(x,i){return BIF.card(x,i)}).join(''); BIF.watchCards($('related'));
+  BIF.observe();
+})();</script>
+</body>
+</html>

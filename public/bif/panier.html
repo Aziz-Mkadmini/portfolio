@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panier — BIF Cosmétique</title>
+<meta name="description" content="Ton panier BIF : paiement à la livraison partout en Tunisie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page">
+<header class="hdr" id="hdr">
+  <div class="container">
+    <a href="index.html" class="wordmark" aria-label="BIF Cosmétique, accueil">BIF</a>
+    <nav class="menu" aria-label="Menu principal"><a href="index.html#gamme">La gamme</a><a href="boutique.html">Boutique</a><a href="distributeur.html">Distributeur</a><a href="boutique.html#parfums">Parfums</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+    <div class="hdr-right">
+      <a href="panier.html" class="cart" aria-label="Panier">Panier <b data-cart-count>0</b></a>
+      <a href="#" data-wa="Bonjour BIF, je voudrais passer une commande." target="_blank" rel="noopener" class="btn btn-ink"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg><span>Commander</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu mobile"><a href="index.html#gamme">La gamme</a><a href="boutique.html">Boutique</a><a href="distributeur.html">Distributeur</a><a href="boutique.html#parfums">Parfums</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+<main id="top">
+<section class="page-head" style="padding-bottom:20px"><div class="container">
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Panier</span></nav>
+  <h1 class="page-title">Ton <em>panier</em>.</h1>
+</div></section>
+<div class="container">
+  <div class="cart-grid" id="cartView">
+    <div><div id="lines"></div><a href="boutique.html" class="btn btn-line" style="margin-top:24px">Continuer mes achats</a></div>
+    <aside class="summary">
+      <h2>Commande</h2>
+      <div class="row"><span>Sous-total</span><b id="sub"></b></div>
+      <div class="row"><span>Livraison</span><span id="ship">Selon ton gouvernorat</span></div>
+      <div class="row total"><span>Total</span><span id="tot"></span></div>
+      <form class="form" id="form" novalidate>
+        <div class="field"><label for="f-name">Nom et prénom</label><input id="f-name" autocomplete="name" required><p class="err">Indique ton nom.</p></div>
+        <div class="field"><label for="f-tel">Téléphone</label><input id="f-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="20 123 456" required><p class="err">Indique un numéro tunisien à 8 chiffres.</p></div>
+        <div class="field"><label for="f-gov">Gouvernorat</label><select id="f-gov" required><option value="">Choisir…</option><option>Ariana</option><option>Béja</option><option>Ben Arous</option><option>Bizerte</option><option>Gabès</option><option>Gafsa</option><option>Jendouba</option><option>Kairouan</option><option>Kasserine</option><option>Kébili</option><option>Le Kef</option><option>Mahdia</option><option>La Manouba</option><option>Médenine</option><option>Monastir</option><option>Nabeul</option><option>Sfax</option><option>Sidi Bouzid</option><option>Siliana</option><option>Sousse</option><option>Tataouine</option><option>Tozeur</option><option>Tunis</option><option>Zaghouan</option></select><p class="err">Choisis ton gouvernorat.</p></div>
+        <div class="field"><label for="f-addr">Adresse de livraison</label><input id="f-addr" autocomplete="street-address" placeholder="Rue, numéro, ville" required><p class="err">Indique ton adresse.</p></div>
+        <div class="field"><label for="f-note">Remarque (facultatif)</label><textarea id="f-note" placeholder="Étage, repère, horaire…"></textarea></div>
+        <div class="pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="20" height="20" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Paiement à la livraison, en espèces</div>
+        <button class="btn btn-ink" type="submit" style="width:100%">Valider ma commande</button>
+        <p style="font-size:13px;color:var(--muted);text-align:center">La commande est envoyée à BIF sur WhatsApp pour confirmation.</p>
+      </form>
+    </aside>
+  </div>
+  <div class="done" id="done" hidden>
+    <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#F6F2EC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></span>
+    <h1 class="page-title" style="font-size:clamp(40px,6vw,72px)">Merci <em>!</em></h1>
+    <p class="page-lead" style="margin:16px auto 28px">Dernière étape : envoie ta commande sur WhatsApp. BIF te confirme la livraison rapidement.</p>
+    <a id="sendWa" class="btn btn-ink" target="_blank" rel="noopener">Envoyer ma commande sur WhatsApp</a><br><a href="index.html" class="btn btn-line" style="margin-top:12px">Retour à l'accueil</a>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><h4>Boutique</h4><a href="boutique.html#teint">Teint et correcteurs</a><a href="boutique.html#joues">Joues</a><a href="boutique.html#yeux">Yeux</a><a href="boutique.html#parfums">Parfums</a></div>
+      <div><h4>Aide</h4><a href="contact.html#faq">FAQ</a><a href="legal.html#livraison">Livraison et retours</a><a href="panier.html">Mon panier</a></div>
+      <div><h4>BIF</h4><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a><a href="https://www.instagram.com/bif_cosmetique/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="giant" aria-hidden="true">BIF</div>
+    <div class="legal"><span>© BIF Cosmétique</span><span><a href="legal.html#mentions">Mentions légales</a> · <a href="legal.html#cgv">Conditions de vente</a> · <a href="legal.html#confidentialite">Confidentialité</a></span></div>
+  </div>
+</footer>
+<script src="js/catalog.js"></script>
+<script src="js/app.js"></script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function render(){ var ls=BIF.cart.lines();
+    if(!ls.length){ $('lines').innerHTML='<div class="empty"><p style="font-size:20px;color:var(--ink);font-weight:700;margin-bottom:8px">Ton panier est vide.</p><p>Commence par trouver ton correcteur.</p><a href="produit.html#correcteur" class="btn btn-ink" style="margin-top:22px">Trouver mon correcteur</a></div>'; }
+    else $('lines').innerHTML=ls.map(function(l,i){ return '<div class="line-item"><div class="im" style="background:'+l.color+'">'+(l.img?'<img src="'+l.img+'" alt="">':'')+'</div><div><h3>'+l.name+'</h3><p>'+(l.variant||'')+'</p><div style="display:flex;align-items:center"><div class="qty"><button data-q="'+i+'" data-d="-1" aria-label="Retirer une unité">−</button><output>'+l.qty+'</output><button data-q="'+i+'" data-d="1" aria-label="Ajouter une unité">+</button></div><button class="rm" data-rm="'+i+'">Retirer</button></div></div><div class="lp">'+(l.price==null?'[PRIX] DT':BIF.money(l.price*l.qty))+'</div></div>'; }).join('');
+    var t=BIF.cart.total(); $('sub').textContent=ls.length?(t==null?'[PRIX] DT':BIF.money(t)):'0 DT'; $('tot').textContent=ls.length?(t==null?'[TOTAL] DT':BIF.money(t)+' + livraison'):'0 DT'; }
+  $('lines').addEventListener('click',function(e){ var b=e.target.closest('[data-q]'),r=e.target.closest('[data-rm]'), ls=BIF.cart.lines();
+    if(b){var i=+b.dataset.q;BIF.cart.setQty(i,ls[i].qty+(+b.dataset.d))} if(r){BIF.cart.setQty(+r.dataset.rm,0)} });
+  document.addEventListener('bif:cart',render); render();
+  var rules={'f-name':function(v){return v.trim().length>1},'f-tel':function(v){return /^[2-9]\d{7}$/.test(v.replace(/\D/g,'').replace(/^216/,''))},'f-gov':function(v){return !!v},'f-addr':function(v){return v.trim().length>4}};
+  Object.keys(rules).forEach(function(id){ $(id).addEventListener('input',function(){ $(id).parentNode.classList.remove('bad') }); });
+  $('form').addEventListener('submit',function(e){ e.preventDefault(); var ok=true, first;
+    Object.keys(rules).forEach(function(id){ var good=rules[id]($(id).value); $(id).parentNode.classList.toggle('bad',!good); if(!good&&!first)first=$(id); ok=ok&&good; });
+    var ls=BIF.cart.lines(); if(!ls.length){ ok=false; $('lines').scrollIntoView({behavior:'smooth'}); }
+    if(!ok){ if(first)first.focus(); return; }
+    var t=BIF.cart.total();
+    var msg='Bonjour BIF, nouvelle commande :\n'+ls.map(function(l){return '• '+l.name+(l.variant?' ('+l.variant+')':'')+' × '+l.qty}).join('\n')
+      +'\n\nTotal : '+(t==null?'à confirmer':BIF.money(t))+' + livraison\nNom : '+$('f-name').value+'\nTéléphone : '+$('f-tel').value+'\nGouvernorat : '+$('f-gov').value+'\nAdresse : '+$('f-addr').value+($('f-note').value?'\nRemarque : '+$('f-note').value:'')+'\nPaiement à la livraison.';
+    $('sendWa').href=BIF.wa(msg); BIF.cart.clear(); $('cartView').hidden=true; $('done').hidden=false; scrollTo(0,0); });
+})();</script>
+</body>
+</html>

@@ -848,6 +848,27 @@ const en: Dict = {
         "One place to show the work, explain commissions and receive qualified requests",
       ],
     },
+    "bif-cosmetique": {
+      type: "Makeup & Perfume E-commerce (concept)",
+      proof: ["Live concept", "WhatsApp checkout"],
+      summary:
+        "A real online shop for a Tunisian makeup brand that sells on Instagram: concealer, colour correctors, blush, brow fixer and two niche perfumes.",
+      problem:
+        "Everything happens in Instagram DMs: prices asked in comments, orders typed by hand, and nothing that explains which corrector suits which dark circles.",
+      impact:
+        "Visitors understand the range, pick the right corrector with a colour-theory guide, fill a cart and send a ready-made order on WhatsApp, with cash on delivery.",
+      solution:
+        "Scroll showcase where each product turns and its tube opens on its applicator; colour wheel explaining rosé vs orange correctors; product pages, cart and WhatsApp checkout; a vending-machine game that drops the chosen product; real product photos cleaned and cut out.",
+      highlights: [
+        "Sticky scroll showcase: the background takes each product's colour, the tube opens on its applicator",
+        "Colour-theory wheel that shows which corrector cancels which dark circles",
+        "Vending machine: type a number, the product drops, add it to the cart",
+      ],
+      outcomes: [
+        "Live concept: try it at /bif",
+        "One place to show the range, guide the choice and receive complete orders",
+      ],
+    },
     "falak-cosmetic": {
       type: "Cosmetics Brand & E-commerce Redesign",
       proof: ["Redesign live", "New brand identity"],
@@ -1569,6 +1590,27 @@ const fr: Dict = {
       outcomes: [
         "Concept en ligne : à essayer sur /fakhfakh",
         "Un seul endroit pour montrer les œuvres, expliquer les commandes et recevoir des demandes qualifiées",
+      ],
+    },
+    "bif-cosmetique": {
+      type: "E-commerce maquillage & parfums (concept)",
+      proof: ["Concept en ligne", "Commande sur WhatsApp"],
+      summary:
+        "Une vraie boutique en ligne pour une marque tunisienne de maquillage qui vend sur Instagram : concealer, correcteurs de couleur, blush, fixateur sourcils et deux parfums de niche.",
+      problem:
+        "Tout se passe en messages Instagram : prix demandés en commentaire, commandes tapées à la main, et rien qui explique quel correcteur choisir selon ses cernes.",
+      impact:
+        "Le visiteur comprend la gamme, choisit le bon correcteur grâce à un guide des couleurs, remplit son panier et envoie une commande prête sur WhatsApp, avec paiement à la livraison.",
+      solution:
+        "Vitrine au scroll où chaque produit tourne et son tube s'ouvre sur son applicateur ; roue chromatique qui explique correcteur rosé ou orange ; fiches produits, panier et commande WhatsApp ; jeu du distributeur qui fait tomber le produit choisi ; vraies photos produits nettoyées et détourées.",
+      highlights: [
+        "Vitrine sticky au scroll : le fond prend la couleur du produit, le tube s'ouvre sur son applicateur",
+        "Roue chromatique qui montre quel correcteur neutralise quelles cernes",
+        "Distributeur : tape un numéro, le produit tombe, ajoute-le au panier",
+      ],
+      outcomes: [
+        "Concept en ligne : à essayer sur /bif",
+        "Un seul endroit pour montrer la gamme, guider le choix et recevoir des commandes complètes",
       ],
     },
     "falak-cosmetic": {
