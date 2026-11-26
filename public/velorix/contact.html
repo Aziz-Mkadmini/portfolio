@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · VÉLORIX Luxury Motorcycles</title>
+<meta name="description" content="Talk to the VÉLORIX workshop — diagnostics, RIDE OUT paint, gear. Human reply.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Contact · VÉLORIX Luxury Motorcycles">
+<meta property="og:description" content="Talk to the VÉLORIX workshop — diagnostics, RIDE OUT paint, gear. Human reply.">
+<meta property="og:image" content="assets/gear-race.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site-shell.css">
+<link rel="stylesheet" href="assets/reveal.css">
+</head>
+<body>
+<header class="site-nav" id="nav">
+  <a class="logo" href="index.html" aria-label="VÉLORIX Luxury Motorcycles">
+    <img src="assets/velorix-wordmark.png?v=chrome-red" alt="VÉLORIX" width="1024" height="341" decoding="async">
+  </a>
+  <button class="menu" type="button" aria-label="Menu" id="menuBtn"><i></i><i></i></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#top">Forges</a></li>
+    <li><a href="index.html#maison">Halls</a></li>
+    <li><a href="product.html">Relics</a></li>
+    <li><a href="index.html#gear">Braziers</a></li>
+    <li><a href="contact.html" class="is-active">Ashes</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html">Back to story</a>
+</header><main class="page-main"><div class="page-inner">
+  <p class="eyebrow reveal-left">Ashes · Contact</p>
+  <h1 class="reveal">Talk to the workshop.</h1>
+  <p class="lead reveal">Diagnostics, booking, RIDE OUT paint, gear. A human reply — not a ticket queue.</p>
+  <div class="media reveal-scale">
+    <figure><img src="assets/gear-race.jpg" alt="Race focus" loading="lazy"></figure>
+    <figure><img src="assets/scrub-full/f_330.jpg" alt="Night ride" loading="lazy"></figure>
+  </div>
+  <div class="meta-row reveal">
+    <dl>
+      <dt>Atelier</dt><dd>VÉLORIX House · by appointment</dd>
+      <dt>Hours</dt><dd>Tue–Sat · 10:00–19:00</dd>
+      <dt>Service</dt><dd>Engine · Brakes · Tires · Paint</dd>
+    </dl>
+    <dl>
+      <dt>Write</dt><dd>atelier@velorix.com</dd>
+      <dt>Relics</dt><dd><a href="product.html">RIDE OUT paints &amp; gear</a></dd>
+      <dt>Workshop</dt><dd><a href="atelier.html">Diagnostics floor</a></dd>
+    </dl>
+  </div>
+  <div class="form-ok" id="formOk" role="status">Message prepared. If your mail app did not open, write us at <a href="mailto:atelier@velorix.com">atelier@velorix.com</a>.</div>
+  <form id="contactForm" class="reveal">
+    <label for="interest">Interest</label>
+    <select id="interest" name="interest">
+      <option value="general">General</option>
+      <option value="paint">RIDE OUT paint</option>
+      <option value="gear">Gear</option>
+      <option value="workshop">Workshop booking</option>
+    </select>
+    <label for="paint">Paint / item (optional)</label>
+    <input id="paint" name="paint" placeholder="e.g. Magenta satin">
+    <label for="name">Name</label>
+    <input id="name" name="name" autocomplete="name" required>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+    <label for="msg">Message</label>
+    <textarea id="msg" name="message" rows="5" required></textarea>
+    <button class="btn btn-fill" type="submit">Send to workshop</button>
+  </form>
+  <p class="form-note reveal">Or write directly: <a href="mailto:atelier@velorix.com">atelier@velorix.com</a></p>
+  <script>
+  (() => {
+    const q = new URLSearchParams(location.search);
+    const interest = document.getElementById("interest");
+    const paint = document.getElementById("paint");
+    if (q.get("interest") && interest) interest.value = q.get("interest");
+    if (q.get("paint") && paint) paint.value = q.get("paint");
+    if (q.get("gear") && paint && !paint.value) paint.value = q.get("gear");
+    document.getElementById("contactForm")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const subject = encodeURIComponent("VÉLORIX · " + (fd.get("interest") || "contact"));
+      const body = encodeURIComponent(
+        "Name: " + fd.get("name") + "\nEmail: " + fd.get("email") +
+        "\nInterest: " + fd.get("interest") +
+        "\nPaint/item: " + (fd.get("paint") || "—") +
+        "\n\n" + fd.get("message")
+      );
+      document.getElementById("formOk")?.classList.add("is-on");
+      location.href = "mailto:atelier@velorix.com?subject=" + subject + "&body=" + body;
+    });
+  })();
+  </script>
+</div></main><footer class="site-footer" id="footer" data-reveal>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/velorix-wordmark.png?v=chrome-red" alt="VÉLORIX" width="1024" height="341" decoding="async">
+      <p>VÉLORIX Luxury Motorcycles — workshop, diagnostics and precision service for exceptional machines.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Workshop</h3>
+      <ul>
+        <li><a href="product.html">RIDE OUT · paints</a></li>
+        <li><a href="atelier.html#engine">Engine</a></li>
+        <li><a href="atelier.html#brakes">Brakes</a></li>
+        <li><a href="atelier.html#tires">Tires</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>House</h3>
+      <ul>
+        <li><a href="index.html#top">Forges</a></li>
+        <li><a href="index.html#maison">Halls</a></li>
+        <li><a href="product.html">Relics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 VÉLORIX Luxury Motorcycles</span>
+    <nav aria-label="Legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="legal.html">Legal</a>
+      <a href="cookies.html">Cookies</a>
+    </nav>
+  </div>
+  <div class="footer-fire" aria-hidden="true">
+    <video src="assets/footer-fire.mp4" muted loop playsinline autoplay preload="metadata"></video>
+  </div>
+</footer><script>
+(() => {
+  const nav = document.getElementById("nav");
+  const menuBtn = document.getElementById("menuBtn");
+  menuBtn?.addEventListener("click", () => nav.classList.toggle("is-open"));
+  addEventListener("scroll", () => nav?.classList.toggle("is-solid", scrollY > 24), { passive: true });
+  const wrap = document.querySelector(".footer-fire");
+  const vid = wrap?.querySelector("video");
+  if (wrap && vid && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    vid.playbackRate = 0.65;
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) vid.play().catch(() => {});
+      else vid.pause();
+    }, { threshold: 0.05 }).observe(wrap);
+  }
+})();
+</script>
+<script src="assets/reveal.js"></script>
+</body>
+</html>

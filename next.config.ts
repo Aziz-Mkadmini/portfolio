@@ -46,6 +46,25 @@ const bifHeaders = [
   { key: "Content-Security-Policy", value: bifCsp },
 ];
 
+// VÉLORIX (public/velorix) is a multi-page static luxury motorcycle concept: scroll-scrubbed
+// video and frame sequences, Google Fonts files and remote poster images. No third-party scripts.
+const velorixCsp = [
+  "default-src 'self'",
+  "img-src 'self' data: blob: https:",
+  "media-src 'self' blob:",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "script-src 'self' 'unsafe-inline'",
+  "connect-src 'self' blob:",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
+const velorixHeaders = bifHeaders.map((h) =>
+  h.key === "Content-Security-Policy" ? { ...h, value: velorixCsp } : h,
+);
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -55,11 +74,13 @@ const nextConfig: NextConfig = {
     ],
   },
   // /fakhfakh -> the gallery's static index.html
-  // /bif -> the BIF site's home page (a redirect, so its relative links between pages keep working)
+  // /bif and /velorix -> the site's home page (a redirect, so relative links between pages keep working)
   async redirects() {
     return [
       { source: "/bif", destination: "/bif/index.html", permanent: false },
       { source: "/bif/", destination: "/bif/index.html", permanent: false },
+      { source: "/velorix", destination: "/velorix/index.html", permanent: false },
+      { source: "/velorix/", destination: "/velorix/index.html", permanent: false },
     ];
   },
   async rewrites() {
@@ -68,8 +89,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // everything except the Fakhfakh gallery and the BIF concept
-        source: "/((?!fakhfakh|bif/).*)",
+        // everything except the Fakhfakh gallery and the BIF and VÉLORIX concepts
+        source: "/((?!fakhfakh|bif/|velorix/).*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
@@ -102,6 +123,7 @@ const nextConfig: NextConfig = {
         ],
       },
       { source: "/bif/:path*", headers: bifHeaders },
+      { source: "/velorix/:path*", headers: velorixHeaders },
     ];
   },
 };

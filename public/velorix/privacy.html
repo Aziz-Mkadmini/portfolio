@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · VÉLORIX</title>
+<meta name="description" content="VÉLORIX Luxury Motorcycles — privacy.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Privacy · VÉLORIX">
+<meta property="og:description" content="VÉLORIX Luxury Motorcycles — privacy.">
+<meta property="og:image" content="assets/story-poster.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site-shell.css">
+<link rel="stylesheet" href="assets/reveal.css">
+</head>
+<body>
+<header class="site-nav" id="nav">
+  <a class="logo" href="index.html" aria-label="VÉLORIX Luxury Motorcycles">
+    <img src="assets/velorix-wordmark.png?v=chrome-red" alt="VÉLORIX" width="1024" height="341" decoding="async">
+  </a>
+  <button class="menu" type="button" aria-label="Menu" id="menuBtn"><i></i><i></i></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#top">Forges</a></li>
+    <li><a href="index.html#maison">Halls</a></li>
+    <li><a href="product.html">Relics</a></li>
+    <li><a href="index.html#gear">Braziers</a></li>
+    <li><a href="contact.html">Ashes</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html">Back to story</a>
+</header><main class="page-main"><div class="page-inner"><p class="eyebrow reveal-left">Legal</p><h1 class="reveal">Privacy</h1><div class="legal reveal">
+  <p>Last updated: 26 November 2026.</p>
+  <h2>Who we are</h2>
+  <p>VÉLORIX Luxury Motorcycles (“we”) operates this website to present machines, Relics paints, gear and workshop service.</p>
+  <h2>Data we collect</h2>
+  <ul>
+    <li>Contact form fields (name, email, message, interest, optional paint/item).</li>
+    <li>Technical logs that your browser may send (IP, user agent) via hosting.</li>
+  </ul>
+  <h2>Why</h2>
+  <p>To answer enquiries, book workshop visits, and improve the site. We do not sell personal data.</p>
+  <h2>Retention</h2>
+  <p>Enquiry emails are kept as long as needed to handle your request, then deleted or archived under ordinary business rules.</p>
+  <h2>Your rights</h2>
+  <p>You may request access, correction or deletion by writing to <a href="mailto:atelier@velorix.com">atelier@velorix.com</a>.</p>
+</div><div class="cta reveal"><a class="btn" href="index.html">Back to story</a><a class="btn" href="contact.html">Contact</a></div></div></main><footer class="site-footer" id="footer" data-reveal>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/velorix-wordmark.png?v=chrome-red" alt="VÉLORIX" width="1024" height="341" decoding="async">
+      <p>VÉLORIX Luxury Motorcycles — workshop, diagnostics and precision service for exceptional machines.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Workshop</h3>
+      <ul>
+        <li><a href="product.html">RIDE OUT · paints</a></li>
+        <li><a href="atelier.html#engine">Engine</a></li>
+        <li><a href="atelier.html#brakes">Brakes</a></li>
+        <li><a href="atelier.html#tires">Tires</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>House</h3>
+      <ul>
+        <li><a href="index.html#top">Forges</a></li>
+        <li><a href="index.html#maison">Halls</a></li>
+        <li><a href="product.html">Relics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 VÉLORIX Luxury Motorcycles</span>
+    <nav aria-label="Legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="legal.html">Legal</a>
+      <a href="cookies.html">Cookies</a>
+    </nav>
+  </div>
+  <div class="footer-fire" aria-hidden="true">
+    <video src="assets/footer-fire.mp4" muted loop playsinline autoplay preload="metadata"></video>
+  </div>
+</footer><script>
+(() => {
+  const nav = document.getElementById("nav");
+  const menuBtn = document.getElementById("menuBtn");
+  menuBtn?.addEventListener("click", () => nav.classList.toggle("is-open"));
+  addEventListener("scroll", () => nav?.classList.toggle("is-solid", scrollY > 24), { passive: true });
+  const wrap = document.querySelector(".footer-fire");
+  const vid = wrap?.querySelector("video");
+  if (wrap && vid && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    vid.playbackRate = 0.65;
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) vid.play().catch(() => {});
+      else vid.pause();
+    }, { threshold: 0.05 }).observe(wrap);
+  }
+})();
+</script>
+<script src="assets/reveal.js"></script>
+</body>
+</html>

@@ -869,6 +869,27 @@ const en: Dict = {
         "One place to show the range, guide the choice and receive complete orders",
       ],
     },
+    "velorix-moto": {
+      type: "Cinematic Luxury Motorcycle Website (concept)",
+      proof: ["Live concept", "Scroll-scrubbed film"],
+      summary:
+        "What if a motorcycle website felt like the first ride? A cinematic concept for VÉLORIX, a fictional luxury motorcycle house with its own paint range, gear and workshop.",
+      problem:
+        "Most motorcycle sites show one photo and a spec table. Nothing conveys the craft, the sound or the night road, and the workshop is a phone number at the bottom of the page.",
+      impact:
+        "Visitors scroll through a short film, from the road at dusk to the machine taken apart, choose a paint, browse gear and book a workshop service in a few clicks.",
+      solution:
+        "Scroll-scrubbed video and 345-frame canvas sequence, 3D detail with annotated parts, RIDE OUT model page with a four-paint carousel and specs, product pages, workshop packs with indicative prices and a contact form with pre-filled interest.",
+      highlights: [
+        "Home page driven frame by frame by the scroll: course, 3D detail, night ride, footer",
+        "Model page: same machine in four satin pearl paints, specs at a glance",
+        "Workshop and house pages that turn the brand story into bookings",
+      ],
+      outcomes: [
+        "Live concept: try it at /velorix",
+        "A premium brand experience that leads to the workshop and the shop",
+      ],
+    },
     "falak-cosmetic": {
       type: "Cosmetics Brand & E-commerce Redesign",
       proof: ["Redesign live", "New brand identity"],
@@ -1611,6 +1632,27 @@ const fr: Dict = {
       outcomes: [
         "Concept en ligne : à essayer sur /bif",
         "Un seul endroit pour montrer la gamme, guider le choix et recevoir des commandes complètes",
+      ],
+    },
+    "velorix-moto": {
+      type: "Site cinématique pour une marque de motos de luxe (concept)",
+      proof: ["Concept en ligne", "Film piloté au scroll"],
+      summary:
+        "Et si un site de motos donnait l'impression de la première balade ? Un concept cinématique pour VÉLORIX, une maison de motos de luxe fictive avec ses peintures, son équipement et son atelier.",
+      problem:
+        "La plupart des sites de motos montrent une photo et une fiche technique. Rien ne fait sentir le savoir-faire ni la route de nuit, et l'atelier se résume à un numéro de téléphone en bas de page.",
+      impact:
+        "Le visiteur fait défiler un court film, de la route au crépuscule à la machine démontée, choisit une peinture, parcourt l'équipement et réserve un passage à l'atelier en quelques clics.",
+      solution:
+        "Vidéo pilotée au scroll et séquence de 345 images sur canvas, détail 3D avec pièces annotées, page modèle RIDE OUT avec carrousel de quatre peintures et fiche technique, fiches produits, forfaits atelier avec prix indicatifs et formulaire de contact pré-rempli.",
+      highlights: [
+        "Page d'accueil pilotée image par image au scroll : parcours, détail 3D, ride de nuit, footer",
+        "Page modèle : la même machine en quatre peintures nacrées satinées, caractéristiques en un coup d'œil",
+        "Pages atelier et maison qui transforment l'histoire de la marque en réservations",
+      ],
+      outcomes: [
+        "Concept en ligne : à essayer sur /velorix",
+        "Une expérience de marque premium qui mène à l'atelier et à la boutique",
       ],
     },
     "falak-cosmetic": {
