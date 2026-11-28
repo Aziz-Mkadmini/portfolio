@@ -1,0 +1,415 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v4.5.1",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 284442
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 62772,
+      "max": [
+        1.418749451637268,
+        4.392509460449219,
+        2.7931995391845703
+      ],
+      "min": [
+        -1.095399022102356,
+        1.6240153312683105,
+        -1.2641923427581787
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 62772
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 62772
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 62772
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5125,
+      "count": 5818140
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 1698569,
+      "max": [
+        1.6077065467834473,
+        4.532637119293213,
+        2.9098503589630127
+      ],
+      "min": [
+        -1.3089934587478638,
+        1.4583466053009033,
+        -1.3826267719268799
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 1698569
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 1698569
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 1698569
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 84879
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 15937,
+      "max": [
+        0.9303282499313354,
+        3.6645729541778564,
+        1.9231672286987305
+      ],
+      "min": [
+        -0.7654515504837036,
+        -0.02410384640097618,
+        -0.39323970675468445
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 15937
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 15937
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 15937
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 326478
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 326478,
+      "byteLength": 10390006
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10716484,
+      "byteLength": 105406
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "textures": [
+    {
+      "source": 1,
+      "sampler": 0
+    },
+    {
+      "source": 0,
+      "sampler": 0
+    },
+    {
+      "source": 2,
+      "sampler": 0
+    },
+    {
+      "source": 4,
+      "sampler": 0
+    },
+    {
+      "source": 3,
+      "sampler": 0
+    },
+    {
+      "source": 5,
+      "sampler": 0
+    },
+    {
+      "source": 7,
+      "sampler": 0
+    },
+    {
+      "source": 6,
+      "sampler": 0
+    },
+    {
+      "source": 8,
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "tree_small_02_branch_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_branch_nor_gl_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_branch_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_branch_diff_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_branch_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_branch_arm_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_leaves_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_leaves_nor_gl_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_leaves_diff-tree_small_02_leaves_alpha",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_leaves_diff_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_leaves_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_leaves_arm_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_nor_gl_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_diff_4k.jpg"
+    },
+    {
+      "name": "tree_small_02_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/tree_small_02_arm_4k.jpg"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "tree_small_02.bin",
+      "byteLength": 10821890
+    }
+  ],
+  "materials": [
+    {
+      "name": "tree_small_02_branches",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 1,
+          "extensions": {
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.40000009536743164
+              ],
+              "scale": [
+                3,
+                0.5999999046325684
+              ]
+            }
+          }
+        },
+        "metallicRoughnessTexture": {
+          "index": 2,
+          "texCoord": 1,
+          "extensions": {
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.40000009536743164
+              ],
+              "scale": [
+                3,
+                0.5999999046325684
+              ]
+            }
+          }
+        }
+      },
+      "normalTexture": {
+        "index": 1,
+        "texCoord": 1,
+        "extensions": {
+          "KHR_texture_transform": {
+            "offset": [
+              0,
+              0.40000009536743164
+            ],
+            "scale": [
+              3,
+              0.5999999046325684
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "tree_small_02_leaves",
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 5
+        }
+      },
+      "normalTexture": {
+        "index": 4
+      }
+    },
+    {
+      "name": "tree_small_02_trunk",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 6
+        },
+        "metallicRoughnessTexture": {
+          "index": 8
+        }
+      },
+      "normalTexture": {
+        "index": 7
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "BezierCurve.002",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 0,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          }
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "TEXCOORD_1": 9
+          },
+          "mode": 4,
+          "material": 1,
+          "indices": 5,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          }
+        },
+        {
+          "attributes": {
+            "POSITION": 11,
+            "NORMAL": 12,
+            "TEXCOORD_0": 13,
+            "TEXCOORD_1": 14
+          },
+          "mode": 4,
+          "material": 2,
+          "indices": 10,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "tree_small_02_LOD0",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0,
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "KHR_texture_transform"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "KHR_texture_transform"
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v4.5.1",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 21024
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 4301,
+      "max": [
+        0.13674156367778778,
+        1.266984224319458,
+        0.17607749998569489
+      ],
+      "min": [
+        -0.23460757732391357,
+        0.41102948784828186,
+        -0.21713386476039886
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 4301
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 4301
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 170238
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 36496,
+      "max": [
+        0.2112395167350769,
+        0.5428022146224976,
+        0.21265316009521484
+      ],
+      "min": [
+        -0.21813175082206726,
+        6.146728992462158e-8,
+        -0.21738101541996002
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 36496
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 36496
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 16320
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 3229,
+      "max": [
+        0.23310254514217377,
+        0.53143310546875,
+        0.233102485537529
+      ],
+      "min": [
+        -0.23310250043869019,
+        0,
+        -0.23310253024101257
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 3229
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 3229
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5125,
+      "count": 320700
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 72716,
+      "max": [
+        0.24901919066905975,
+        1.336457371711731,
+        0.2698860168457031
+      ],
+      "min": [
+        -0.33836793899536133,
+        0.5832836627960205,
+        -0.36367878317832947
+      ]
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 72716
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 72716
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 24980
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 24980,
+      "byteLength": 246263
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 271243,
+      "byteLength": 17645
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 288888,
+      "byteLength": 379032
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "textures": [
+    {
+      "source": 1,
+      "sampler": 0
+    },
+    {
+      "source": 0,
+      "sampler": 0
+    },
+    {
+      "source": 2,
+      "sampler": 0
+    },
+    {
+      "source": 4,
+      "sampler": 0
+    },
+    {
+      "source": 3,
+      "sampler": 0
+    },
+    {
+      "source": 5,
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "potted_plant_01_pot_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/potted_plant_01_pot_nor_gl_4k.jpg"
+    },
+    {
+      "name": "potted_plant_01_pot_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/potted_plant_01_pot_diff_4k.jpg"
+    },
+    {
+      "name": "potted_plant_01_pot_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/potted_plant_01_pot_rough_4k.jpg"
+    },
+    {
+      "name": "potted_plant_01_leaves_nor_gl.png",
+      "mimeType": "image/jpeg",
+      "uri": "textures/potted_plant_01_leaves_nor_gl_4k.jpg"
+    },
+    {
+      "name": "potted_plant_01_leaves_diff.png",
+      "mimeType": "image/jpeg",
+      "uri": "textures/potted_plant_01_leaves_diff_4k.jpg"
+    },
+    {
+      "name": "potted_plant_01_leaves_rough.png",
+      "mimeType": "image/jpeg",
+      "uri": "textures/potted_plant_01_leaves_rough_4k.jpg"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "potted_plant_01.bin",
+      "byteLength": 667920
+    }
+  ],
+  "materials": [
+    {
+      "name": "potted_plant_01_pot",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "normalTexture": {
+        "index": 1
+      }
+    },
+    {
+      "name": "potted_plant_01_leaves",
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.5,
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 5
+        }
+      },
+      "normalTexture": {
+        "index": 4
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "potted_plant_01_base_low",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "TEXCOORD_0": 3
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 0,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Circle.008",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 5,
+            "NORMAL": 6,
+            "TEXCOORD_0": 7
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Circle.002",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 9,
+            "NORMAL": 10,
+            "TEXCOORD_0": 11
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 8,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plane.070",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 13,
+            "NORMAL": 14,
+            "TEXCOORD_0": 15
+          },
+          "mode": 4,
+          "material": 1,
+          "indices": 12,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 3,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "potted_plant_01_stem",
+      "mesh": 0
+    },
+    {
+      "name": "potted_plant_01_pebbles",
+      "translation": [
+        0,
+        -0.013706685975193977,
+        0
+      ],
+      "scale": [
+        1.0021867752075195,
+        1.0021867752075195,
+        1.0021867752075195
+      ],
+      "mesh": 1
+    },
+    {
+      "name": "potted_plant_01_pot",
+      "mesh": 2
+    },
+    {
+      "name": "potted_plant_01_leaves",
+      "mesh": 3
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "scene": 0,
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ]
+}

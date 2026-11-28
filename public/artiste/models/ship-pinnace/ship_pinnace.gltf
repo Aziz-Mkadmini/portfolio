@@ -1,0 +1,808 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v4.5.1",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 96732
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 32428,
+      "max": [
+        4.097138404846191,
+        9.380546569824219,
+        -13.02111530303955
+      ],
+      "min": [
+        -4.096752643585205,
+        1.6550650596618652,
+        -18.183012008666992
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 32428
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 32428
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 32428
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5125,
+      "count": 197346
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 76441,
+      "max": [
+        4.776169776916504,
+        30.162885665893555,
+        20.857276916503906
+      ],
+      "min": [
+        -4.750401020050049,
+        2.693758010864258,
+        -18.93169403076172
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 76441
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 76441
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 76956
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 23124,
+      "max": [
+        4.618999481201172,
+        10.26850414276123,
+        17.088287353515625
+      ],
+      "min": [
+        -4.618589401245117,
+        1.2266311645507812,
+        -17.825519561767578
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 23124
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 23124
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 50901
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 15435,
+      "max": [
+        4.533112525939941,
+        7.9250993728637695,
+        16.555208206176758
+      ],
+      "min": [
+        -4.5327043533325195,
+        -2.412184715270996,
+        -16.62848663330078
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 15435
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 15435
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 28086
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 11718,
+      "max": [
+        4.080605506896973,
+        8.989690780639648,
+        14.394707679748535
+      ],
+      "min": [
+        -4.080193996429443,
+        2.908597469329834,
+        -17.979219436645508
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 11718
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 11718
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 18930
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 5196,
+      "max": [
+        4.435174942016602,
+        7.932513236999512,
+        14.213688850402832
+      ],
+      "min": [
+        -4.434767246246338,
+        -1.1989402770996094,
+        -17.230825424194336
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 5196
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 5196
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 36000
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 6468,
+      "max": [
+        4.422078609466553,
+        24.07848358154297,
+        18.557498931884766
+      ],
+      "min": [
+        -4.3468122482299805,
+        5.513841152191162,
+        -11.469937324523926
+      ]
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 6468
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 6468
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 157310
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 157310,
+      "byteLength": 308239
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 465549,
+      "byteLength": 108291
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 573840,
+      "byteLength": 74796
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 648636,
+      "byteLength": 47220
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 695856,
+      "byteLength": 32196
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 728052,
+      "byteLength": 39664
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "textures": [
+    {
+      "source": 1,
+      "sampler": 0
+    },
+    {
+      "source": 0,
+      "sampler": 0
+    },
+    {
+      "source": 2,
+      "sampler": 0
+    },
+    {
+      "source": 4,
+      "sampler": 0
+    },
+    {
+      "source": 3,
+      "sampler": 0
+    },
+    {
+      "source": 5,
+      "sampler": 0
+    },
+    {
+      "source": 7,
+      "sampler": 0
+    },
+    {
+      "source": 6,
+      "sampler": 0
+    },
+    {
+      "source": 8,
+      "sampler": 0
+    },
+    {
+      "source": 10,
+      "sampler": 0
+    },
+    {
+      "source": 9,
+      "sampler": 0
+    },
+    {
+      "source": 11,
+      "sampler": 0
+    },
+    {
+      "source": 13,
+      "sampler": 0
+    },
+    {
+      "source": 12,
+      "sampler": 0
+    },
+    {
+      "source": 14,
+      "sampler": 0
+    },
+    {
+      "source": 16,
+      "sampler": 0
+    },
+    {
+      "source": 15,
+      "sampler": 0
+    },
+    {
+      "source": 17,
+      "sampler": 0
+    },
+    {
+      "source": 19,
+      "sampler": 0
+    },
+    {
+      "source": 18,
+      "sampler": 0
+    },
+    {
+      "source": 20,
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "ship_pinnace_aft_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_aft_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_aft_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_aft_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_aft_metal-ship_pinnace_aft_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_aft_arm_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_rigging_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_rigging_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_rigging_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_rigging_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_rigging_metal-ship_pinnace_rigging_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_rigging_arm_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_details_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_details_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_details_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_details_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_details_metal-ship_pinnace_details_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_details_arm_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_hull_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_hull_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_hull_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_hull_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_hull_metal-ship_pinnace_hull_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_hull_arm_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_deck_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_deck_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_deck_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_deck_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_deck_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_deck_arm_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_interior_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_interior_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_interior_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_interior_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_interior_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_interior_arm_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_sails_nor_gl",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_sails_nor_gl_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_sails_diff",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_sails_diff_4k.jpg"
+    },
+    {
+      "name": "ship_pinnace_sails_metal-ship_pinnace_sails_rough",
+      "mimeType": "image/jpeg",
+      "uri": "textures/ship_pinnace_sails_arm_4k.jpg"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "ship_pinnace.bin",
+      "byteLength": 767716
+    }
+  ],
+  "materials": [
+    {
+      "name": "ship_pinnace_aft",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "normalTexture": {
+        "index": 1
+      }
+    },
+    {
+      "name": "ship_pinnace_rigging",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 5
+        }
+      },
+      "normalTexture": {
+        "index": 4
+      }
+    },
+    {
+      "name": "ship_pinnace_details",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 6
+        },
+        "metallicRoughnessTexture": {
+          "index": 8
+        }
+      },
+      "normalTexture": {
+        "index": 7
+      }
+    },
+    {
+      "name": "ship_pinnace_hull",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 9
+        },
+        "metallicRoughnessTexture": {
+          "index": 11
+        }
+      },
+      "normalTexture": {
+        "index": 10
+      }
+    },
+    {
+      "name": "ship_pinnace_deck",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 12
+        },
+        "metallicRoughnessTexture": {
+          "index": 14
+        }
+      },
+      "normalTexture": {
+        "index": 13
+      }
+    },
+    {
+      "name": "ship_pinnace_interior",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 15
+        },
+        "metallicRoughnessTexture": {
+          "index": 17
+        }
+      },
+      "normalTexture": {
+        "index": 16
+      }
+    },
+    {
+      "name": "ship_pinnace_sails",
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.5,
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 18
+        },
+        "metallicRoughnessTexture": {
+          "index": 20
+        }
+      },
+      "normalTexture": {
+        "index": 19
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Plane.041",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "NORMAL": 4
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 0,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "TEXCOORD_1": 2,
+                "NORMAL": 3
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cylinder.042",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 6,
+            "TEXCOORD_0": 7,
+            "NORMAL": 8
+          },
+          "mode": 4,
+          "material": 1,
+          "indices": 5,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "NORMAL": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plane.046",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 10,
+            "TEXCOORD_0": 11,
+            "NORMAL": 12
+          },
+          "mode": 4,
+          "material": 2,
+          "indices": 9,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "NORMAL": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plane.498",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 14,
+            "TEXCOORD_0": 15,
+            "NORMAL": 16
+          },
+          "mode": 4,
+          "material": 3,
+          "indices": 13,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 3,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "NORMAL": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plane.057",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 18,
+            "TEXCOORD_0": 19,
+            "NORMAL": 20
+          },
+          "mode": 4,
+          "material": 4,
+          "indices": 17,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 4,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "NORMAL": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plane.043",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 22,
+            "TEXCOORD_0": 23,
+            "NORMAL": 24
+          },
+          "mode": 4,
+          "material": 5,
+          "indices": 21,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 5,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "NORMAL": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plane.002",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 26,
+            "TEXCOORD_0": 27,
+            "NORMAL": 28
+          },
+          "mode": 4,
+          "material": 6,
+          "indices": 25,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 6,
+              "attributes": {
+                "POSITION": 0,
+                "TEXCOORD_0": 1,
+                "NORMAL": 2
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "ship_pinnace_aft",
+      "mesh": 0
+    },
+    {
+      "name": "ship_pinnace_rigging",
+      "mesh": 1
+    },
+    {
+      "name": "ship_pinnace_details",
+      "mesh": 2
+    },
+    {
+      "name": "ship_pinnace_hull",
+      "mesh": 3
+    },
+    {
+      "name": "ship_pinnace_deck",
+      "mesh": 4
+    },
+    {
+      "name": "ship_pinnace_interior",
+      "mesh": 5
+    },
+    {
+      "name": "ship_pinnace_sails",
+      "mesh": 6
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "scene": 0,
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ]
+}

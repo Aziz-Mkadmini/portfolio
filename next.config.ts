@@ -6,17 +6,17 @@ const scriptSrc =
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     : "script-src 'self' 'unsafe-inline'";
 
-// The Fakhfakh gallery (public/fakhfakh, a standalone client demo) needs the camera for
+// The 3D galleries (public/fakhfakh and public/artiste) need the camera for
 // "Voir chez moi", WebXR for wall AR, three.js / model-viewer / QR libraries from jsDelivr,
 // Google Fonts and blob: URLs for the generated 3D model and photos. Those permissions are
-// granted to /fakhfakh only; every other route keeps the strict policy below.
+// granted to /fakhfakh and /artiste only; every other route keeps the strict policy below.
 const fakhfakhCsp = [
   "default-src 'self'",
   "img-src 'self' data: blob: https:",
   "media-src 'self' blob: mediastream:",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' data: https://fonts.gstatic.com",
-  "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net",
   "connect-src 'self' blob: data: https:",
   "worker-src 'self' blob:",
   "frame-ancestors 'none'",
@@ -65,6 +65,16 @@ const velorixHeaders = bifHeaders.map((h) =>
   h.key === "Content-Security-Policy" ? { ...h, value: velorixCsp } : h,
 );
 
+const galleryHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(self), xr-spatial-tracking=(self), microphone=(), geolocation=()" },
+  { key: "Content-Security-Policy", value: fakhfakhCsp },
+];
+
+const gallerySlugs = ["fakhfakh", "artiste"];
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -73,7 +83,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
     ],
   },
-  // /fakhfakh -> the gallery's static index.html
+  // /fakhfakh and /artiste -> each gallery's static index.html
   // /bif and /velorix -> the site's home page (a redirect, so relative links between pages keep working)
   async redirects() {
     return [
@@ -84,13 +94,16 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return [{ source: "/fakhfakh", destination: "/fakhfakh/index.html" }];
+    return gallerySlugs.map((slug) => ({
+      source: `/${slug}`,
+      destination: `/${slug}/index.html`,
+    }));
   },
   async headers() {
     return [
       {
-        // everything except the Fakhfakh gallery and the BIF and VÉLORIX concepts
-        source: "/((?!fakhfakh|bif/|velorix/).*)",
+        // everything except the two galleries and the BIF and VÉLORIX concepts
+        source: "/((?!fakhfakh|artiste|bif/|velorix/).*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
@@ -102,26 +115,10 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/fakhfakh/:path*",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(self), xr-spatial-tracking=(self), microphone=(), geolocation=()" },
-          { key: "Content-Security-Policy", value: fakhfakhCsp },
-        ],
-      },
-      {
-        source: "/fakhfakh",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(self), xr-spatial-tracking=(self), microphone=(), geolocation=()" },
-          { key: "Content-Security-Policy", value: fakhfakhCsp },
-        ],
-      },
+      ...gallerySlugs.flatMap((slug) => [
+        { source: `/${slug}/:path*`, headers: galleryHeaders },
+        { source: `/${slug}`, headers: galleryHeaders },
+      ]),
       { source: "/bif/:path*", headers: bifHeaders },
       { source: "/velorix/:path*", headers: velorixHeaders },
     ];
